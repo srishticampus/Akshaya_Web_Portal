@@ -6,7 +6,7 @@ const akshayaModel = require('../models/akshayaModel');
 // Register a new VO
 const registerVO = async (req, res) => {
     try {
-        const { email, password, username, pincode, district, landmark, village, taluk, panchayath, corporation, block, areaType, ward } = req.body;
+        const { email, password, username, pincode, district, landmark, village, taluk, panchayath,  date, areaType } = req.body;
 
         const newVO = new voModel({
             email,
@@ -19,9 +19,9 @@ const registerVO = async (req, res) => {
             taluk,
             panchayath,
             corporation,
-            block,
+            
             areaType,
-            ward,
+            date,
             date: new Date()
         });
 

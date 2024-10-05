@@ -51,16 +51,16 @@ const schema = mongoose.Schema({
         type: String,
         required: true
     },
-    block: {
-        type: String,
-        required: true
-    },
+    // block: {
+    //     type: String,
+    //     required: true
+    // },
     areaType: {
         type: String,
         required: true
     },
-    ward: {
-        type: String,
+    date: {
+        type: Date,
         required: true
     },
     adminApproved: {

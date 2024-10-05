@@ -1,4 +1,4 @@
-const Admin  = require('./adminSchema');
+const Admin  = require('../models/adminModel');
 
 const adminResetPassword = async (req, res) => {
     
@@ -52,9 +52,7 @@ const adminResetPassword = async (req, res) => {
 
     const login = (req, res) => {
         const { email, password } = req.body;
-    
-        Admin.findOne({ email }).then(user => {
-    
+         Admin.findOne({ email }).then(user => {
     
             if (!user) {
 
@@ -73,10 +71,12 @@ const adminResetPassword = async (req, res) => {
 
                     }
                 }else{
+                    console.log("here");
+                    
                     return res.json({ status: 405, msg: 'Invalid Username' });
 
                 }
-                // return res.json({ status: 405, msg: 'Invalid Username' });
+              
             }
     
            else if (user.password != password) {

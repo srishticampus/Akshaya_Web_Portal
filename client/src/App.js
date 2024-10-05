@@ -1,24 +1,59 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import ScrollToTop from './Components/LandingPage/ScrollToTop';
+import LandingNavbar from './Components/LandingPage/LandingNavbar';
+import AdminLogin from './Components/Admin/AdminLogin';
+import Footer from './Components/LandingPage/Footer/Footer';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AdminDashboard from './Components/Admin/AdminDashBoard.js/AdminDashboard';
+import ResetPwd from './Components/Admin/ResetPwd/ResetPwd';
+import ForgotPwd from './Components/Admin/ForgotPwd/ForgotPwd';
+import Signup from './Components/Akshaya/Signup/Signup';
+import VOSignup from './Components/VillageOffice/Signup/VOSignup';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter basename='akshaya' >
+      <ScrollToTop />
+      <ToastContainer
+        autoClose={3000}  // 3 seconds default close time
+        hideProgressBar={true}  // Hide progress bar globally
+        position="top-right"  // Default position for all toasts
+      />
+      <div className="App">
+        <Routes>
+          <Route path='/' element={<LandingNavbar />} />
+
+
+
+          {/* Admin  */}
+          <Route path='/admin-login' element={[<LandingNavbar />, <AdminLogin />, <Footer />]} />
+          <Route path='/admin-home' element={[<LandingNavbar />, <AdminDashboard />, <Footer />]} />
+          <Route path='/admin-resetpwd' element={[<LandingNavbar />, <ResetPwd />, <Footer />]} />
+          <Route path='/admin-forgotpwd' element={[<LandingNavbar />, <ForgotPwd />, <Footer />]} />
+
+
+          {/* Akshaya  */}
+
+          <Route path='/akshaya-signup' element={[<LandingNavbar />, <Signup />, <Footer />]} />
+
+
+
+
+
+          {/* Village Office  */}
+
+          <Route path='/vo-signup' element={[<LandingNavbar />, <VOSignup />, <Footer />]} />
+
+        </Routes>
+      </div>
+
+    </BrowserRouter>
   );
 }
 

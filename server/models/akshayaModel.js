@@ -45,8 +45,8 @@ const schema = mongoose.Schema({
         default: false
     },
     certificate: {
-        type: file,
+        type: Object,
         required: true
     },
 },{timeStamps:true});
-module.exports = mongoose.model('villageoffice', schema)
+module.exports = mongoose.model('akshaya', schema)
