@@ -18,7 +18,8 @@ import VOSignup from './Components/VillageOffice/Signup/VOSignup';
 
 function App() {
   return (
-    <BrowserRouter basename='akshaya' >
+    <BrowserRouter 
+    basename='akshaya' >
       <ScrollToTop />
       <ToastContainer
         autoClose={3000}  // 3 seconds default close time
