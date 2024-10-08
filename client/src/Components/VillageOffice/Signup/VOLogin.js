@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import './AdminLogin.css'
+import '../../Admin/AdminLogin.css'
 import { VscEyeClosed } from "react-icons/vsc";
 import { toast } from "react-toastify";
-import '../LandingPage/LandingNavbar.css'
+import '../../LandingPage/LandingNavbar.css'
 import { VscEye } from "react-icons/vsc";import { FiEye } from "react-icons/fi";
 import { Link, useNavigate } from 'react-router-dom';
-import { login } from '../Services/CommonServices';
-function AdminLogin() {
+import { login } from '../../Services/CommonServices';
+import './VOLogin.css'
+function VOLogin() {
     const [data, setData] = useState('');
 
     const [showPassword, setShowPassword] = useState(false)
@@ -55,12 +56,13 @@ function AdminLogin() {
         }
     
         try {
-          const result = await login(data,'adminLogin');
+          const result = await login(data,'loginVO');
     
           if (result.success) {
             console.log(result);
-            localStorage.setItem('admin',1)
-            navigate('/admin-home');
+            localStorage.setItem('vo', result.user._id)      
+                 
+            navigate('/vo-home');
 
            
           } else {
@@ -75,7 +77,7 @@ function AdminLogin() {
     return (
         <div className='container'>
 
-            <h2 className='adminLogin-mainText'>  Admin,<span className='adminLogin-loginText'>Login !</span></h2>
+            <h2 className='voLogin-mainText'>  Village Office,<span className='adminLogin-loginText'>Login !</span></h2>
             <div className='adminLogin-mainDiv'>
           
                 <form onSubmit={handleLogin}>
@@ -84,7 +86,7 @@ function AdminLogin() {
 
                     <div style={{ position: 'relative' }}>
                         <input type={showPassword ? "text" : "password"}
-                            placeholder='password'
+                            placeholder='Password'
                             name="password"
                             onChange={handleChange}
                             className='form-control p-2 mt-4'
@@ -99,16 +101,19 @@ function AdminLogin() {
                     {errors.password && <div id="nameError" className="invalid-feedback">{errors.password}</div>}
 
                     <div className="mt-3 container admin-login-link ">
-                    <Link className="admin-login-forgotpswd" to="/admin-forgotpwd">Forgot Password?</Link>
+                    <Link className="admin-login-forgotpswd" to="/vo-forgotpwd">Forgot Password?</Link>
                   </div>
                   <button
                   type="submit"
                   className="btn btn-success admin-login-button"
                   >Login</button>
                 </form>
+                <div className="mt-5 mb-5 container admin-login-link ">
+                  Don't Have An Account ?  <Link className="vo-login-forgotpswd" to="/vo-signup">Sign Up </Link>
+                  </div>
             </div>
         </div>
     )
 }
 
-export default AdminLogin
+export default VOLogin

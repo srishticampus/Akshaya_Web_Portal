@@ -14,6 +14,9 @@ import ResetPwd from './Components/Admin/ResetPwd/ResetPwd';
 import ForgotPwd from './Components/Admin/ForgotPwd/ForgotPwd';
 import Signup from './Components/Akshaya/Signup/Signup';
 import VOSignup from './Components/VillageOffice/Signup/VOSignup';
+import VOLogin from './Components/VillageOffice/Signup/VOLogin';
+import TopComponent from './Components/LandingPage/TopComponent';
+import About from './Components/LandingPage/About';
 
 
 function App() {
@@ -27,7 +30,7 @@ function App() {
       />
       <div className="App">
         <Routes>
-          <Route path='/' element={<LandingNavbar />} />
+          <Route path='/' element={[<LandingNavbar />,<TopComponent/>,<About/>]} />
 
 
 
@@ -49,6 +52,7 @@ function App() {
           {/* Village Office  */}
 
           <Route path='/vo-signup' element={[<LandingNavbar />, <VOSignup />, <Footer />]} />
+          <Route path='/vo-login' element={[<LandingNavbar />, <VOLogin />, <Footer />]} />
 
         </Routes>
       </div>
