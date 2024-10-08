@@ -6,7 +6,7 @@ const akshayaModel = require('../models/akshayaModel');
 // Register a new VO
 const registerVO = async (req, res) => {
     try {
-        const { email, password, username, pincode, district, landmark, village, taluk, panchayath,  date, areaType } = req.body;
+        const { email, password, username, pincode, district, landmark, village, taluk, localbody,  date, areaType } = req.body;
 
         const newVO = new voModel({
             email,
@@ -17,8 +17,7 @@ const registerVO = async (req, res) => {
             landmark,
             village,
             taluk,
-            panchayath,
-            corporation,
+            localbody,
             
             areaType,
             date,
@@ -355,7 +354,7 @@ const login = async (req, res) => {
         } else {
             return res.json({
                 status: 405,
-                msg: "Invalid credentials"
+                msg: "Incorrect Password"
             });
         }
     } else {

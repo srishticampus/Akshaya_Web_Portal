@@ -43,14 +43,11 @@ const schema = mongoose.Schema({
         type: String,
         required: true
     },
-    panchayath: {
+    localbody: {
         type: String,
         required: true
     },
-    corporation: {
-        type: String,
-        required: true
-    },
+  
     // block: {
     //     type: String,
     //     required: true

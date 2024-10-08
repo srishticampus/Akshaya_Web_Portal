@@ -5,21 +5,27 @@ import '../../LandingPage/LandingNavbar.css'
 import { VscEye } from "react-icons/vsc";
 import './VOSignup.css'
 import { Link, useNavigate } from 'react-router-dom';
-import { login } from '../../Services/CommonServices';
+import { login, register } from '../../Services/CommonServices';
 function VOSignup() {
     const [data, setData] = useState({
         username: '',
         email: '',
         password: '',
         district: '',
-        panchayath: '',
+        localbody: '',
         areaType: '',
-        taluk: ''
+        taluk: '',
+        landmark:'',
+        date:'',
+        cpassword:'',
+        pincode:'',
+        village:''
     });
 
     const [showPassword, setShowPassword] = useState(false)
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
+
     const panchayaths = {
         Thiruvananthapuram: [
             "Adimalathura",
@@ -353,20 +359,25 @@ function VOSignup() {
     };
     const handleChange = (e) => {
         const { name, value } = e.target;
-        if (name === 'district') {
-            setData({ ...data, district: value, panchayath: '' });
-        }
-        else {
+        // if (name === 'district') {
+        //     setData({ ...data, district: value});
+        // }  if (name === 'taluk') {
+        //     setData({ ...data, taluk: value });
+        // }  if (name === 'areaType') {
+        //     setData({ ...data, areaType: value });
+        // }
+        // else {
             setData({
                 ...data,
                 [name]: value,
             });
-        }
+        // }
     };
 
     const validate = () => {
         const newErrors = {};
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
 
         if (!data.email) {
             console.log("here");
@@ -375,10 +386,41 @@ function VOSignup() {
         } else if (!emailRegex.test(data.email)) {
             newErrors.email = 'Invalid email format';
         }
+        if (!data.username) {
 
+            newErrors.username = 'Username is required';
+        } if (!data.district) {
+            newErrors.district = 'DIstrict is required';
+        }
+        if (!data.landmark) {
+            newErrors.landmark = 'Landmark is required';
+        } if (!data.village) {
+            newErrors.village = 'Village is required';
+        }
+       
+        if (!data.areaType) {
+            newErrors.areaType = 'Area Type is required';
+        }
+        if (!data.taluk) {
+            newErrors.taluk = 'Taluk is required';
+        }
+        if (!data.pincode) {
+            newErrors.pincode = 'Pincode is required';
+        }
+        if (!data.cpassword) {
+            newErrors.cpassword = 'Confirm Password is required';
+        }
+        if (!data.date) {
+            newErrors.date = 'Date of commencement is required';
+        }
         if (!data.password) {
             newErrors.password = 'Password is required';
-        }
+        } else if (!passwordRegex.test(data.password)) {
+            newErrors.password = 'Password Must Contain 1 Uppercase,1 Symbol and 1 Number with minimum 6 characters';
+          }
+        else if (data.password!=data.cpassword) {
+            newErrors.password = 'Password and Confirm Password must be the same !';
+          }
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -396,28 +438,28 @@ function VOSignup() {
         }
 
         try {
-            const result = await login(data, 'adminLogin');
+            const result = await register(data, 'registerVO');
 
             if (result.success) {
                 console.log(result);
-                localStorage.setItem('admin', 1)
-                toast.success('Login successful!');
-                navigate('/admin-home');
+               
+                toast.success('Registration successful!');
+                navigate('/vo-login');
 
 
             } else {
-                console.error('Login error:', result);
+                console.error('Registration error:', result);
                 toast.error(result.message);
             }
         } catch (error) {
             console.error('Unexpected error:', error);
-            toast.error('An unexpected error occurred during login');
+            toast.error('An unexpected error occurred during Registration');
         }
     };
     return (
         <div className='container'>
 
-            <h2 className='vo-signup-mainText'>  Sign <span className='vo-signup-loginText'> Up !</span></h2>
+            <h2 className='vo-signup-mainText'>  Sign <span className='vo-signup-loginText'> Up!</span></h2>
             <div className='vo-signup-mainDiv'>
 
                 <form onSubmit={handleLogin}>
@@ -429,9 +471,9 @@ function VOSignup() {
                         </div>
                         <div className='col-md-5 p-2 '>
                            
-                            <input type="text" placeholder='Username' className='form-control p-2' name='email' onChange={handleChange}></input>
+                            <input type="text" placeholder='E-Mail' className='form-control p-2' name='email' onChange={handleChange}></input>
 
-                            {errors.password && <div id="nameError" className="invalid-feedback">{errors.password}</div>}
+                            {errors.email && <div id="nameError" className="invalid-feedback">{errors.email}</div>}
                         </div>
 
                     </div>
@@ -473,7 +515,7 @@ function VOSignup() {
                     <div className='row'>
 
                         <div className='col-md-5 p-2 '>
-                            <select placeholder='areaType' className='form-control p-2' name='areaType' onChange={handleChange} value={data.panchayath}>
+                            <select placeholder='taluk' className='form-control p-2' name='taluk' onChange={handleChange} value={data.taluk}>
                                 <option value="">Taluk</option>
                                 {taluks[data.district]?.map((taluk, index) => (
                                     <option value={taluk}>   {taluk}</option>
@@ -484,7 +526,7 @@ function VOSignup() {
 
 
                         <div className='col-md-5 p-2 '>
-                            <select placeholder='areaType' className='form-control p-2' name='areaType' onChange={handleChange} value={data.areaType}>
+                            <select className='form-control p-2' name='localbody' onChange={handleChange} value={data.localbody}>
 
 
                                 <option value="">Choose the local body</option>
@@ -494,7 +536,7 @@ function VOSignup() {
                                     corporations[data.district]?.map((panchayath, index) => (
                                         <option value={panchayath}>{panchayath}</option>)))}
                             </select>
-                            {errors.areaType && <div id="nameError" className="invalid-feedback">{errors.areaType}</div>}
+                            {errors.localbody && <div id="nameError" className="invalid-feedback">{errors.localbody}</div>}
                         </div>
 
                     </div>
@@ -543,9 +585,10 @@ function VOSignup() {
                                 <div className="vo-signup-password-toggle-icon" onClick={togglePasswordVisibility}>
                                     {showPassword ? <VscEyeClosed /> : <VscEye />}
                                 </div>
-                                {errors.password && <div id="nameError" className="invalid-feedback">{errors.password}</div>}
 
                             </div>
+                            {errors.password && <div id="nameError" className="invalid-feedback">{errors.password}</div>}
+
 </div>
 <div className='col-md-5 p-2 '>
     <p> &nbsp;</p>

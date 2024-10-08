@@ -1,0 +1,53 @@
+.about-main{
+    margin-top: 65px;
+   padding: 20px;
+    height: 596px;
+background-image: url('../../Assets/about.png');
+    margin-left: 79px;
+    gap: 0px;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 700px;
+    opacity: 0px;
+    
+}
+.about-sideDiv{
+border-radius: 10px;
+border: 1px solid grey;
+border-color: f8f8f8;
+width:685px;
+height:350px;
+padding: 10px;
+margin-top: 90px;
+background-color: rgb(248, 244, 244);
+opacity:70px;
+}
+.about-sidehead{
+font-family: Montserrat;
+font-size: 44px;
+font-weight: bold;
+line-height: 53.64px;
+letter-spacing: -0.01em;
+text-align: left;
+color: #56905C;
+padding: 10px;
+margin-left: 10%;
+margin-top: 7%;
+padding: 5px;
+
+
+}
+.about-sidepara{
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 25px;
+    text-align: left;
+    color: #6D6D6D;
+   
+
+}
+.about-sidefirst{
+    
+    font-weight: 700;
+}

@@ -1,0 +1,33 @@
+.TopComponent-div1 {
+    margin-top: 10px;
+    height: 750px;
+    background-image: url('../../Assets/langirl.png');
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+background-size: contain;
+}
+
+.TopComponent-head1 {
+    text-align: center;
+    font-size: 55px;
+    font-weight: bold;
+    font-family: Poppins;
+    line-height: 82.5px;
+    letter-spacing: -0.01em;
+    margin-bottom: 30px;
+}
+
+.TopComponent-head2 {
+    color: #56905C;
+
+}
+.TopComponent-para1 {
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17.07px;
+    text-align: center;
+    
+
+}
