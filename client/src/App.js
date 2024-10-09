@@ -18,13 +18,15 @@ import VOLogin from './Components/VillageOffice/Signup/VOLogin';
 import TopComponent from './Components/LandingPage/TopComponent';
 import About from './Components/LandingPage/About';
 import BottomComponent from './Components/LandingPage/BottomComponent';
+import Service from './Components/LandingPage/Service';
 import VOForgotPwd from './Components/VillageOffice/Signup/PwdReset/VOForgotPwd';
 import VOResetPwd from './Components/VillageOffice/Signup/PwdReset/VOResetPwd';
 
 
 function App() {
   return (
-    <BrowserRouter basename='akshaya' >
+    <BrowserRouter 
+    basename='akshaya' >
       <ScrollToTop />
       <ToastContainer
         autoClose={3000}  // 3 seconds default close time
@@ -33,10 +35,7 @@ function App() {
       />
       <div className="App">
         <Routes>
-          <Route path='/' element={[<LandingNavbar />,<TopComponent/>,<About/>,<BottomComponent/>,<Footer/>]} />
-
-
-
+          <Route path='/' element={[<LandingNavbar />,<TopComponent/>,<About/>,<Service/>,<BottomComponent/>,<Footer/>]} />
           {/* Admin  */}
           <Route path='/admin-login' element={[<LandingNavbar />, <AdminLogin />, <Footer />]} />
           <Route path='/admin-home' element={[<LandingNavbar />, <AdminDashboard />, <Footer />]} />
@@ -47,9 +46,6 @@ function App() {
           {/* Akshaya  */}
 
           <Route path='/akshaya-signup' element={[<LandingNavbar />, <Signup />, <Footer />]} />
-
-
-
 
 
           {/* Village Office  */}
