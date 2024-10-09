@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
-import '../../Admin/AdminLogin.css'
+import '../../../Admin/AdminLogin.css'
 import { VscEyeClosed } from "react-icons/vsc";
 import { toast } from "react-toastify";
-import '../../LandingPage/LandingNavbar.css'
+import '../../../LandingPage/LandingNavbar.css'
 import { VscEye } from "react-icons/vsc";import { FiEye } from "react-icons/fi";
 import { Link, useNavigate } from 'react-router-dom';
-import { login } from '../../Services/CommonServices';
-import './VOLogin.css'
-function VOLogin() {
+import { forgotPassword, login } from '../../../Services/CommonServices';
+import '../VOLogin.css'
+import './VoPwd.css'
+
+function VOForgotPwd() {
     const [data, setData] = useState('');
 
     const [showPassword, setShowPassword] = useState(false)
@@ -36,9 +38,7 @@ function VOLogin() {
           newErrors.email = 'Invalid email format';
         }
     
-        if (!data.password) {
-          newErrors.password = 'Password is required';
-        }
+      
     
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -56,17 +56,15 @@ function VOLogin() {
         }
     
         try {
-          const result = await login(data,'loginVO');
+          const result = await forgotPassword(data,'forgotPasswordVO');
     
           if (result.success) {
             console.log(result);
-            localStorage.setItem('vo', result.user._id)      
-                 
-            navigate('/vo-home');
+            toast.success('Please Check your mail to reset the Password')
 
            
           } else {
-            console.error('Login error:', result);
+            console.error(' error:', result);
             toast.error(result.message);
           }
         } catch (error) {
@@ -77,43 +75,23 @@ function VOLogin() {
     return (
         <div className='container'>
 
-            <h2 className='voLogin-mainText'>  Village Office,<span className='adminLogin-loginText'>Login !</span></h2>
+            <h2 className='voLogin-mainText vo-pwd-main'>  Forget <span className='adminLogin-loginText'>Password?</span></h2>
             <div className='adminLogin-mainDiv'>
-          
+          <p className='vo-pwd-para mt-5'>Enter your E-mail below to receive your password reset instruction</p>
                 <form onSubmit={handleLogin}>
-                    <input type="text" placeholder='Username' className='form-control p-2' name='email' onChange={handleChange}></input>
+                    <input type="text" placeholder='E-Mail' className='form-control p-2 mt-5' name='email' onChange={handleChange}></input>
                     {errors.email && <div id="nameError" className="invalid-feedback">{errors.email}</div>}
 
-                    <div style={{ position: 'relative' }}>
-                        <input type={showPassword ? "text" : "password"}
-                            placeholder='Password'
-                            name="password"
-                            onChange={handleChange}
-                            className='form-control p-2 mt-4'
-                            style={{ paddingRight: '40px' }} >
-
-                        </input>
-                        <div className="admin-login-password-toggle-icon" onClick={togglePasswordVisibility}>
-                            {showPassword ? <VscEyeClosed  /> : <VscEye />}
-                        </div>
-                          
-                    </div>
-                    {errors.password && <div id="nameError" className="invalid-feedback">{errors.password}</div>}
-
-                    <div className="mt-3 container admin-login-link ">
-                    <Link className="admin-login-forgotpswd" to="/vo-fogotpwd">Forgot Password?</Link>
-                  </div>
+                    
                   <button
                   type="submit"
-                  className="btn btn-success admin-login-button"
-                  >Login</button>
+                  className="btn btn-success admin-login-button  mb-5"
+                  >Next</button>
                 </form>
-                <div className="mt-5 mb-5 container admin-login-link ">
-                  Don't Have An Account ?  <Link className="vo-login-forgotpswd" to="/vo-signup">Sign Up </Link>
-                  </div>
+                
             </div>
         </div>
     )
 }
 
-export default VOLogin
+export default VOForgotPwd
