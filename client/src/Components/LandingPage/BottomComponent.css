@@ -5,7 +5,7 @@
 
     margin-top: 5px;
     background-repeat: no-repeat;
-position: relative;
+    position: relative;
 
 }
 
@@ -22,37 +22,45 @@ position: relative;
     border: 1px solid grey;
     border-color: f8f8f8;
     width: 685px;
-    height: 70px;
+    height: 90px;
     margin-left: 30%;
     margin-top: 10px;
-    top:6%;
+    top: 6%;
     z-index: 1;
     padding: 10px;
     text-align: center;
     background-color: rgba(236, 231, 231, 0.932);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 
 
 }
+
 .bottom-bottomDiv {
     position: relative;
-   
+
     width: 1200px;
     height: 170px;
     margin-left: 10%;
-       top:58%;
-z-index: 1;
+    top: 58%;
+    z-index: 1;
     padding: 10px;
-   
+
 
 }
+
 .bottom-bottomCardbody {
-   
+
     padding: 10px;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.932);
     border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adjust values as needed */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Adjust values as needed */
 
     margin-left: 100px;
 
+}
+
+.bottom-bottompara1 {
+    font-size: 18px;
 }
