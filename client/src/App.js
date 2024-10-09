@@ -21,6 +21,7 @@ import BottomComponent from './Components/LandingPage/BottomComponent';
 import Service from './Components/LandingPage/Service';
 import VOForgotPwd from './Components/VillageOffice/Signup/PwdReset/VOForgotPwd';
 import VOResetPwd from './Components/VillageOffice/Signup/PwdReset/VOResetPwd';
+import AkshayaLogin from './Components/Akshaya/Login/AkshayaLogin';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
           {/* Akshaya  */}
 
           <Route path='/akshaya-signup' element={[<LandingNavbar />, <Signup />, <Footer />]} />
+          <Route path='/akshaya-login' element={[<LandingNavbar />, <AkshayaLogin />, <Footer />]} />
 
 
           {/* Village Office  */}
