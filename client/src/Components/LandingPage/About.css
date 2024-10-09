@@ -19,8 +19,8 @@ width:685px;
 height:350px;
 padding: 10px;
 margin-top: 90px;
-background-color: rgb(248, 244, 244);
-opacity:70px;
+background-color: rgba(248, 248, 248, 0.9);
+
 }
 .about-sidehead{
 font-family: Montserrat;

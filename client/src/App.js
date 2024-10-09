@@ -17,6 +17,7 @@ import VOSignup from './Components/VillageOffice/Signup/VOSignup';
 import VOLogin from './Components/VillageOffice/Signup/VOLogin';
 import TopComponent from './Components/LandingPage/TopComponent';
 import About from './Components/LandingPage/About';
+import BottomComponent from './Components/LandingPage/BottomComponent';
 import Service from './Components/LandingPage/Service';
 
 
@@ -32,7 +33,7 @@ function App() {
       />
       <div className="App">
         <Routes>
-          <Route path='/' element={[<LandingNavbar />,<TopComponent/>,<About/>,<Service/>]} />
+          <Route path='/' element={[<LandingNavbar />,<TopComponent/>,<About/>,<Service/>,<BottomComponent/>,<Footer/>]} />
           {/* Admin  */}
           <Route path='/admin-login' element={[<LandingNavbar />, <AdminLogin />, <Footer />]} />
           <Route path='/admin-home' element={[<LandingNavbar />, <AdminDashboard />, <Footer />]} />
