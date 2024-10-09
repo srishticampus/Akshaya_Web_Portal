@@ -13,145 +13,91 @@ function Service() {
       <div className='container'>
         <h1 className='service_heading'>Services</h1>
         <p className='head_para'>Streamlining everything from property management to Aadhaar, PAN, passport services, and more—all in one place!</p>
-
-        <div className='row mb-5'>
-          <div className='col-sm-4'>
-            <div className='card'>
-              <div className='card-header'>
-                <img src={icon1} alt='img1'></img>
-              </div>
-              <div className='card-body'>
-                <h1 className='card-title'>Property & Land Management</h1>
-                <p className='para'>Easily access and manage property and land records, including ownership details and land disputes, through a user-friendly interface.</p>
-              </div>
-
-              <div className='card-footer'>
-                <button className='btn' id='button_color'>Read More &gt;</button>
-              </div>
-            </div>
-          </div>
-          <div className='col-sm-4'>
-            <div className='card'>
-              <div className='card-header'>
-                <img src={icon2} alt='img1'></img>
-              </div>
-              <div className='card-body'>
-                <h1 className='card-title'>Adhaar Enrollment & Updation</h1>
-                <p className='para'>Whether you're enrolling for a new Aadhaar card or updating existing details, Akshaya provides a smooth and efficient process to ensure your information is always accurate and...</p>
-              </div>
-              <div className='card-footer'>
-                <button className='btn' id='button_color'>Read More &gt;</button>
-              </div>
-            </div>
-          </div>
-          <div className='col-sm-4'>
-            <div className='card'>
-              <div className='card-header'>
-                <img src={icon3} alt='img1'></img></div>
-              <div className='card-body'>
-                <h1 className='card-title'>Election management Work</h1>
-                <p className='para'>Stay on top of voter registration, verify your election details, and ensure your voice is heard with Akshaya’s easy election management services.</p>
-              </div>
-              <div className='card-footer'>
-                <button className='btn' id='button_color'>Read More &gt;</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className='row mb-5'>
-          <div className='col-sm-4'>
-            <div className='card'>
-              <div className='card-header'>
+        <div className='row mb-5 '>
+          <div className='mycard col-sm-4'>
+            <div className='card border-0'>
+              <div className='mycardheader card-header border-0'>
                 <img src={icon1} alt='img1' />
               </div>
-              <div className='card-body'>
-                <h1 className='card-title'>Property & Land Management</h1>
-                <p className='para'>Easily access and manage property and land records, including ownership details and land disputes, through a user-friendly interface.</p>
-              </div>
-              <div className='card-footer'>
-                <button className='btn' id='button_color'>Read More &gt;</button>
+              <div className='card-body border-0'>
+                <h1 className='card-title'>Property & <br /> Land Management</h1>
+                <p className='Service_para'>Easily access and manage property and land records, including ownership details and land disputes, through a user-friendly interface.</p>
+                <button className='btn button_color mt-3'>Read More &nbsp; &gt;</button>
               </div>
             </div>
           </div>
-
-          <div className='col-sm-4'>
-            <div className='card'>
-              <div className='card-header'>
-                <img src={icon2} alt='img1' />
+          <div className='mycard col-sm-4'>
+            <div className='card border-0' id='Service_card'>
+              <div className='mycardheader card-header border-0'>
+                <img src={icon2} alt='img2' />
               </div>
-              <div className='card-body'>
+              <div className='card-body border-0'>
                 <h1 className='card-title'>Aadhaar Enrollment & Updation</h1>
-                <p className='para'>Whether you're enrolling for a new Aadhaar card or updating existing details, Akshaya provides a smooth and efficient process to ensure your information is always accurate.</p>
+                <p className='Service_para'>Whether you're enrolling for a new Aadhaar card or updating existing details, Akshaya provides a smooth and efficient process to ensure your information is always accurate.</p>
+                <button className='btn button_color'>Read More &nbsp; &gt;</button>
               </div>
-              <div className='card-footer'>
-                <button className='btn' id='button_color'>Read More &gt;</button>
-              </div>
+
             </div>
           </div>
 
-          <div className='col-sm-4'>
-            <div className='card'>
-              <div className='card-header'>
-                <img src={icon3} alt='img1' />
+          <div className='mycard col-sm-4'>
+            <div className='card border-0' id='Service_card'>
+              <div className='mycardheader card-header border-0'>
+                <img src={icon3} alt='img3' />
               </div>
-              <div className='card-body'>
-                <h1 className='card-title'>Election Management Work</h1>
-                <p className='para'>Stay on top of voter registration, verify your election details, and ensure your voice is heard with Akshaya’s easy election management services.</p>
+              <div className='card-body border-0'>
+                <h1 className='card-title'>Election Management <br /> Work</h1>
+                <p className='Service_para'>Stay on top of voter registration, verify your election details, and ensure your voice is heard with Akshaya’s easy election management services.</p>
+                <button className='btn button_color mt-3'>Read More &nbsp; &gt;</button>
               </div>
-              <div className='card-footer'>
-                <button className='btn' id='button_color'>Read More &gt;</button>
-              </div>
+
             </div>
           </div>
         </div>
 
         <div className='row'>
-          <div className='col-sm-4'>
-            <div className='card'>
-              <div className='card-header'>
+          <div className='mycard col-sm-4'>
+            <div className='card border-0' id='Service_card'>
+              <div className='mycardheader card-header border-0'>
                 <img src={icon4} alt='img1' />
               </div>
-              <div className='card-body'>
+              <div className='card-body border-0'>
                 <h1 className='card-title'>PAN Card Service</h1>
-                <p className='para'>Apply for a new PAN card or update your existing details with ease. Akshaya streamlines the process, ensuring that you receive your PAN without hassle.</p>
+                <p className='Service_para'>Apply for a new PAN card or update your existing details with ease. Akshaya streamlines the process, ensuring that you receive your PAN without hassle.</p>
+                <button className='btn button_color'>Read More &nbsp; &gt;</button>
               </div>
-              <div className='card-footer'>
-                <button className='btn' id='button_color'>Read More &gt;</button>
-              </div>
+
             </div>
           </div>
 
-          <div className='col-sm-4'>
-            <div className='card'>
-              <div className='card-header'>
+          <div className='mycard col-sm-4'>
+            <div className='card border-0' id='Service_card'>
+              <div className='mycardheader card-header border-0'>
                 <img src={icon5} alt='img1' />
               </div>
               <div className='card-body'>
                 <h1 className='card-title'>Ticket Booking</h1>
-                <p className='para'>From travel to events, book tickets effortlessly through the portal, saving time and effort with a user-friendly interface.</p>
+                <p className='Service_para'>From travel to events, book tickets effortlessly through the portal, saving time and effort with a user-friendly interface.</p>
+                <button className='btn button_color'>Read More &nbsp; &gt;</button>
               </div>
-              <div className='card-footer'>
-                <button className='btn' id='button_color'>Read More &gt;</button>
-              </div>
+
             </div>
           </div>
 
-          <div className='col-sm-4'>
-            <div className='card'>
-              <div className='card-header'>
+          <div className='mycard col-sm-4'>
+            <div className='card border-0 ' id='Service_card'>
+              <div className='mycardheader card-header border-0'>
                 <img src={icon6} alt='img1' />
               </div>
-              <div className='card-body'>
+              <div className='card-body border-0'>
                 <h1 className='card-title'>Passport Service</h1>
-                <p className='para'>Apply for a new passport, renew your existing one, or track the status of your application. Akshaya ensures a smooth and transparent process.</p>
+                <p className='Service_para'>Apply for a new passport, renew your existing one, or track the status of your application. Akshaya ensures a smooth and transparent process.</p>
+                <button className='btn button_color'>Read More &gt;</button>
               </div>
-              <div className='card-footer'>
-                <button className='btn' id='button_color'>Read More &gt;</button>
-              </div>
+
             </div>
           </div>
         </div>
-
       </div>
     </>
   )

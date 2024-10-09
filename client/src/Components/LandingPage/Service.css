@@ -21,8 +21,9 @@
     line-height: normal;
     text-transform: capitalize;
 }
-.card{
-    height: 440px;
+
+.mycard {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 2px 0px;
 }
 
 .card-title {
@@ -35,19 +36,25 @@
     letter-spacing: -0.24px;
     text-transform: capitalize;
 }
-.para{
-overflow: hidden;
-color: #6D6D6D;
-text-overflow: ellipsis;
-/* white-space: nowrap; */
-font-family: Montserrat;
-font-size: 14px;
-font-style: normal;
-font-weight: 500;
-flex-grow: 1;
-line-height: normal;
-letter-spacing: -0.14px;
+
+.Service_para {
+    overflow: hidden;
+    color: #6D6D6D;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    flex-grow: 1;
+    line-height: normal;
+    letter-spacing: -0.14px;
 }
-#button_color{
+
+.button_color {
     color: #56905C;
+}
+
+.mycardheader {
+    background-color: white;
 }
