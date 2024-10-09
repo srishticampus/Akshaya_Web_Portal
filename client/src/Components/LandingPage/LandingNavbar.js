@@ -115,7 +115,7 @@ function LandingNavbar() {
                 </li>
 
                 <li>
-                  <Link to="/ad3" className="dropdown-item">
+                  <Link to="/vo-login" className="dropdown-item">
                    Village Office
                   </Link>
                 </li>

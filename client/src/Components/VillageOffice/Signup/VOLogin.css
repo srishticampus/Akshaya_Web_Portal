@@ -1,0 +1,15 @@
+.voLogin-mainText{
+    font-size: 35px;
+    margin-top: 50px;
+margin-left: 380px;
+gap: 0px;
+font-weight: bold;
+letter-spacing: 2px;
+}
+.vo-login-forgotpswd{
+    color: #56905C;
+   
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}

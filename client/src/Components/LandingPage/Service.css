@@ -1,0 +1,53 @@
+.service_heading {
+    text-align: center;
+    color: var(--Base-Green, #56905C);
+    font-family: Montserrat;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.44px;
+    text-transform: capitalize;
+
+}
+
+.head_para {
+    color: #2A2A2A;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.card{
+    height: 440px;
+}
+
+.card-title {
+    color: #6D6D6D;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    text-transform: capitalize;
+}
+.para{
+overflow: hidden;
+color: #6D6D6D;
+text-overflow: ellipsis;
+/* white-space: nowrap; */
+font-family: Montserrat;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+flex-grow: 1;
+line-height: normal;
+letter-spacing: -0.14px;
+}
+#button_color{
+    color: #56905C;
+}

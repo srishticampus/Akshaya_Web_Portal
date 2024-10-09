@@ -14,6 +14,10 @@ import ResetPwd from './Components/Admin/ResetPwd/ResetPwd';
 import ForgotPwd from './Components/Admin/ForgotPwd/ForgotPwd';
 import Signup from './Components/Akshaya/Signup/Signup';
 import VOSignup from './Components/VillageOffice/Signup/VOSignup';
+import VOLogin from './Components/VillageOffice/Signup/VOLogin';
+import TopComponent from './Components/LandingPage/TopComponent';
+import About from './Components/LandingPage/About';
+import Service from './Components/LandingPage/Service';
 
 
 function App() {
@@ -28,10 +32,7 @@ function App() {
       />
       <div className="App">
         <Routes>
-          <Route path='/' element={<LandingNavbar />} />
-
-
-
+          <Route path='/' element={[<LandingNavbar />,<TopComponent/>,<About/>,<Service/>]} />
           {/* Admin  */}
           <Route path='/admin-login' element={[<LandingNavbar />, <AdminLogin />, <Footer />]} />
           <Route path='/admin-home' element={[<LandingNavbar />, <AdminDashboard />, <Footer />]} />
@@ -44,12 +45,10 @@ function App() {
           <Route path='/akshaya-signup' element={[<LandingNavbar />, <Signup />, <Footer />]} />
 
 
-
-
-
           {/* Village Office  */}
 
           <Route path='/vo-signup' element={[<LandingNavbar />, <VOSignup />, <Footer />]} />
+          <Route path='/vo-login' element={[<LandingNavbar />, <VOLogin />, <Footer />]} />
 
         </Routes>
       </div>

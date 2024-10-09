@@ -14,7 +14,7 @@ export const login = async (data, api) => {
 
         if (response.data.status === 200) {
             const { result } = response.data;
-            return { success: true, user: result };
+            return { success: true, user:  response.data.data };
         } else {
             return { success: false, message: response.data.msg };
         }
@@ -23,6 +23,33 @@ export const login = async (data, api) => {
             return {
                 success: false,
                 message: error.response.data.msg || 'Login failed',
+            };
+        }
+        return {
+            success: false,
+            message: 'An unexpected error occurred',
+        };
+    }
+};
+
+export const register = async (data, api) => {
+    try {
+
+
+        const response = await axios.post(`${API_BASE_URL}/${api}`, data);
+        console.log(response);
+
+        if (response.data.status === 200) {
+            const { result } = response.data;
+            return { success: true, user: response.data.data };
+        } else {
+            return { success: false, message: response.data.msg };
+        }
+    } catch (error) {
+        if (error.response && error.response.data) {
+            return {
+                success: false,
+                message: error.response.data.msg || 'Registration  failed',
             };
         }
         return {
