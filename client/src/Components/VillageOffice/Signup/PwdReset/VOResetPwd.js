@@ -5,8 +5,8 @@
     import { toast } from "react-toastify";
     import '../../../LandingPage/LandingNavbar.css'
     import { VscEye } from "react-icons/vsc";import { FiEye } from "react-icons/fi";
-    import { Link, useNavigate } from 'react-router-dom';
-    import { forgotPassword, login } from '../../../Services/CommonServices';
+    import { Link, useNavigate, useParams } from 'react-router-dom';
+    import { forgotPassword, login, resetPassword } from '../../../Services/CommonServices';
     import '../VOLogin.css'
     import './VoPwd.css'
     
@@ -14,12 +14,14 @@
         const [data, setData] = useState('');
     
         const [showPassword, setShowPassword] = useState(false)
+const {id}=useParams()
         const [errors, setErrors] = useState({});
         const navigate = useNavigate();
     
         const togglePasswordVisibility = () => {
             setShowPassword(!showPassword);
         };
+       
         const handleChange = (e) => {
             const { name, value } = e.target;
             setData({
@@ -29,16 +31,20 @@
           };
         const validate = () => {
             const newErrors = {};
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
-            if (!data.email) {
-                console.log("here");
-                
-              newErrors.email = 'Email is required';
-            } else if (!emailRegex.test(data.email)) {
-              newErrors.email = 'Invalid email format';
+            const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+
+           
+            if (!data.password) {
+                newErrors.password = 'Password is required';
+            } else if (!passwordRegex.test(data.password)) {
+                newErrors.password = 'Password Must Contain 1 Uppercase,1 Symbol and 1 Number with minimum 6 characters';
+              }
+              if (!data.cpassword) {
+                newErrors.cpassword = 'Confirm Password is required';
             }
-        
+            else if (data.password!=data.cpassword) {
+                newErrors.password = 'Password and Confirm Password must be the same !';
+              }
           
         
             setErrors(newErrors);
@@ -57,12 +63,12 @@
             }
         
             try {
-              const result = await forgotPassword(data,'forgotPasswordVO');
+              const result = await resetPassword(data,'resetPasswordVO',id);
         
               if (result.success) {
                 console.log(result);
-                toast.success('Please Check your mail to reset the Password')
-    
+                toast.success('Password Updated Successfully')
+    navigate('/vo-login')
                
               } else {
                 console.error(' error:', result);
@@ -76,14 +82,22 @@
         return (
             <div className='container'>
     
-                <h2 className='voLogin-mainText vo-pwd-main'>  Forget <span className='adminLogin-loginText'>Password?</span></h2>
+                <h2 className='voLogin-mainText vo-pwd-main'>  Reset <span className='adminLogin-loginText'>Password!</span></h2>
                 <div className='adminLogin-mainDiv'>
-              <p className='vo-pwd-para mt-5'>Enter your E-mail below to receive your password reset instruction</p>
+              <p className='vo-pwd-para mt-3'>Your New Password Must Be Different
+              From Previous Password.</p>
                     <form onSubmit={handleLogin}>
-                        <input type="text" placeholder='E-Mail' className='form-control p-2 mt-5' name='email' onChange={handleChange}></input>
-                        {errors.email && <div id="nameError" className="invalid-feedback">{errors.email}</div>}
+                    <div style={{ position: 'relative' }}>
+                        <input type={showPassword ? "text" : "password"} placeholder='New Password' className='form-control p-2 mt-5' name='password' onChange={handleChange}></input>
+                        </div>
+                        {errors.password && <div id="nameError" className="invalid-feedback">{errors.password}</div>}
+                        <div style={{ position: 'relative' }}>
+                        <input type={showPassword ? "text" : "password"} placeholder='Confirm Password' className='form-control p-2 mt-3' name='cpassword' onChange={handleChange}></input>
+                        <div className="admin-login-password-toggle-icon" onClick={togglePasswordVisibility}>
+                            {showPassword ? <VscEyeClosed  /> : <VscEye />}
+                        </div></div>
+                        {errors.cpassword && <div id="nameError" className="invalid-feedback">{errors.cpassword}</div>}
     
-                        
                       <button
                       type="submit"
                       className="btn btn-success admin-login-button  mb-5"

@@ -294,8 +294,8 @@ const forgotPassword = (req, res) => {
 
 };
 
-// Reset password for VO
-const resetPassword = async (req, res) => {
+// change password for VO
+const changePassword = async (req, res) => {
     let pwdMatch = false;
 
     await voModel.findById({ _id: req.params.id })
@@ -344,6 +344,55 @@ const resetPassword = async (req, res) => {
     }
 };
 
+// rewetr password for VO
+const resetPassword = async (req, res) => {
+    let pwdMatch = false;
+
+    await voModel.findById({ _id: req.params.id })
+        .exec()
+        .then(data => {
+            if (data.password === req.body.password)
+                pwdMatch = true;
+        })
+        .catch(err => {
+            return res.status(500).json({
+                status: 500,
+                msg: "Data not updated",
+                Error: err
+            });
+        });
+
+    if (!pwdMatch) {
+        await voModel.findByIdAndUpdate({ _id: req.params.id }, {
+            password: req.body.password
+        })
+            .exec()
+            .then(data => {
+                if (data != null)
+                    return res.json({
+                        status: 200,
+                        msg: "Password updated successfully"
+                    });
+                else
+                    return res.json({
+                        status: 500,
+                        msg: "User not found"
+                    });
+            })
+            .catch(err => {
+                return res.status(500).json({
+                    status: 500,
+                    msg: "Data not updated",
+                    Error: err
+                });
+            });
+    } else {
+        return res.json({
+            status: 405,
+            msg: "New Password is same as Old Password !!"
+        });
+    }
+};
 // Login for VO
 const login = async (req, res) => {
     let { email, password } = req.body;
@@ -396,5 +445,6 @@ module.exports = {
     resetPassword,
     login,
     viewVOById,
-    editVOById
+    editVOById,
+    changePassword
 };

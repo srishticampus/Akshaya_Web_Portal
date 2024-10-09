@@ -17,6 +17,7 @@ router.post('/registerVO',VillageOffice.registerVO);
 router.post('/loginVO',VillageOffice.login);
 router.post('/forgotPasswordVO',VillageOffice.forgotPassword);
 router.post('/resetPasswordVO/:id',VillageOffice.resetPassword);
+router.post('/changePasswordVO/:id',VillageOffice.changePassword);
 router.post('/viewVOById/:id',VillageOffice.viewVOById);
 router.post('/viewVOReqsForAdmin',VillageOffice.viewVOReqsForAdmin);
 router.post('/viewVOs',VillageOffice.viewVOs);
