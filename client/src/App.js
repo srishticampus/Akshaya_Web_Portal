@@ -19,6 +19,8 @@ import TopComponent from './Components/LandingPage/TopComponent';
 import About from './Components/LandingPage/About';
 import BottomComponent from './Components/LandingPage/BottomComponent';
 import Service from './Components/LandingPage/Service';
+import VOForgotPwd from './Components/VillageOffice/Signup/PwdReset/VOForgotPwd';
+import VOResetPwd from './Components/VillageOffice/Signup/PwdReset/VOResetPwd';
 
 
 function App() {
@@ -50,6 +52,8 @@ function App() {
 
           <Route path='/vo-signup' element={[<LandingNavbar />, <VOSignup />, <Footer />]} />
           <Route path='/vo-login' element={[<LandingNavbar />, <VOLogin />, <Footer />]} />
+          <Route path='/vo-fogotpwd' element={[<LandingNavbar />, <VOForgotPwd />, <Footer />]} />
+          <Route path='/vo-resetpwd/:id' element={[<LandingNavbar />, <VOResetPwd />, <Footer />]} />
 
         </Routes>
       </div>
