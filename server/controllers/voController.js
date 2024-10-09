@@ -1,7 +1,7 @@
 const voModel = require('../models/voModel');
 const staffModel = require('../models/staffModel');
 const akshayaModel = require('../models/akshayaModel');
-
+const common=require('../controllers/commonQueries')
 
 // Register a new VO
 const registerVO = async (req, res) => {
@@ -265,13 +265,14 @@ const deActivateVOById = (req, res) => {
 
 // Forgot password for VO
 const forgotPassword = (req, res) => {
-    voModel.findOneAndUpdate({ email: req.body.email }, { password: req.body.password })
-        .exec()
-        .then(data => {
-            if (data != null)
+  common.forgotPWDsentMail(req.body.email,voModel).then(result=>{
+    console.log(result);
+   
+  
+            if (result != null)
                 res.json({
                     status: 200,
-                    msg: "Password updated successfully"
+                    msg: "Mail send successfully"
                 });
             else
                 res.json({
@@ -286,6 +287,11 @@ const forgotPassword = (req, res) => {
                 Error: err
             });
         });
+
+
+
+
+
 };
 
 // Reset password for VO
@@ -342,10 +348,23 @@ const resetPassword = async (req, res) => {
 const login = async (req, res) => {
     let { email, password } = req.body;
 
-    let voData = await voModel.findOne({ email: email });
+    let voData = await voModel.findOne({ username: email });
 
     if (voData != null) {
         if (voData.password == password) {
+           
+            if (!voData.adminApproved) {
+                return res.json({
+                    status: 403,
+                    msg: "Waiting for Admin Approval!"
+                });
+            }
+            else if (!voData.isActive) {
+                return res.json({
+                    status: 403,
+                    msg: "Your account is deactivated!"
+                });
+            }
             return res.json({
                 status: 200,
                 msg: "User logged in successfully",
