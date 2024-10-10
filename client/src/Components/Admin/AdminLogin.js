@@ -98,9 +98,7 @@ function AdminLogin() {
                     </div>
                     {errors.password && <div id="nameError" className="invalid-feedback">{errors.password}</div>}
 
-                    <div className="mt-3 container admin-login-link ">
-                    <Link className="admin-login-forgotpswd" to="/admin-forgotpwd">Forgot Password?</Link>
-                  </div>
+                   
                   <button
                   type="submit"
                   className="btn btn-success admin-login-button"

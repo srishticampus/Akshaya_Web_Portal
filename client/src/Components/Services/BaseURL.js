@@ -16,5 +16,6 @@ baseURL: 'http://localhost:4042/crime_reporting_api/',
   },
 });
 
+
 export default axiosInstance
 export const imageUrl= 'http://localhost:4042';
