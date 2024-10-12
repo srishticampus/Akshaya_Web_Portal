@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import '../../Admin/AdminDashBoard/AdminSidebar.css'
-import admin from '../../../Assets/admintop.png'
+import admin from '../../../Assets/adlogo.png'
 import { toast } from "react-toastify";
-
+import './VODashboard.css'
 import { ViewById } from '../../Services/CommonServices';
 
 function VOSidebar() {
@@ -45,8 +45,8 @@ setVo(result.user)
         <div>
             <div className="admin-sidebar-background">
                 <div className="pt-5 ms-3 admin-sidebar-h4">
-                    <img src={admin} className='admin-logo'></img>
-                    {vo?.username}
+                    <img src={admin} className='vo-das-logo'></img>
+                    <p className='vo-das-logo-text'>{vo?.username}</p>
                     <Link to="/vo-home" className="admin-dash-link"><p className="p-2 fw-light admin-border">Dashboard</p></Link>
                     <Link to='/vo-' className="admin-dash-link"><p className="p-2 fw-light admin-border">Staff Management</p></Link>
                     <Link to='/vo' className="admin-dash-link"><p className="p-2  fw-light admin-border">View Application</p></Link>
