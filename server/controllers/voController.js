@@ -433,6 +433,24 @@ const login = async (req, res) => {
     }
 };
 
+const viewActiveVos = (req, res) => {
+    voModel.find({ isActive: true })
+        .exec()
+        .then(data => {
+            res.json({
+                status: 200,
+                msg: "Data obtained successfully",
+                data: data
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                status: 500,
+                msg: "No Data obtained",
+                Error: err
+            });
+        });
+};
 module.exports = {
     registerVO,
     viewVOReqsForAdmin,
@@ -446,5 +464,6 @@ module.exports = {
     login,
     viewVOById,
     editVOById,
-    changePassword
+    changePassword,
+    viewActiveVos
 };

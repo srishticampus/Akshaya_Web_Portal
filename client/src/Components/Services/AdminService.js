@@ -1,26 +1,24 @@
-import React from 'react'
+import {API_BASE_URL} from './BaseURL'
+import {IMG_BASE_URL} from './BaseURL'
 import axios from 'axios';
 
-
-    export const IMG_BASE_URL = 'http://localhost:4000';
-    export const API_BASE_URL = 'http://localhost/akshaya_api/';
-    
-    export const login = async (data,api) => {
+    export const viewCount = async (api) => {
         try {
-            const response = await axios.post(`${API_BASE_URL}/${api}`, data);
-      console.log("api called");
+            const response = await axios.post(`${API_BASE_URL}/${api}`);
+      console.log("api called",response);
       
             if (response.data.status === 200) {
-                const { result } = response.data;
-                return { success: true, user: result };
+                return { success: true, user: response.data.data};
             } else {
                 return { success: false, message: response.data.msg };
             }
         } catch (error) {
+            console.log(error);
+            
             if (error.response && error.response.data) {
                 return {
                     success: false,
-                    message: error.response.data.msg || 'Login failed',
+                    message: error.response.data.msg || 'view failed',
                 };
             }
             return {

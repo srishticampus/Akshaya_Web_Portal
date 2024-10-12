@@ -18,20 +18,23 @@ const storage = multer.diskStorage({
     },
 });
 
-const uploadSingle = multer({ storage: storage }).single('photo');
+const uploadSingle = multer({ storage: storage }).single('certificate');
 
 const registerAkshaya = async (req, res) => {
     try {
-        const { regNo, district, pincode, panchayath, contact, email, password } = req.body;
+        const { regNo, district, pincode, panchayath,email, contact, centreNo, password } = req.body;
+console.log("akshaya");
 
         const newAkshaya = new akshaya({
             regNo,
             district,
             pincode,
             panchayath,
+            centreNo,
             contact,
-            email,
+           
             password,
+            email,
             certificate: req.file,
             date: new Date()
 
@@ -55,7 +58,7 @@ const registerAkshaya = async (req, res) => {
         if (existingakshaya2) {
             return res.json({
                 status: 409,
-                msg: "Ergister Number Already Registered With Us !!",
+                msg: "Register Number Already Registered With Us !!",
                 data: null
             });
         }
@@ -86,6 +89,8 @@ const registerAkshaya = async (req, res) => {
                 });
             });
     } catch (error) {
+        console.log(error);
+        
         res.status(500).json({ message: error.message });
     }
 };
@@ -205,7 +210,24 @@ const viewAkshayas = (req, res) => {
             });
         });
 };
-
+const viewActiveAkshayas = (req, res) => {
+    akshaya.find({ isActive: false })
+        .exec()
+        .then(data => {
+            res.json({
+                status: 200,
+                msg: "Data obtained successfully",
+                data: data
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                status: 500,
+                msg: "No Data obtained",
+                Error: err
+            });
+        });
+};
 // Delete Organizer by ID
 const deleteAkshayaById = (req, res) => {
     akshaya.findByIdAndDelete({ _id: req.params.id })
@@ -434,5 +456,6 @@ module.exports = {
     rejectAkshayaById,
     viewAkshayas,
     forgotPassword,
-    resetPassword
+    resetPassword,
+    viewActiveAkshayas
 }

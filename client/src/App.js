@@ -9,7 +9,7 @@ import AdminLogin from './Components/Admin/AdminLogin';
 import Footer from './Components/LandingPage/Footer/Footer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import AdminDashboard from './Components/Admin/AdminDashBoard.js/AdminDashboard';
+import AdminDashboard from './Components/Admin/AdminDashBoard/AdminDashboard';
 import ResetPwd from './Components/Admin/ResetPwd/ResetPwd';
 import ForgotPwd from './Components/Admin/ForgotPwd/ForgotPwd';
 import Signup from './Components/Akshaya/Signup/Signup';
@@ -22,6 +22,9 @@ import Service from './Components/LandingPage/Service';
 import VOForgotPwd from './Components/VillageOffice/Signup/PwdReset/VOForgotPwd';
 import VOResetPwd from './Components/VillageOffice/Signup/PwdReset/VOResetPwd';
 import AkshayaLogin from './Components/Akshaya/Login/AkshayaLogin';
+import AdminHome from './Components/Admin/AdminDashBoard/AdminHome';
+import AdminNavber from './Components/Admin/AdminDashBoard/AdminNavber';
+import AdminMain from './Components/Admin/AdminDashBoard/AdminMain';
 
 
 function App() {
@@ -39,9 +42,9 @@ function App() {
           <Route path='/' element={[<LandingNavbar />,<TopComponent/>,<About/>,<Service/>,<BottomComponent/>,<Footer/>]} />
           {/* Admin  */}
           <Route path='/admin-login' element={[<LandingNavbar />, <AdminLogin />, <Footer />]} />
-          <Route path='/admin-home' element={[<LandingNavbar />, <AdminDashboard />, <Footer />]} />
-          <Route path='/admin-resetpwd' element={[<LandingNavbar />, <ResetPwd />, <Footer />]} />
+          <Route path='/admin-resetpwd' element={<AdminMain data="admin-resetpwd"/>} />
           <Route path='/admin-forgotpwd' element={[<LandingNavbar />, <ForgotPwd />, <Footer />]} />
+          <Route path='/admin-home' element={<AdminMain data="admindashboard"/>} />
 
 
           {/* Akshaya  */}

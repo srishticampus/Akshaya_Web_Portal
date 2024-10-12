@@ -6,11 +6,16 @@ const schema = mongoose.Schema({
         type: String,
         required: true,
     },
+   
     password: {
         type: String,
         required: true
     },
     regNo: {
+        type: String,
+        required: true
+    },
+    centreNo: {
         type: String,
         required: true
     },

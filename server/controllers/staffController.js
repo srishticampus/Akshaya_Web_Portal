@@ -335,7 +335,24 @@ const login = async (req, res) => {
         });
     }
 };
-
+const viewActiveStaffs = (req, res) => {
+    staffModel.find({ isActive: true })
+        .exec()
+        .then(data => {
+            res.json({
+                status: 200,
+                msg: "Data obtained successfully",
+                data: data
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                status: 500,
+                msg: "No Data obtained",
+                Error: err
+            });
+        });
+};
 module.exports = {
     registerStaff,
     viewStaffs,
@@ -347,5 +364,6 @@ module.exports = {
     deActivateStaffById,
     forgotPassword,
     resetPassword,
-    login
+    login,
+    viewActiveStaffs
 };

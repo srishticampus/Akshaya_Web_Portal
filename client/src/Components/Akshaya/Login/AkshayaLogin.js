@@ -2,6 +2,7 @@ import React, { useState } from 'react'
     import '../../Admin/AdminLogin.css'
     import { VscEyeClosed } from "react-icons/vsc";
     import { toast } from "react-toastify";
+    import '../Signup/Signup.css'
     import '../../LandingPage/LandingNavbar.css'
     import { VscEye } from "react-icons/vsc";import { FiEye } from "react-icons/fi";
     import { Link, useNavigate } from 'react-router-dom';
@@ -54,7 +55,7 @@ function AkshayaLogin() {
             }
         
             try {
-              const result = await login(data,'loginVO');
+              const result = await login(data,'loginAkshaya');
         
               if (result.success) {
                 console.log(result);
@@ -75,7 +76,7 @@ function AkshayaLogin() {
         return (
             <div className='container'>
     
-                <h2 className='voLogin-mainText'>  Akshaya,<span className='adminLogin-loginText'>Login !</span></h2>
+                <h2 className='akshaya-login-mar'>  Akshaya,<span className='adminLogin-loginText'>Login !</span></h2>
                 <div className='adminLogin-mainDiv'>
               
                     <form onSubmit={handleLogin}>
@@ -99,7 +100,7 @@ function AkshayaLogin() {
                         {errors.password && <div id="nameError" className="invalid-feedback">{errors.password}</div>}
     
                         <div className="mt-3 container admin-login-link ">
-                        <Link className="admin-login-forgotpswd" to="/vo-fogotpwd">Forgot Password?</Link>
+                        <Link className="admin-login-forgotpswd" to="/akshaya-fogotpwd">Forgot Password?</Link>
                       </div>
                       <button
                       type="submit"
@@ -107,7 +108,7 @@ function AkshayaLogin() {
                       >Login</button>
                     </form>
                     <div className="mt-5 mb-5 container admin-login-link ">
-                      Don't Have An Account ?  <Link className="vo-login-forgotpswd" to="/vo-signup">Sign Up </Link>
+                      Don't Have An Account ?  <Link className="vo-login-forgotpswd" to="/akshaya-signup">Sign Up </Link>
                       </div>
                 </div>
             </div>

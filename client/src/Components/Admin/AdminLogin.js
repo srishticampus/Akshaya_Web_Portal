@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './AdminLogin.css'
 import { VscEyeClosed } from "react-icons/vsc";
 import { toast } from "react-toastify";
@@ -12,7 +12,10 @@ function AdminLogin() {
     const [showPassword, setShowPassword] = useState(false)
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
-
+    useEffect(() => {
+      if(localStorage.getItem("admin")==1)
+        navigate('/admin-home');
+    }, []);
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
@@ -98,9 +101,7 @@ function AdminLogin() {
                     </div>
                     {errors.password && <div id="nameError" className="invalid-feedback">{errors.password}</div>}
 
-                    <div className="mt-3 container admin-login-link ">
-                    <Link className="admin-login-forgotpswd" to="/admin-forgotpwd">Forgot Password?</Link>
-                  </div>
+                   
                   <button
                   type="submit"
                   className="btn btn-success admin-login-button"
