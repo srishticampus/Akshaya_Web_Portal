@@ -386,12 +386,13 @@ const resetPassword = async (req, res) => {
                     Error: err
                 });
             });
-    } else {
-        return res.json({
-            status: 405,
-            msg: "New Password is same as Old Password !!"
-        });
     }
+    //  else {
+    //     return res.json({
+    //         status: 405,
+    //         msg: "New Password is same as Old Password !!"
+    //     });
+    // }
 };
 // Login for VO
 const login = async (req, res) => {

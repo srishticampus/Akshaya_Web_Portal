@@ -3,8 +3,7 @@ import AdminSidebar from "./AdminSidebar";
 import AdminDashboard from "./AdminDashboard";
 import ResetPwd from "../ResetPwd/ResetPwd";
 import AdminNavber from "./AdminNavber";
-// import ViewAllPoliceStation from "../Police/ViewAllPoliceStation";
-// import ViewProfile_Policestation from "../Police/ViewProfile_Policestation";
+
 
 
 function AdminMain({ data }) {
