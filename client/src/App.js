@@ -25,7 +25,7 @@ import AkshayaLogin from './Components/Akshaya/Login/AkshayaLogin';
 import AdminHome from './Components/Admin/AdminDashBoard/AdminHome';
 import AdminNavber from './Components/Admin/AdminDashBoard/AdminNavber';
 import AdminMain from './Components/Admin/AdminDashBoard/AdminMain';
-
+import VOMain from './Components/VillageOffice/Dashboard/VOMain'
 
 function App() {
   return (
@@ -59,7 +59,8 @@ function App() {
           <Route path='/vo-login' element={[<LandingNavbar />, <VOLogin />, <Footer />]} />
           <Route path='/vo-fogotpwd' element={[<LandingNavbar />, <VOForgotPwd />, <Footer />]} />
           <Route path='/vo-resetpwd/:id' element={[<LandingNavbar />, <VOResetPwd />, <Footer />]} />
-
+          <Route path='/vo-home' element={<VOMain data="vo-home"/>}/>
+]
         </Routes>
       </div>
 

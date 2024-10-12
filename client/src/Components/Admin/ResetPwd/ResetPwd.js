@@ -5,8 +5,9 @@ import { toast } from "react-toastify";
 import '../../LandingPage/LandingNavbar.css'
 import { VscEye } from "react-icons/vsc";import { FiEye } from "react-icons/fi";
 import { Link, useNavigate } from 'react-router-dom';
-import { login } from '../../Services/CommonServices';
+import { login, resetPassword } from '../../Services/CommonServices';
 import './ResetPwd.css'
+import { adminchangePassword } from '../../Services/AdminService';
 function ResetPwd() {
   const [data, setData] = useState('');
 
@@ -25,18 +26,22 @@ const handleChange = (e) => {
 };
 const validate = () => {
   const newErrors = {};
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
 
   if (!data.oldpassword) {
       console.log("here");
       
     newErrors.oldpassword = 'old Password is required';
-  } else if (!emailRegex.test(data.email)) {
-    newErrors.email = 'Invalid email format';
-  }
+  } 
 
   if (!data.password) {
-    newErrors.password = 'Password is required';
+    newErrors.password = 'New Password is required';
+  }
+  else if (!passwordRegex.test(data.password)) {
+    newErrors.password = 'Password Must Contain 1 Uppercase,1 Symbol and 1 Number with minimum 6 characters';
+  }
+  else if (data.password!=data.cpassword) {
+    newErrors.password = 'Password and Confirm Password must be the same !';
   }
 
   setErrors(newErrors);
@@ -55,11 +60,11 @@ const handleLogin = async (e) => {
   }
 
   try {
-    const result = await login(data,'adminLogin');
+    const result = await adminchangePassword(data,'adminResetPassword');
 
     if (result.success) {
       console.log(result);
-      localStorage.setItem('admin',1)
+     toast.success('Password Reset Succesful')
       navigate('/admin-home');
 
      
