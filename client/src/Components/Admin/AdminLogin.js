@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './AdminLogin.css'
 import { VscEyeClosed } from "react-icons/vsc";
 import { toast } from "react-toastify";
@@ -12,7 +12,10 @@ function AdminLogin() {
     const [showPassword, setShowPassword] = useState(false)
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
-
+    useEffect(() => {
+      if(localStorage.getItem("admin")==1)
+        navigate('/admin-home');
+    }, []);
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };

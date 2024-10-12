@@ -210,7 +210,24 @@ const viewAkshayas = (req, res) => {
             });
         });
 };
-
+const viewActiveAkshayas = (req, res) => {
+    akshaya.find({ isActive: false })
+        .exec()
+        .then(data => {
+            res.json({
+                status: 200,
+                msg: "Data obtained successfully",
+                data: data
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                status: 500,
+                msg: "No Data obtained",
+                Error: err
+            });
+        });
+};
 // Delete Organizer by ID
 const deleteAkshayaById = (req, res) => {
     akshaya.findByIdAndDelete({ _id: req.params.id })
@@ -439,5 +456,6 @@ module.exports = {
     rejectAkshayaById,
     viewAkshayas,
     forgotPassword,
-    resetPassword
+    resetPassword,
+    viewActiveAkshayas
 }

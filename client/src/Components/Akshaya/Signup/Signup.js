@@ -293,22 +293,23 @@ function Signup() {
     };
     const handleChange = (e) => {
         const { name, value,file } = e.target;
-        console.log("file",e.target.value);
-        if (file) {
-         console.log("file",file);
-         
-            setData((prevData) => ({
-              ...prevData,
-              [name]: file,
-            }))
-          } else {
+      
         setData({
             ...data,
             [name]: value,
         });
-    }
+    
         // }
     };
+    const handleImageChange = (e) => {
+        console.log("in file", e.target.files[0]);
+        
+        const file = e.target.files[0];
+        setData({
+          ...data,
+          certificate: file,
+        });
+      };
 
     const validate = () => {
         const newErrors = {};
@@ -493,7 +494,7 @@ function Signup() {
                         </div>
                         <div className='col-md-5 p-2 '>
                             <p>Document</p>
-                            <input type="file" className='form-control p-2' name='certificate' onChange={handleChange}></input>
+                            <input type="file" className='form-control p-2' name='certificate' onChange={handleImageChange}></input>
 
                             {errors.certificate && <div id="nameError" className="invalid-feedback">{errors.certificate}</div>}
                         </div>

@@ -1,9 +1,7 @@
 import React from 'react'
 import axios from 'axios';
-
-
-export const IMG_BASE_URL = 'http://localhost:4000/';
-export const API_BASE_URL = 'http://localhost:4000/akshaya_api';
+import {API_BASE_URL} from './BaseURL'
+import {IMG_BASE_URL} from './BaseURL'
 
 export const login = async (data, api) => {
     try {

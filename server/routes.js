@@ -26,6 +26,7 @@ router.post('/deleteVOById/:id',VillageOffice.deleteVOById);
 router.post('/approveVOById/:id',VillageOffice.approveVOById);
 router.post('/editVOById/:id',VillageOffice.editVOById);
 router.post('/activateVOById/:id',VillageOffice.activateVOById);
+router.post('/viewActiveVos',VillageOffice.viewActiveVos);
 
 
 
@@ -43,6 +44,7 @@ router.post('/deleteAkshayaById/:id',Akshaya.deleteAkshayaById);
 router.post('/approveAkshayaById/:id',Akshaya.approveAkshayaById);
 router.post('/editAkshayaById/:id',Akshaya.editAkshayaById);
 router.post('/activateAkshayaById/:id',Akshaya.activateAkshayaById);
+router.post('/viewActiveAkshayas',Akshaya.viewActiveAkshayas);
 
 
 // Staff Routes
@@ -57,8 +59,7 @@ router.post('/deleteStaffById/:id', Staff.deleteStaffById);
 router.post('/approveStaffById/:id', Staff.approveStaffById);
 router.post('/editStaffById/:id', Staff.editStaffById);
 router.post('/activateStaffById/:id', Staff.activateStaffById);
+router.post('/viewActiveStaffs', Staff.viewActiveStaffs);
 
 module.exports = router;
 
-
-module.exports=router
