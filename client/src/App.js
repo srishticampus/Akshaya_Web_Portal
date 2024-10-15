@@ -60,7 +60,9 @@ function App() {
           <Route path='/vo-fogotpwd' element={[<LandingNavbar />, <VOForgotPwd />, <Footer />]} />
           <Route path='/vo-resetpwd/:id' element={[<LandingNavbar />, <VOResetPwd />, <Footer />]} />
           <Route path='/vo-home' element={<VOMain data="vo-home"/>}/>
-]
+         <Route path='/vo-staff' element={<VOMain data="vo-staff"/>}/>
+         <Route path='/vo-add-staff' element={<VOMain data="vo-add-staff"/>}/>
+
         </Routes>
       </div>
 

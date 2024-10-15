@@ -34,6 +34,11 @@ const schema=mongoose.Schema({
     adminApproved:{
         type:Boolean,
         default:true
+    },
+    voId:{
+        type:mongoose.Types.ObjectId,
+        ref:'villageoffice',
+        required:true
     }
 
 },{timeStamps:true});

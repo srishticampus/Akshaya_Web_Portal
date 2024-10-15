@@ -3,7 +3,7 @@ const staffModel = require('../models/staffModel');
 // Register Staff
 const registerStaff = async (req, res) => {
     try {
-        const { email, password, address, contact, designation, name } = req.body;
+        const { email, password, address, contact, designation, name,voId } = req.body;
 
         let existingStaffEmail = await staffModel.findOne({ email });
         let existingStaffContact = await staffModel.findOne({ contact });
@@ -31,6 +31,7 @@ const registerStaff = async (req, res) => {
             contact,
             designation,
             name,
+            voId,
             isActive: true,
             adminApproved: true
         });
