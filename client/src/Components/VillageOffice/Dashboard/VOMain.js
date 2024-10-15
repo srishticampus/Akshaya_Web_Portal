@@ -5,6 +5,8 @@
     import VODashboard from "./VODashboard";
     import VOResetPwd from "../Signup/PwdReset/VOResetPwd";
     import AdminNavber from "../../Admin/AdminDashBoard/AdminNavber";
+import VOStaffManage from "./VOStaffManage";
+import VOAddStaff from "./VOAddStaff";
    
 
     
@@ -23,11 +25,11 @@
                   <VODashboard />
                 ) : data === "vo-resetpwd" ? (
                   <VOResetPwd />
-                // ) : data === "viewallpolicestation" ? (
-                //   <ViewAllPoliceStation />
-                // ) : data === "viewallpoliceprofile" ? (
-                //   <ViewProfile_Policestation />
-                ) : data === "viewallpolicereqprofile" }
+                ) : data === "vo-staff" ? (
+                  <VOStaffManage />
+                ) : data === "vo-add-staff" ? (
+                  <VOAddStaff />
+                ) : data === "logout" }
               </div>
             </div>
           </div>
