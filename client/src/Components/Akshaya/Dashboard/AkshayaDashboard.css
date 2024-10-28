@@ -1,29 +1,29 @@
-.vo-das-logo {
+.akshaya-das-logo {
     width: 75px;
     height: 75px;
     gap: 0px;
     margin-left: 40%;
 }
 
-.vo-das-logo-text {
+.akshaya-das-logo-text {
     text-align: center;
     margin-bottom: 20px;
 
     color: white;
 }
-.vo-table-head{
+.akshaya-table-head{
 background-color: #56905C !important;
 
 }
-.vo-table-border {
+.akshaya-table-border {
     color: white;
     border: 1px solid #56905C !important; 
     border-radius: 20px; 
     overflow: hidden; 
 }
 
-.vo-table-border th,
-.vo-table-border td {
+.akshaya-table-border th,
+.akshaya-table-border td {
     border: 1px solid #56905C !important; 
     color: white;
 }
@@ -32,7 +32,7 @@ background-color: #56905C !important;
     background-color: #56905C;
     color: white;
 }
-.vo-btn-border {
+.akshaya-btn-border {
     color: white;
     border: 1px solid #56905C !important; 
     border-radius: 20px; 
@@ -47,13 +47,13 @@ margin-top: 7%;
 padding-bottom: 10px;
 }
 
-.vo-add-staff-mainDiv{
+.akshaya-add-staff-mainDiv{
     width:750px;
     padding-top: 20px;
     
     margin-left: 200px;
     }
-    .vo-add-staff-mainText{
+    .akshaya-add-staff-mainText{
         font-size: 45px;
     
     margin-top: 50px;
@@ -63,7 +63,7 @@ padding-bottom: 10px;
     letter-spacing: 2px;
     
     }
-    .vo-staff-mainText{
+    .akshaya-staff-mainText{
         font-family: Montserrat;
 font-size: 24px;
 font-weight: 600;

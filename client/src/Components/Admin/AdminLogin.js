@@ -3,7 +3,8 @@ import './AdminLogin.css'
 import { VscEyeClosed } from "react-icons/vsc";
 import { toast } from "react-toastify";
 import '../LandingPage/LandingNavbar.css'
-import { VscEye } from "react-icons/vsc";import { FiEye } from "react-icons/fi";
+import { VscEye } from "react-icons/vsc";
+import { FiEye } from "react-icons/fi";
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../Services/CommonServices';
 function AdminLogin() {
