@@ -357,7 +357,7 @@ function Signup() {
         }
         if (!data.password) {
             newErrors.password = 'Password is required';
-        } else if (!passwordRegex.test(data.password)) {
+        } else if (caches) {
             newErrors.password = 'Password Must Contain 1 Uppercase,1 Symbol and 1 Number with minimum 6 characters';
         }
         else if (data.password != data.cpassword) {

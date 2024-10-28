@@ -26,6 +26,7 @@ import AdminHome from './Components/Admin/AdminDashBoard/AdminHome';
 import AdminNavber from './Components/Admin/AdminDashBoard/AdminNavber';
 import AdminMain from './Components/Admin/AdminDashBoard/AdminMain';
 import VOMain from './Components/VillageOffice/Dashboard/VOMain'
+import AkshayaMain from './Components/Akshaya/Dashboard/AkshayaMain';
 
 function App() {
   return (
@@ -51,7 +52,8 @@ function App() {
 
           <Route path='/akshaya-signup' element={[<LandingNavbar />, <Signup />, <Footer />]} />
           <Route path='/akshaya-login' element={[<LandingNavbar />, <AkshayaLogin />, <Footer />]} />
-
+          <Route path='/akshaya-home' element={<AkshayaMain data="akshaya-home"/>}/>
+         <Route path='/akshaya-staff' element={<AkshayaMain data="akshaya-staff"/>}/>
 
           {/* Village Office  */}
 

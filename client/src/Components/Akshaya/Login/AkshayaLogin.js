@@ -56,12 +56,12 @@ function AkshayaLogin() {
         
             try {
               const result = await login(data,'loginAkshaya');
-        
+              console.log(result);
               if (result.success) {
-                console.log(result);
-                localStorage.setItem('vo', result.user._id)      
+                
+                localStorage.setItem('akshaya', result.user._id)      
                      
-                navigate('/vo-home');
+                navigate('/akshaya-home');
     
                
               } else {

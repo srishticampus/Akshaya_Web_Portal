@@ -228,6 +228,7 @@ const viewActiveAkshayas = (req, res) => {
             });
         });
 };
+
 // Delete Organizer by ID
 const deleteAkshayaById = (req, res) => {
     akshaya.findByIdAndDelete({ _id: req.params.id })
@@ -425,12 +426,12 @@ const login = (req, res) => {
         } if (!user.isActive) {
             return res.json({ status: 405, msg: 'You are currently deactivated By Admin !!' });
         }
-        const token = createToken(user);
+       
 
         res.json({
             status: 200,
             data: user,
-            token
+            
         });
 
     }).catch(err => {

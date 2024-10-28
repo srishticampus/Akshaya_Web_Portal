@@ -8,7 +8,7 @@ const navigate=useNavigate()
     }
     return (
         <div className='container'>
-            <h2 className='voLogin-mainText'>Staff <span className='adminLogin-loginText'>Management </span></h2>
+            <h2 className='voLogin-mainText '><span className='adminLogin-loginText vo-staff-mainText'>Staff Management </span></h2>
             <button
                 type="button"
                 onClick={addStaff}
@@ -17,9 +17,9 @@ const navigate=useNavigate()
             <p>View Staff Details</p>
 
             <table className="table  table-hover vo-table-border p-5">
-                <thead className='vo-table-border'>
+                <thead className='vo-table-border ms-5'>
                     <tr >
-                        <th className='vo-table-head'>Sl No</th>
+                        <th className='vo-table-head ps-3'>Sl No</th>
                         <th className='vo-table-head'>Staff Name</th>
                         <th className='vo-table-head'>Role / Designation</th>
                         <th className='vo-table-head'>Phone Number</th>
