@@ -333,9 +333,7 @@ function Signup() {
         if (!data.location) {
             newErrors.location = 'Location is required';
         } 
-        if (!data.centreNo) {
-            newErrors.centreNo = 'Center Number is required';
-        } 
+        
         if (!data.contact) {
             newErrors.contact = 'Phone Number is required';
         } 
@@ -357,7 +355,7 @@ function Signup() {
         }
         if (!data.password) {
             newErrors.password = 'Password is required';
-        } else if (caches) {
+        } else if (!passwordRegex.test(data.password)) {
             newErrors.password = 'Password Must Contain 1 Uppercase,1 Symbol and 1 Number with minimum 6 characters';
         }
         else if (data.password != data.cpassword) {
@@ -423,10 +421,7 @@ function Signup() {
                     </div>
                     <div className='row'>
 
-                        <div className='col-md-5 p-2 '>
-                            <input type="text" placeholder='Center Number' className='form-control p-2' name='centreNo' onChange={handleChange}></input>
-                            {errors.centreNo && <div id="nameError" className="invalid-feedback">{errors.centreNo}</div>}
-                        </div>
+                       
                         <div className='col-md-5 p-2 '>
 
                             <input type="text" placeholder='Phone Number' className='form-control p-2' name='contact' onChange={handleChange}></input>

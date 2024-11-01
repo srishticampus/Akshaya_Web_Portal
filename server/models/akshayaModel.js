@@ -1,5 +1,6 @@
 
 const mongoose = require("mongoose")
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const schema = mongoose.Schema({
     email: {
@@ -16,8 +17,8 @@ const schema = mongoose.Schema({
         required: true
     },
     centreNo: {
-        type: String,
-        required: true
+        type: Number,
+        unique: true
     },
     pincode: {
         type: Number,
@@ -54,4 +55,5 @@ const schema = mongoose.Schema({
         required: true
     },
 },{timeStamps:true});
+schema.plugin(AutoIncrement, { inc_field: 'centreNo' });
 module.exports = mongoose.model('akshaya', schema)

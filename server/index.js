@@ -13,6 +13,6 @@ app.use(cors())
 const route=require('./routes')
 app.use('/akshaya_api',route)
 
-app.listen(4000,()=>{
+app.listen(4046,()=>{
     console.log("Server created successfully at 4000");
 })

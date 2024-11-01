@@ -78,7 +78,8 @@ const viewVOReqsForAdmin = (req, res) => {
             } else {
                 res.json({
                     status: 200,
-                    msg: "No data obtained"
+                    msg: "No data obtained",
+                    data:[]
                 });
             }
         })
@@ -435,7 +436,7 @@ const login = async (req, res) => {
 };
 
 const viewActiveVos = (req, res) => {
-    voModel.find({ isActive: true })
+    voModel.find({ adminApproved: true })
         .exec()
         .then(data => {
             res.json({

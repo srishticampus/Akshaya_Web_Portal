@@ -3,6 +3,8 @@ import AdminSidebar from "./AdminSidebar";
 import AdminDashboard from "./AdminDashboard";
 import ResetPwd from "../ResetPwd/ResetPwd";
 import AdminNavber from "./AdminNavber";
+import AdminViewAkshaya from "./AdminViewAkshaya";
+import AdminViewVO from "./AdminViewVO";
 
 
 
@@ -21,11 +23,12 @@ function AdminMain({ data }) {
               <AdminDashboard />
             ) : data === "admin-resetpwd" ? (
               <ResetPwd />
-            // ) : data === "viewallpolicestation" ? (
-            //   <ViewAllPoliceStation />
-            // ) : data === "viewallpoliceprofile" ? (
-            //   <ViewProfile_Policestation />
-            ) : data === "viewallpolicereqprofile" }
+            ) : data === "admin-view-akshaya" ? (
+              <AdminViewAkshaya />
+            ) : data === "admin-view-vo" ? (
+              <AdminViewVO />
+           
+            ) : data === "logout" }
           </div>
         </div>
       </div>

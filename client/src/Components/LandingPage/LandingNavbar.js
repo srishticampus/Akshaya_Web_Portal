@@ -119,6 +119,11 @@ function LandingNavbar() {
                    Village Office
                   </Link>
                 </li>
+                <li>
+                  <Link to="/staff-login" className="dropdown-item">
+                   Office Staff
+                  </Link>
+                </li>
               </ul>
             </li>
             </div>
