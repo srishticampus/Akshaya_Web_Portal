@@ -22,7 +22,7 @@ const uploadSingle = multer({ storage: storage }).single('certificate');
 
 const registerAkshaya = async (req, res) => {
     try {
-        const { regNo, district, pincode, panchayath,email, contact, centreNo, password } = req.body;
+        const { regNo, district, pincode, panchayath,email, contact,password } = req.body;
 console.log("akshaya");
 
         const newAkshaya = new akshaya({
@@ -30,7 +30,7 @@ console.log("akshaya");
             district,
             pincode,
             panchayath,
-            centreNo,
+         
             contact,
            
             password,
@@ -110,7 +110,8 @@ const viewAkshayaReqsForAdmin = (req, res) => {
             } else {
                 res.json({
                     status: 200,
-                    msg: "No Data obtained"
+                    msg: "No Data obtained",
+                    data:[]
                 });
             }
         })
@@ -211,9 +212,10 @@ const viewAkshayas = (req, res) => {
         });
 };
 const viewActiveAkshayas = (req, res) => {
-    akshaya.find({ isActive: false })
+    akshaya.find({ adminApproved: true })
         .exec()
         .then(data => {
+            
             res.json({
                 status: 200,
                 msg: "Data obtained successfully",

@@ -33,8 +33,8 @@ const handleClose = () => {
         <div className="pt-5 ms-3 admin-sidebar-h4">
             <img src={admin} className='admin-logo'></img>
           <Link to="/admin-home" className="admin-dash-link"><p className="p-2 fw-light admin-border"> Dashboard</p></Link>
-          <Link to='/admin-' className="admin-dash-link"><p className="p-2 fw-light admin-border"> Akshaya</p></Link>
-          <Link to='/admin_' className="admin-dash-link"><p className="p-2  fw-light admin-border"> Village Office</p></Link>
+          <Link to='/admin-view-akshaya' className="admin-dash-link"><p className="p-2 fw-light admin-border"> Akshaya</p></Link>
+          <Link to='/admin-view-vo' className="admin-dash-link"><p className="p-2  fw-light admin-border"> Village Office</p></Link>
           <Link to='/' className="admin-dash-link"><p className="p-2  fw-light admin-border">Add FAQ's</p></Link>
           <Link to='/' className="admin-dash-link"><p className="p-2  fw-light admin-border"> View Staff</p></Link>
           <Link to='/admin-' className="admin-dash-link"><p className="p-2 fw-light admin-border">Complaints</p></Link>

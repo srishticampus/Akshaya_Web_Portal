@@ -22,15 +22,22 @@ background-color: #56905C !important;
     overflow: hidden; 
 }
 
-.vo-table-border th,
-.vo-table-border td {
+.vo-table-border th {
     border: 1px solid #56905C !important; 
     color: white;
 }
-
+.vo-table-border td {
+    border: 1px solid #313331 !important; 
+    
+}
 .table thead th {
     background-color: #56905C;
     color: white;
+}
+.vo-table td {
+    border: 1px solid black !important; 
+    color: #56905C;
+    border-bottom: 1px solid black !important; 
 }
 .vo-btn-border {
     color: white;
@@ -71,4 +78,13 @@ line-height: 29.26px;
 letter-spacing: -0.01em;
 text-align: center;
 
+    }
+    .akshaya-tab{
+        border : 1px solid #56905C !important; 
+        border-radius: 20px !important;
+    }
+    .akshaya-tab2{
+        border : px solid #3c413c !important;
+        border-radius: 20px !important;
+        overflow: hidden; 
     }

@@ -27,6 +27,8 @@ import AdminNavber from './Components/Admin/AdminDashBoard/AdminNavber';
 import AdminMain from './Components/Admin/AdminDashBoard/AdminMain';
 import VOMain from './Components/VillageOffice/Dashboard/VOMain'
 import AkshayaMain from './Components/Akshaya/Dashboard/AkshayaMain';
+import StaffLogin from './Components/Staff/StaffLogin';
+import StaffMain from './Components/Staff/Dashboard/StaffMain';
 
 function App() {
   return (
@@ -46,6 +48,8 @@ function App() {
           <Route path='/admin-resetpwd' element={<AdminMain data="admin-resetpwd"/>} />
           <Route path='/admin-forgotpwd' element={[<LandingNavbar />, <ForgotPwd />, <Footer />]} />
           <Route path='/admin-home' element={<AdminMain data="admindashboard"/>} />
+          <Route path='/admin-view-akshaya' element={<AdminMain data="admin-view-akshaya"/>}/>
+          <Route path='/admin-view-vo' element={<AdminMain data="admin-view-vo"/>}/>
 
 
           {/* Akshaya  */}
@@ -64,6 +68,11 @@ function App() {
           <Route path='/vo-home' element={<VOMain data="vo-home"/>}/>
          <Route path='/vo-staff' element={<VOMain data="vo-staff"/>}/>
          <Route path='/vo-add-staff' element={<VOMain data="vo-add-staff"/>}/>
+
+{/* Staff */}
+         <Route path='/staff-login' element={[<LandingNavbar />, <StaffLogin />, <Footer />]} />
+         <Route path='/staff-home' element={<StaffMain data="staff-home"/>}/>
+
 
         </Routes>
       </div>
