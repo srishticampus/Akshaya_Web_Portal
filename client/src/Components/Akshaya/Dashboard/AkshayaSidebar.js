@@ -52,7 +52,7 @@ function AkshayaSidebar() {
     };
 
     return (
-        <div>
+        <div className='akshaya-sidebar'>
             <div className="admin-sidebar-background">
                 <div className="pt-5 ms-3 admin-sidebar-h4">
                     <img src={admin} className="akshaya-das-logo" alt="Admin Logo" />
@@ -60,7 +60,7 @@ function AkshayaSidebar() {
                     <Link to="/akshaya-home" className="admin-dash-link">
                         <p className="p-2 fw-light admin-border">Dashboard</p>
                     </Link>
-                    <Link to="/akshaya-staff" className="admin-dash-link">
+                    <Link to="/akshaya-apply-certificate" className="admin-dash-link">
                         <p className="p-2 fw-light admin-border">Apply Certificate</p>
                     </Link>
                     <Link to="/akshaya" className="admin-dash-link">
@@ -72,7 +72,7 @@ function AkshayaSidebar() {
                     <Link to="/akshaya-resetpwd" className="admin-dash-link">
                         <p className="p-2 fw-light admin-border">Enquiries</p>
                     </Link>
-                    <Link to="/akshaya-" className="admin-dash-link">
+                    <Link to="/akshaya-add-complaint" className="admin-dash-link">
                         <p className="p-2 fw-light admin-border">Add Complaints</p>
                     </Link>
                  

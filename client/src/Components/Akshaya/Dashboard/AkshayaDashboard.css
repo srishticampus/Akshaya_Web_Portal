@@ -72,3 +72,26 @@ letter-spacing: -0.01em;
 text-align: center;
 
     }
+    .akshaya-add-comp-mainText{
+        color: var(--Base-Green, #56905C);
+text-align: center;
+font-family: Montserrat;
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+margin-top: 40px;
+    }
+    .akshaya-add-comp-p1{
+        text-align: center;
+        font-weight: bold;
+    }
+    .form-control::placeholder {
+        color: #6c757d; /* Bootstrap's gray color for placeholders */
+      }
+      .form-control option[value=""] {
+        color: #6c757d; /* Light gray color */
+      }
+      .akshaya-sidebar{
+        height:auto
+      }

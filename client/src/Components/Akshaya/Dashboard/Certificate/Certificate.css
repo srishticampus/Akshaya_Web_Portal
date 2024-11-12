@@ -1,0 +1,95 @@
+.apply-cert-mainDiv{
+    width:750px;
+    padding-top: 20px;
+    
+    margin-left: 100px;
+    }
+    .apply-cert-mainText{
+        color: var(--Base-Green, #56905C);
+        text-align: center;
+        font-family: Montserrat;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        margin-top: 20px;
+    
+    }
+    .applicant-mainText{
+      color: var(--Base-Green, #56905C);
+      text-align: center;
+      font-family: Montserrat;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      margin-top: 20px;margin-left: -250px;
+  
+  }
+  .applicant-mainTextProp{
+    color: var(--Base-Green, #56905C);
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 20px;
+    margin-left: -350px;
+
+}
+    .apply-cert-mainText1{
+        color: #2A2A2A;
+        text-align: left;
+        font-family: Montserrat;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-top: 40px;
+    
+    }
+    
+    .select-wrapper {
+        position: relative;
+      }
+      
+      .admin-drop-icon {
+        position: absolute;
+        right: 10px; /* Adjust this to control horizontal position */
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none; /* Allows clicking through the icon */
+        color: gray; /* Icon color */
+        font-size: 1.5em; /* Adjust size as needed */
+      }
+
+      .ticket-booking{
+        background-color:#56905C;
+        border-radius: 5px;
+        border: none;
+        width:300px;
+        padding: 5px;
+        font-weight: bolder;
+        color: white;
+        font-size: large;
+        margin-top: 7%;
+        padding-bottom: 10px;
+              }
+              .app-label{
+                color:#56905C
+              }
+              .app-data-label{
+                color:#101110ec;
+                font-weight: bolder;
+                font-size: 16px;
+              }
+              .confir-pay-button{
+                background-color:#56905C;
+                border-radius: 5px;
+                border: none;
+                width:190px;
+                padding: 5px;
+                margin-left: 40%;
+                margin-top: 7%;
+                padding-bottom: 10px;}

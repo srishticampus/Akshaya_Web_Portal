@@ -29,6 +29,7 @@ import VOMain from './Components/VillageOffice/Dashboard/VOMain'
 import AkshayaMain from './Components/Akshaya/Dashboard/AkshayaMain';
 import StaffLogin from './Components/Staff/StaffLogin';
 import StaffMain from './Components/Staff/Dashboard/StaffMain';
+import AddCard from './Components/Akshaya/Signup/AddCard';
 
 function App() {
   return (
@@ -56,8 +57,15 @@ function App() {
 
           <Route path='/akshaya-signup' element={[<LandingNavbar />, <Signup />, <Footer />]} />
           <Route path='/akshaya-login' element={[<LandingNavbar />, <AkshayaLogin />, <Footer />]} />
+          <Route path='/akshaya-card/:id' element={[<LandingNavbar />, <AddCard />, <Footer />]} />
+
           <Route path='/akshaya-home' element={<AkshayaMain data="akshaya-home"/>}/>
          <Route path='/akshaya-staff' element={<AkshayaMain data="akshaya-staff"/>}/>
+
+         <Route path='/akshaya-apply-certificate' element={<AkshayaMain data="akshaya-apply-certificate"/>}/>
+         <Route path='/akshaya-add-complaint' element={<AkshayaMain data="akshaya-add-complaint"/>}/>
+         <Route path='/apply-certificate' element={<AkshayaMain data="apply-certificate"/>}/>
+         <Route path='/appconfirm/:appNo' element={<AkshayaMain data="appconfirm"/>}/>
 
           {/* Village Office  */}
 

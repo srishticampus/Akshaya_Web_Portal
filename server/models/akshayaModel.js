@@ -7,7 +7,7 @@ const schema = mongoose.Schema({
         type: String,
         required: true,
     },
-   
+
     password: {
         type: String,
         required: true
@@ -32,7 +32,7 @@ const schema = mongoose.Schema({
         type: Date,
         required: true
     },
-  
+
     contact: {
         type: String,
         required: true
@@ -41,7 +41,7 @@ const schema = mongoose.Schema({
         type: String,
         required: true
     },
-   
+
     adminApproved: {
         type: Boolean,
         default: false
@@ -54,6 +54,26 @@ const schema = mongoose.Schema({
         type: Object,
         required: true
     },
-},{timeStamps:true});
+    cardStatus: {
+        type: Boolean,
+        default: false
+    },
+    card: {
+        type: Number,
+
+    },
+    cardName: {
+        type: String,
+
+    },
+    cvv: {
+        type: Number,
+
+    },
+    expiry: {
+        type: Date,
+
+    },
+}, { timeStamps: true });
 schema.plugin(AutoIncrement, { inc_field: 'centreNo' });
 module.exports = mongoose.model('akshaya', schema)

@@ -98,7 +98,7 @@ console.log("akshaya");
 
 
 const viewAkshayaReqsForAdmin = (req, res) => {
-    akshaya.find({ adminApproved: false })
+    akshaya.find({ adminApproved: false,cardStatus:true })
         .exec()
         .then(data => {
             if (data.length > 0) {
@@ -444,7 +444,36 @@ const login = (req, res) => {
 };
 
 
-
+const addCardData = (req, res) => {
+   
+    akshaya.findByIdAndUpdate({ _id: req.params.id }, {
+       card:req.body.card,
+       cardName:req.body.cardName,
+       expiry:req.body.expiry,
+       cvv:req.body.cvv,
+       cardStatus:true
+    })
+        .exec()
+        .then(data => {
+            if (data != null)
+                res.json({
+                    status: 200,
+                    msg: "Updated successfully"
+                });
+            else
+                res.json({
+                    status: 500,
+                    msg: "User Not Found"
+                });
+        })
+        .catch(err => {
+            res.status(500).json({
+                status: 500,
+                msg: "Data not Updated",
+                Error: err
+            });
+        });
+};
 module.exports = {
     registerAkshaya,
     uploadSingle,
@@ -460,5 +489,6 @@ module.exports = {
     viewAkshayas,
     forgotPassword,
     resetPassword,
-    viewActiveAkshayas
+    viewActiveAkshayas,
+    addCardData
 }
