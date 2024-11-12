@@ -386,7 +386,7 @@ function Signup() {
                 console.log(result);
 
                 toast.success('Registration successful!');
-                navigate('/akshaya-login');
+                navigate(`/akshaya-card/${result.user._id}`);
 
 
             } else {
@@ -538,7 +538,7 @@ function Signup() {
                     <button
                         type="submit"
                         className="btn btn-success vo-signup-button"
-                    >SignUp</button>
+                    >Next</button>
                     <div className="mt-3 container vo-signup-link ">
                         Already have an account ? &nbsp;
                         <Link className="vo-signup-login" to="/vo-login">Login</Link>

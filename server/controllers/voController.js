@@ -453,6 +453,26 @@ const viewActiveVos = (req, res) => {
             });
         });
 };
+const viewVillageByDistrict = (req, res) => {
+    console.log('here');
+    
+    voModel.find({ district:req.params.district,isActive:true })
+        .exec()
+        .then(data => {
+            res.json({
+                status: 200,
+                msg: "Data obtained successfully",
+                data: data
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                status: 500,
+                msg: "No Data obtained",
+                Error: err
+            });
+        });
+};
 module.exports = {
     registerVO,
     viewVOReqsForAdmin,
@@ -467,5 +487,6 @@ module.exports = {
     viewVOById,
     editVOById,
     changePassword,
-    viewActiveVos
+    viewActiveVos,
+    viewVillageByDistrict
 };

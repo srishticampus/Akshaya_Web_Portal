@@ -6,6 +6,11 @@ import AkshayaDashboard from "./AkshayaDashboard";
 
 import AdminNavber from "../../Admin/AdminDashBoard/AdminNavber";
 import AkshayaStaffManage from "./AkshayaStaffManage";
+import ApplyCertificate from "./Certificate/ApplyCertificate1";
+import AkshayaAddComplaint from "./AkshayaAddComplaint";
+import GetUserData from "./Certificate/GetUserData";
+import ApplyCertificate1 from "./Certificate/ApplyCertificate1";
+import AppConfirm from "./Certificate/AppConfirm";
 
 
 
@@ -24,6 +29,14 @@ function AkshayaMain({ data }) {
               <AkshayaDashboard />
             ) : data === "akshaya-staff" ? (
               <AkshayaStaffManage />
+            ) : data === "akshaya-apply-certificate" ? (
+              <GetUserData />
+            ) : data === "akshaya-add-complaint" ? (
+              <AkshayaAddComplaint />
+            ) : data === "apply-certificate" ? (
+              <ApplyCertificate1 />
+            ) : data === "appconfirm" ? (
+              <AppConfirm />
             ) : data === "logout"}
           </div>
         </div>

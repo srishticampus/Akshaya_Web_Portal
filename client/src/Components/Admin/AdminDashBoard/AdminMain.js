@@ -8,6 +8,7 @@ import AdminViewVO from "./AdminViewVO";
 
 
 
+
 function AdminMain({ data }) {
   return (
     <div>
@@ -27,7 +28,7 @@ function AdminMain({ data }) {
               <AdminViewAkshaya />
             ) : data === "admin-view-vo" ? (
               <AdminViewVO />
-           
+          
             ) : data === "logout" }
           </div>
         </div>
