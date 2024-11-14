@@ -1,7 +1,7 @@
 
 
 export const IMG_BASE_URL = 'https://hybrid.srishticampus.in';
-export const API_BASE_URL = 'https://hybrid.srishticampus.in:4046/akshaya_api';
+export const API_BASE_URL = 'https://hybrid.srishticampus.in/akshaya_api';
 
 
 
