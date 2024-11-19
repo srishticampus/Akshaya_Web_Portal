@@ -6,6 +6,7 @@ function LandingNavbar() {
   return (
     <div>
     <nav className="navbar navbar-expand-lg navbar_bg">
+      {/* <div className='container'></div> */}
       <div className="container-fluid">
         <Link to='/admin_home' className="text-decoration-none">
           <div className="navbar_logo">
@@ -89,6 +90,7 @@ function LandingNavbar() {
               </ul>
             </li>
             </div>
+            {/* <div className="dropstart" > */}
             <div className="dropdown-center" >
             <li className="nav-item m-3">
               <Link
@@ -101,7 +103,7 @@ function LandingNavbar() {
               >
                Login
               </Link>
-              <ul className="dropdown-menu landing_dropdown_style" aria-labelledby="navbarDropdown">
+              <ul className="dropdown-menu landing_dropdown_style " aria-labelledby="navbarDropdown" id='drop_down_show'>
                 <li>
                   <Link to="/admin-login" className="dropdown-item">
                     Admin
