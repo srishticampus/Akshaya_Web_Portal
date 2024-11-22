@@ -40,7 +40,11 @@ export const register = async (data, api) => {
         if (response.data.status === 200) {
             const { result } = response.data;
             return { success: true, user: response.data.data };
-        } else {
+        }else  if (response.data.status === 201) {
+    
+            return { success: true,gotTax:true, tax: response.data.tax };
+        } 
+        else {
             return { success: false, message: response.data.msg };
         }
     } catch (error) {
@@ -158,7 +162,7 @@ console.log("here",id);
         if (error.response && error.response.data) {
             return {
                 success: false,
-                message: error.response.data.msg || 'View User failed',
+                message: error.response.data.msg 
             };
         }
         return {

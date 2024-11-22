@@ -4,6 +4,7 @@ import '../../../LandingPage/LandingNavbar.css';
 import '../../Signup/Signup.css';
 import './Certificate.css';
 import { registerWithFile, ViewById } from '../../../Services/CommonServices';
+import { useNavigate } from 'react-router-dom';
 
 function Nativity({ aid }) {
     const [data, setData] = useState({
@@ -35,7 +36,7 @@ function Nativity({ aid }) {
       const { name, value } = e.target;
       setData({ ...data, [name]: value });
     };
-
+const navigate=useNavigate()
     const handleCheckboxChange = (e) => {
       const { name, checked } = e.target;
       setData(prevState => ({
@@ -77,7 +78,9 @@ function Nativity({ aid }) {
       }
       try {
         const result = await registerWithFile(data, 'registerApplicationwithFile');
-        if (result.success) toast.success('Application Sent successfully!');
+        if (result.success){
+          navigate(`/appconfirm/${result.user.appNo}`);
+        }
         else toast.error(result.message);
       } catch (error) {
         toast.error('An unexpected error occurred during Registration');
@@ -118,7 +121,7 @@ function Nativity({ aid }) {
 {village.length>0?village.map(x=>{
 
 return(<>
-                <option value="Thiruvananthapuram">{x.village}</option>
+                <option value={x._id}>{x.village}</option>
                
                 </>
 )

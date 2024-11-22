@@ -82,6 +82,12 @@ router.post('/registerApplication', Application.registerApplication);
 router.post('/registerApplicationwithFile',Application.upload, Application.registerApplicationwithFile);
 router.post('/viewApplicationByAppNo/:appNo',Application.viewApplicationByAppNo);
 router.post('/addPaymentByAppId/:id',Application.addPaymentByAppId);
+router.post('/viewPendingAppByVoId/:vo',Application.viewPendingAppByVoId);
+router.post('/approveByAppId/:id',Application.approveByAppId);
+router.post('/viewApprovedAppByVoId/:vo',Application.viewApprovedAppByVoId);
+router.post('/viewPendingTaxReqByVoId/:vo',Application.viewPendingTaxReqByVoId);
+router.post('/addTaxAmountByAppId/:id',Application.addTaxAmountByAppId);
+router.post('/viewAddedTaxByVoId/:vo',Application.viewAddedTaxByVoId);
 
 
 module.exports = router;

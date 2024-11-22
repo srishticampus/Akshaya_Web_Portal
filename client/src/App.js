@@ -66,6 +66,7 @@ function App() {
          <Route path='/akshaya-add-complaint' element={<AkshayaMain data="akshaya-add-complaint"/>}/>
          <Route path='/apply-certificate' element={<AkshayaMain data="apply-certificate"/>}/>
          <Route path='/appconfirm/:appNo' element={<AkshayaMain data="appconfirm"/>}/>
+         <Route path='/tax-payment/:id' element={<AkshayaMain data="tax-payment"/>}/>
 
           {/* Village Office  */}
 
@@ -80,7 +81,12 @@ function App() {
 {/* Staff */}
          <Route path='/staff-login' element={[<LandingNavbar />, <StaffLogin />, <Footer />]} />
          <Route path='/staff-home' element={<StaffMain data="staff-home"/>}/>
+         <Route path='/staff-view-details/:id' element={<StaffMain data="staff-view-details"/>}/>
+         <Route path='/staff-applications' element={<StaffMain data="staff-applications"/>}/>
+         <Route path='/staff-view-tax-reqs' element={<StaffMain data="staff-view-tax-reqs"/>}/>
 
+         <Route path='/staff-view-aprvd-details/:id' element={<StaffMain data="staff-view-aprvd-details"/>}/>
+         <Route path='/staff-view-tax-details/:id' element={<StaffMain data="staff-view-tax-details"/>}/>
 
         </Routes>
       </div>

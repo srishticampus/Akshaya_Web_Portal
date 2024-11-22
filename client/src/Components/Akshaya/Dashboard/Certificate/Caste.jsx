@@ -125,7 +125,7 @@ const navigate=useNavigate()
 {village.length>0?village.map(x=>{
 
 return(<>
-                <option value={x.village}>{x.village}</option>
+                <option value={x._id}>{x.village}</option>
                
                 </>
 )

@@ -336,7 +336,9 @@ console.log(data);
 
             if (result.success) {
                 console.log(result);
-
+              if(result.gotTax){
+                navigate(`/tax-payment/${result.tax.appNo}`)
+              }
                 toast.success('Application Send successful!');
                
 
@@ -403,7 +405,7 @@ console.log(data);
 {village.length>0?village.map(x=>{
 
 return(<>
-                <option value="Thiruvananthapuram">{x.village}</option>
+                <option value={x._id}>{x.village}</option>
                
                 </>
 )
@@ -500,6 +502,7 @@ return(<>
                     <button
                         type="submit"
                         className="btn btn-success vo-signup-button"
+                    
                     >Next</button>
                   
                 </form>
