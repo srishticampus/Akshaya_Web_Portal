@@ -28,6 +28,34 @@ const registerApplication = async (req, res) => {
        
 console.log(data);
 
+// if p-tax
+
+if(req.body.applicationType=="Property Tax"){
+    const pTax = await ApplicationModel.findOne({
+        voId:req.body.voId,
+        applicationType: req.body.applicationType,
+        ward:req.body.ward,
+        door:req.body.door})
+
+        if(pTax){
+            return res.json({
+                status: 201,
+                msg: "Tax Already Exists",
+                tax:pTax
+                });
+        }
+}
+
+
+
+// p-tax ends
+
+
+
+
+
+
+
         // Create a new Application document
         const newApplication = new ApplicationModel({
           ...data,
@@ -137,7 +165,9 @@ const viewApplicationByAppNo = async (req, res) => {
     try {
         const appId = await ApplicationModel.findOne({appNo:req.params.appNo},{_id:1}).exec();
 
-        const Application = await ApplicationModel.findById(appId).populate('applicantId').exec();
+        const Application = await ApplicationModel.findById(appId)
+        .populate('applicantId')
+        .populate('vo').exec();
         if (Application) {
             return res.json({
                 status: 200,
@@ -217,14 +247,213 @@ const viewApplicationByAkshayaId = async (req, res) => {
         });
     }
 };
+// view pending App by VOID
+const viewPendingAppByVoId = async (req, res) => {
+    try {
+        const activatedApplication = await ApplicationModel.find(
+            { vo: req.params.vo ,
+                applicationType: { $ne: "Property Tax" },
+               status:"Pending"
+            }
 
+        ).populate('applicantId').exec();
+
+        if (activatedApplication) {
+            return res.json({
+                status: 200,
+                msg: "Application activated successfully",
+                data: activatedApplication
+            });
+        } else {
+            return res.json({
+                status: 404,
+                msg: "Application not found",
+                data: []
+            });
+        }
+    } catch (error) {
+        console.log(error);
+        
+        res.status(500).json({
+            status: 500,
+            msg: "Error activating Application",
+            error: error.message
+        });
+    }
+};
+const viewPendingTaxReqByVoId = async (req, res) => {
+    try {
+        const activatedApplication = await ApplicationModel.find(
+            { vo: req.params.vo ,
+                applicationType: "Property Tax",
+                status:"Pending"
+            }
+
+        ).populate('applicantId').exec();
+
+        if (activatedApplication) {
+            return res.json({
+                status: 200,
+                msg: "Application activated successfully",
+                data: activatedApplication
+            });
+        } else {
+            return res.json({
+                status: 404,
+                msg: "Application not found",
+                data: []
+            });
+        }
+    } catch (error) {
+        console.log(error);
+        
+        res.status(500).json({
+            status: 500,
+            msg: "Error activating Application",
+            error: error.message
+        });
+    }
+};
+const viewAddedTaxByVoId = async (req, res) => {
+    try {
+        const activatedApplication = await ApplicationModel.find(
+            { vo: req.params.vo ,
+                applicationType: "Property Tax",
+                status: { $ne: "Pending" }
+            }
+
+        ).populate('applicantId').exec();
+
+        if (activatedApplication) {
+            return res.json({
+                status: 200,
+                msg: "Application activated successfully",
+                data: activatedApplication
+            });
+        } else {
+            return res.json({
+                status: 404,
+                msg: "Application not found",
+                data: []
+            });
+        }
+    } catch (error) {
+        console.log(error);
+        
+        res.status(500).json({
+            status: 500,
+            msg: "Error activating Application",
+            error: error.message
+        });
+    }
+};
+const viewApprovedAppByVoId = async (req, res) => {
+    console.log("vo",req.params.vo);
+    
+    try {
+        const activatedApplication = await ApplicationModel.find(
+            { vo: req.params.vo ,
+                applicationType: { $ne: "Property Tax" },
+                status: { $ne: "Pending" }
+            }
+
+        ).populate('applicantId').exec();
+
+        if (activatedApplication) {
+            return res.json({
+                status: 200,
+                msg: "Application activated successfully",
+                data: activatedApplication
+            });
+        } else {
+            
+            return res.json({
+                status: 404,
+                msg: "Application not found",
+                data: []
+            });
+        }
+    } catch (error) {
+        console.log(error);
+        
+        res.status(500).json({
+            status: 500,
+            msg: "Error activating Application",
+            error: error.message
+        });
+    }
+};
 // view Application by Akshaya ID
 const addPaymentByAppId = async (req, res) => {
     try {
         const activatedApplication = await ApplicationModel.findByIdAndUpdate(
             { _id: req.params.id },
             {
-                paymentStatus:true
+                paymentStatus:true,
+                amount:req.body.amount
+            }
+
+        ).exec();
+
+        if (activatedApplication) {
+            return res.json({
+                status: 200,
+                msg: "Application activated successfully",
+                data: activatedApplication
+            });
+        } else {
+            return res.json({
+                status: 404,
+                msg: "Application not found",
+                data: []
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
+            status: 500,
+            msg: "Error activating Application",
+            error: error.message
+        });
+    }
+};
+const addTaxAmountByAppId = async (req, res) => {
+    try {
+        const activatedApplication = await ApplicationModel.findByIdAndUpdate(
+            { _id: req.params.id },
+            {
+                amount:req.body.amount,
+                status:'On Process'
+            }
+
+        ).exec();
+
+        if (activatedApplication) {
+            return res.json({
+                status: 200,
+                msg: "Application activated successfully",
+                data: activatedApplication
+            });
+        } else {
+            return res.json({
+                status: 404,
+                msg: "Application not found",
+                data: []
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
+            status: 500,
+            msg: "Error activating Application",
+            error: error.message
+        });
+    }
+};
+const approveByAppId = async (req, res) => {
+    try {
+        const activatedApplication = await ApplicationModel.findByIdAndUpdate(
+            { _id: req.params.id },
+            {
+                status:"On Process"
             }
 
         ).exec();
@@ -257,7 +486,13 @@ module.exports = {
     deleteApplicationById,
 registerApplicationwithFile,
 upload,
+addTaxAmountByAppId,
     viewApplicationByAkshayaId,
     viewApplicationByAppNo,
-    addPaymentByAppId
+    addPaymentByAppId,
+    viewPendingAppByVoId,
+    approveByAppId,
+    viewPendingTaxReqByVoId,
+    viewApprovedAppByVoId,
+    viewAddedTaxByVoId
 };

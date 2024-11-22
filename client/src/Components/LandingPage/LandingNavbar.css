@@ -6,3 +6,8 @@
 .invalid-feedback {
     display: block;
   }
+
+  #drop_down_show{
+   position: absolute;
+   left: -90px;
+  }

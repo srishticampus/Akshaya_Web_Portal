@@ -29,16 +29,20 @@ doc3:{type:Object},
     panCard: {
         panNumber: { type: String },
     },
-    aadhar: {
-        aadharNumber: { type: String },
-    },
+   
+    aadhar: { type: String },
+
    
         ward: { type: Number },
         door: { type: Number },
         subNo: { type: Number },
         year: { type: Number },
         district: { type: String },
-        vo: { type: String },
+        vo:{
+            type:mongoose.Types.ObjectId,
+            ref:'villageoffice',
+            
+        },
 
         localbody: { type: String },
         type: { type: String },
@@ -50,7 +54,7 @@ doc3:{type:Object},
         subCaste:{ type: String },
     
         paymentStatus: { type: Boolean, default: false },
-
+amount:{type:Number},
     isActive: { type: Boolean, default: false }
 });
 applicationSchema.plugin(AutoIncrement, { inc_field: 'appNo' });

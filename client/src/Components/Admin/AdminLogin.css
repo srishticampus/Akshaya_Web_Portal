@@ -36,13 +36,23 @@ letter-spacing: 2px;
       .admin-login-link{
         text-align: right;
       }
-      .admin-login-button{
+      .green-button{
 background-color:#56905C;
 border-radius: 5px;
 border: none;
 width:140px;
 padding: 5px;
-margin-left: 40%;
-margin-top: 7%;
+
 padding-bottom: 10px;
       }
+
+      .white-green-button{
+        background-color:white;
+        border-radius: 5px;
+        border: #56905C 1px solid;
+        width:140px;
+        padding: 5px;
+ 
+       
+        padding-bottom: 10px;
+              }

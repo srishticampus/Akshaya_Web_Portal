@@ -55,7 +55,7 @@ console.log(result);
       switch (result.user.applicationType) {
 
         case 'AadharUpdation':
-          amount = 50;
+          setData(prevData => ({ ...prevData, amount: 50 })); break;
           break;
 
         case 'Income Certificate':
@@ -158,7 +158,7 @@ console.log(result);
                 </div>  </div>
             </div>
 
-            <div className='col-md-6 p-2'>
+            {/* <div className='col-md-6 p-2'>
               <div className='row'>
                 <div className='col'>
                   <label className='app-label'>      Village Office :
@@ -167,7 +167,7 @@ console.log(result);
                 <div className='col'>
                 <label className='app-data-label'>  {application.vo}</label>
               </div>  </div>
-          </div>
+          </div> */}
       </div>
 
       <div className='row'>

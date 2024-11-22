@@ -85,7 +85,10 @@ function Income({ aid }) {
       }
       try {
         const result = await registerWithFile(data, 'registerApplicationwithFile');
-        if (result.success) toast.success('Application Sent successfully!');
+        if (result.success){
+
+        navigate(`/appconfirm/${result.user.appNo}`);
+        }
         else toast.error(result.message);
       } catch (error) {
         toast.error('An unexpected error occurred during Registration');
@@ -126,7 +129,7 @@ function Income({ aid }) {
 {village.length>0?village.map(x=>{
 
 return(<>
-                <option value="Thiruvananthapuram">{x.village}</option>
+                <option value={x._id}>{x.village}</option>
                
                 </>
 )

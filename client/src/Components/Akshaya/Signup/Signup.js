@@ -316,6 +316,7 @@ function Signup() {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
         const phoneRegex = /^\d{10}$/;
+        const pincodeRegex = /^\d{6}$/;
 
         if (!data.email) {
             console.log("here");
@@ -346,6 +347,8 @@ function Signup() {
        
         if (!data.pincode) {
             newErrors.pincode = 'Pincode is required';
+        } else if (!pincodeRegex.test(data.pincode)) {
+            newErrors.pincode = 'Invalid Pincode !';
         }
         if (!data.cpassword) {
             newErrors.cpassword = 'Confirm Password is required';

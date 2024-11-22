@@ -11,6 +11,7 @@ import AkshayaAddComplaint from "./AkshayaAddComplaint";
 import GetUserData from "./Certificate/GetUserData";
 import ApplyCertificate1 from "./Certificate/ApplyCertificate1";
 import AppConfirm from "./Certificate/AppConfirm";
+import TaxPayment from "./TaxPayment";
 
 
 
@@ -37,6 +38,8 @@ function AkshayaMain({ data }) {
               <ApplyCertificate1 />
             ) : data === "appconfirm" ? (
               <AppConfirm />
+            ) : data === "tax-payment" ? (
+              <TaxPayment />
             ) : data === "logout"}
           </div>
         </div>

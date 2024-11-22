@@ -15,7 +15,7 @@ function AadharUpdation({ aid }) {
   console.log(aid);
 
   const [data, setData] = useState({
-    applicationType: 'Property Tax',
+    applicationType: 'AadharUpdation',
     applicantId: aid,
     proofs: []
   });
@@ -102,8 +102,9 @@ function AadharUpdation({ aid }) {
 
       if (result.success) {
         console.log(result);
+        navigate(`/appconfirm/${result.user.appNo}`);
 
-        toast.success('Application Send successful!');
+        // toast.success('Application Send successful!');
 
 
 

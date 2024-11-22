@@ -12,8 +12,18 @@ function ResetPwd() {
   const [data, setData] = useState('');
 
   const [showPassword, setShowPassword] = useState(false)
+  const [showPassword2, setShowPassword2] = useState(false)
+
+  const [showPassword3, setShowPassword3] = useState(false)
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+};
+const togglePasswordVisibility2 = () => {
+  setShowPassword2(!showPassword2);
+};
+const togglePasswordVisibility3 = () => {
+  setShowPassword3(!showPassword3);
 };
 const [errors, setErrors] = useState({});
 const navigate = useNavigate();
@@ -95,12 +105,14 @@ const handleLogin = async (e) => {
 
             </input>
           
-              
+            <div className="admin-login-password-toggle-icon" onClick={togglePasswordVisibility}>
+                {showPassword ? <VscEyeClosed  /> : <VscEye />}
+            </div>
         </div>
         {errors.oldpassword && <div id="nameError" className="invalid-feedback">{errors.oldpassword}</div>}
 
         <div style={{ position: 'relative' }}>
-            <input type={showPassword ? "text" : "password"}
+            <input type={showPassword2 ? "text" : "password"}
                 placeholder='New Password'
                 name="password"
                 onChange={handleChange}
@@ -108,14 +120,16 @@ const handleLogin = async (e) => {
                 style={{ paddingRight: '40px' }} >
 
             </input>
-          
+            <div className="admin-login-password-toggle-icon" onClick={togglePasswordVisibility2}>
+                {showPassword2 ? <VscEyeClosed  /> : <VscEye />}
+            </div>
               
         </div>
         {errors.password && <div id="nameError" className="invalid-feedback">{errors.password}</div>}
 
        
         <div style={{ position: 'relative' }}>
-            <input type={showPassword ? "text" : "password"}
+            <input type={showPassword3 ? "text" : "password"}
                 placeholder='Confirm Password'
                 name="cpassword"
                 onChange={handleChange}
@@ -123,8 +137,8 @@ const handleLogin = async (e) => {
                 style={{ paddingRight: '40px' }} >
 
             </input>
-            <div className="admin-login-password-toggle-icon" onClick={togglePasswordVisibility}>
-                {showPassword ? <VscEyeClosed  /> : <VscEye />}
+            <div className="admin-login-password-toggle-icon" onClick={togglePasswordVisibility3}>
+                {showPassword3 ? <VscEyeClosed  /> : <VscEye />}
             </div>
               
         </div>

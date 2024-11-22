@@ -98,3 +98,103 @@
     border-radius: 20px !important;
     overflow: hidden;
 }
+
+/* General button styles */
+.vo-btn-border-staff {
+    border: 2px solid #56905C;
+    border-radius: 20px;
+    padding: 10px 20px;
+    width: 250px;
+    background-color: white;
+    /* Default white background */
+    color: #56905C;
+    /* Green text */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.staff-buttons {
+    width: 600px;
+    margin-left: 200px;
+    margin-bottom: 40px;
+}
+
+/* Selected (active) button style - green */
+.vo-btn-border-staff.active {
+    background-color: #56905C;
+    /* Green background */
+    color: #e9f1ea;
+    /* White text */
+}
+
+/* Unselected (default) button style - white */
+.vo-btn-border-staff {
+
+    background-color: white;
+    color: #56905C;
+    /* Green text */
+}
+
+.vo-details-staff {
+    border-radius: 5px;
+    border: none;
+    background: #56905C;
+    display: flex;
+    width: 80px;
+    height: 28px;
+    padding: 10px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.staff-view-maindiv {
+    display: flex;
+    padding: 15px 15px 15px 40px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.staff-view-details-title{
+    color: #2A2A2A;
+text-align: center;
+font-family: Montserrat;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: -0.18px;
+text-transform: capitalize;
+}
+.staff-view-appdetails-title{
+    color: #2A2A2A;
+text-align: center;
+font-family: Montserrat;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: -0.18px;
+text-transform: capitalize;
+margin-left:35%;
+margin-top:50px;
+}
+.staff-view-detail-main{
+    width:750px;
+}
+.staff-view-detail-sub{
+    color: #2A2A2A;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+}
+
+.btn-container{
+    margin-left: 30%;
+    width:350px;
+    margin-top: 50px;
+}

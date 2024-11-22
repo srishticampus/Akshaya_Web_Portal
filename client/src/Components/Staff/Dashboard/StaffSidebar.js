@@ -63,6 +63,9 @@ function StaffSidebar() {
                     <Link to="/staff-applications" className="admin-dash-link">
                         <p className="p-2 fw-light admin-border">Application</p>
                     </Link>
+                    <Link to="/staff-view-tax-reqs" className="admin-dash-link">
+                        <p className="p-2 fw-light admin-border">Property Tax</p>
+                    </Link>
                     <Link to="/staff-complaints" className="admin-dash-link">
                         <p className="p-2 fw-light admin-border">Complaints</p>
                     </Link>

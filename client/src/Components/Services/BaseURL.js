@@ -1,6 +1,6 @@
 
 
-export const IMG_BASE_URL = 'https://hybrid.srishticampus.in';
+export const IMG_BASE_URL = 'http://hybrid.srishticampus.in';
 export const API_BASE_URL = 'https://hybrid.srishticampus.in/akshaya_api';
 
 
