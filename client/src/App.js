@@ -44,6 +44,10 @@ function App() {
       <div className="App">
         <Routes>
           <Route path='/' element={[<LandingNavbar />,<TopComponent/>,<About/>,<Service/>,<BottomComponent/>,<Footer/>]} />
+          <Route path='/about-us' element={[<LandingNavbar />,<About/>,<Footer/>]} />
+          {/* <Route path='/contact-us' element={[<LandingNavbar />,<Conta/>,<Footer/>]} /> */}
+
+
           {/* Admin  */}
           <Route path='/admin-login' element={[<LandingNavbar />, <AdminLogin />, <Footer />]} />
           <Route path='/admin-resetpwd' element={<AdminMain data="admin-resetpwd"/>} />

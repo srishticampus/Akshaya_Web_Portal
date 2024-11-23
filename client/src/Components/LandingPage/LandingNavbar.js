@@ -39,7 +39,7 @@ function LandingNavbar() {
             </li>
             <li className="nav-item m-3">
               <Link
-                to='/admin_home'
+                to='/about-us'
                 className="nav-link"
                 aria-current="page"
             
@@ -49,7 +49,7 @@ function LandingNavbar() {
             </li>
             <li className="nav-item m-3">
               <Link
-                to='/admin_home'
+                to='/contact-us'
                 className="nav-link"
                 aria-current="page"
                
