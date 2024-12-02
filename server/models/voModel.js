@@ -68,5 +68,5 @@ const schema = mongoose.Schema({
         type: Boolean,
         default: false
     },
-},{timeStamps:true});
+},{ timestamps: true });
 module.exports = mongoose.model('villageoffice', schema)

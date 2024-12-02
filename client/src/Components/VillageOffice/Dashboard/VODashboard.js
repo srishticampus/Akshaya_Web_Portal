@@ -4,9 +4,12 @@
     import '../../Admin/AdminDashBoard/AdminDashboard.css'
     import dash1 from '../../../Assets/dash1.png'
     import dash2 from '../../../Assets/dash2.png'
+    import { FaWpforms } from "react-icons/fa";
+
     import dash3 from '../../../Assets/dash3.png'
     import { toast } from "react-toastify";
     import { viewCount } from '../../Services/AdminService'
+import { ViewById } from '../../Services/CommonServices';
 
     function VODashboard() {
               const [village, setVillage] = useState([]);
@@ -32,7 +35,7 @@
               console.error('Data error:', result2);
               toast.error(result2.message);
             }
-            const result3 = await viewCount('viewActiveVos');
+            const result3 = await ViewById('viewApprovedAppByVoId',localStorage.getItem('vo'));
       
             if (result3.success) {
               setVillage(result3.user);
@@ -55,19 +58,7 @@
            
             <div className='row pt-4'>
     
-              <div className='col-12 col-sm-4 mb-4'>
-                <div className='row admin-dash-revenue-box pt-3'>
-                  <div className='col-6'>
-                    <img src={dash1} />
-                  </div>
-                  <div className='col-6'>
-                    <div className='ms-3'>
-                      <span className='admin-dash-span'>{(village.length) > 0 ? village.length : 0}</span>
-                      <p className='admin-dash-span2'>Total no.of Village offices</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
     
               <div className='col-12 col-sm-4 mb-4'>
                 <div className=' row admin-dash-revenue-box admin-dash2 pt-3 '>
@@ -96,7 +87,20 @@
                   </div>
                 </div>
               </div>
-    
+              <div className='col-12 col-sm-4 mb-4'>
+                <div className='row admin-dash-revenue-box pt-3'>
+                  <div className='col-6'>
+                  <FaWpforms className='vo-dahs-icon'/>
+
+                  </div>
+                  <div className='col-6'>
+                    <div className='ms-3'>
+                      <span className='admin-dash-span'>{(village.length) > 0 ? village.length : 0}</span>
+                      <p className='admin-dash-span2'>Total no.of Applications</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
     
             </div>
           </div></div>

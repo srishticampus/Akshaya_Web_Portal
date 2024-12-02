@@ -1,12 +1,12 @@
 
 import React, { useEffect, useState } from 'react'
-import './StaffDashboard.css'
+
 import { useNavigate, useParams } from 'react-router-dom'
 import { approveById, resetPassword, ViewById } from '../../Services/CommonServices';
 import { toast } from "react-toastify";
 import { IMG_BASE_URL } from '../../Services/BaseURL';
 
-function StaffViewAppDetails() {
+function VOAppDetails() {
     const navigate=useNavigate()
     const [applications, setApplications] = useState({
         applicationType: '',
@@ -55,12 +55,12 @@ function StaffViewAppDetails() {
         try {
             console.log("app no", id);
 
-            const result = await approveById('approveByAppId', id);
+            const result = await approveById('approveAppByVO', id);
 
             if (result.success) {
                 console.log(result);
                toast.success('Application approved successfully');
-navigate('/staff-applications')
+navigate('/vo-view-apps')
 
             } else {
                 console.error('Data error:', result);
@@ -302,4 +302,4 @@ navigate('/staff-applications')
     )
 }
 
-export default StaffViewAppDetails
+export default VOAppDetails

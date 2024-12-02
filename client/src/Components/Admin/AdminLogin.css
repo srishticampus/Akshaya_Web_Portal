@@ -45,7 +45,15 @@ padding: 5px;
 
 padding-bottom: 10px;
       }
-
+      .green-button-big{
+        background-color:#56905C;
+        border-radius: 5px;
+        border: none;
+        width:240px;
+        padding: 5px;
+        
+        padding-bottom: 10px;
+              }
       .white-green-button{
         background-color:white;
         border-radius: 5px;

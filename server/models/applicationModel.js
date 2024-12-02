@@ -43,13 +43,17 @@ doc3:{type:Object},
             ref:'villageoffice',
             
         },
-
+        akshayaId:{
+            type:mongoose.Types.ObjectId,
+            ref:'akshaya',
+            
+        },
         localbody: { type: String },
         type: { type: String },
         income:{ type: String },
         incomeSource:{ type: String },
         relationName:{ type: String },
-
+        rejectionReason:{ type: String },
         casteCategory:{ type: String },
         subCaste:{ type: String },
     

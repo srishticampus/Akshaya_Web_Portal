@@ -5,6 +5,7 @@ import ResetPwd from "../ResetPwd/ResetPwd";
 import AdminNavber from "./AdminNavber";
 import AdminViewAkshaya from "./AdminViewAkshaya";
 import AdminViewVO from "./AdminViewVO";
+import AdminViewComplaints from "./AdminViewComplaints";
 
 
 
@@ -28,7 +29,8 @@ function AdminMain({ data }) {
               <AdminViewAkshaya />
             ) : data === "admin-view-vo" ? (
               <AdminViewVO />
-          
+            ) : data === "admin-complaints" ? (
+              <AdminViewComplaints />
             ) : data === "logout" }
           </div>
         </div>

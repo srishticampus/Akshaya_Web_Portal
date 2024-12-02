@@ -74,6 +74,6 @@ const schema = mongoose.Schema({
         type: Date,
 
     },
-}, { timeStamps: true });
+}, { timestamps: true });
 schema.plugin(AutoIncrement, { inc_field: 'centreNo' });
 module.exports = mongoose.model('akshaya', schema)
