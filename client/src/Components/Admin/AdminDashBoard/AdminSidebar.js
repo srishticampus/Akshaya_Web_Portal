@@ -37,7 +37,7 @@ const handleClose = () => {
           <Link to='/admin-view-vo' className="admin-dash-link"><p className="p-2  fw-light admin-border"> Village Office</p></Link>
           <Link to='/' className="admin-dash-link"><p className="p-2  fw-light admin-border">Add FAQ's</p></Link>
           <Link to='/' className="admin-dash-link"><p className="p-2  fw-light admin-border"> View Staff</p></Link>
-          <Link to='/admin-view' className="admin-dash-link"><p className="p-2 fw-light admin-border">Complaints</p></Link>
+          <Link to='/admin-complaints' className="admin-dash-link"><p className="p-2 fw-light admin-border">Complaints</p></Link>
           <Link to='/admin-resetpwd' className="admin-dash-link"><p className="p-2  fw-light admin-border"> Reset Password</p></Link>
           <Link to='' className="admin-dash-link" onClick={handleView}><p className="p-2  fw-light admin-border">Logout</p></Link>
 

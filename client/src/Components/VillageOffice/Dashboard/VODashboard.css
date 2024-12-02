@@ -16,28 +16,39 @@ background-color: #56905C !important;
 
 }
 .vo-table-border {
-    color: white;
-    border: 1px solid #56905C !important; 
-    border-radius: 20px; 
-    overflow: hidden; 
-}
-
-.vo-table-border th {
-    border: 1px solid #56905C !important; 
-    color: white;
-}
-.vo-table-border td {
-    border: 1px solid #313331 !important; 
+    border: 1px solid #151615; /* Main table border */
+    border-radius: 20px; /* Rounded corners */
+    overflow: hidden; /* Ensure rounded corners work */
+    border-collapse: collapse; /* Prevent separate borders between cells */
+    width: 100%; /* Full table width */
     
 }
-.table thead th {
+
+.vo-table-border th,
+.vo-table-border td {
+  /* Border for all cells */
+    padding: 10px; /* Optional: Add padding for better spacing */
+    text-align: center; /* Center align text */
+}
+
+.vo-table-border thead th {
     background-color: #56905C;
     color: white;
 }
+
+
+/*  */
+
+.vo-table-border thead th {
+    background-color: #56905C;
+    color: white;
+ 
+}
 .vo-table td {
-    border: 1px solid black !important; 
+    
     color: #56905C;
     border-bottom: 1px solid black !important; 
+    border-width: 10px;;
 }
 .vo-btn-border {
     color: white;
@@ -46,7 +57,7 @@ background-color: #56905C !important;
     overflow: hidden; 
     margin-right: 20px;
     background-color:#56905C;
-
+ border-width: 10px;;
 width:120px;
 padding: 5px;
 margin-left: 80%;

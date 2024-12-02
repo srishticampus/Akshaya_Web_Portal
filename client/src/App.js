@@ -55,6 +55,7 @@ function App() {
           <Route path='/admin-home' element={<AdminMain data="admindashboard"/>} />
           <Route path='/admin-view-akshaya' element={<AdminMain data="admin-view-akshaya"/>}/>
           <Route path='/admin-view-vo' element={<AdminMain data="admin-view-vo"/>}/>
+          <Route path='/admin-complaints' element={<AdminMain data="admin-complaints"/>}/>
 
 
           {/* Akshaya  */}
@@ -81,6 +82,11 @@ function App() {
           <Route path='/vo-home' element={<VOMain data="vo-home"/>}/>
          <Route path='/vo-staff' element={<VOMain data="vo-staff"/>}/>
          <Route path='/vo-add-staff' element={<VOMain data="vo-add-staff"/>}/>
+         <Route path='/vo-view-apps' element={<VOMain data="vo-view-apps"/>}/>
+         <Route path='/vo-view-details/:id' element={<VOMain data="vo-view-details"/>}/>
+         <Route path='/view-apps-cert' element={<VOMain data="view-apps-cert"/>}/>
+         <Route path='/vo-view-generate/:id' element={<VOMain data="vo-view-generate"/>}/>
+
 
 {/* Staff */}
          <Route path='/staff-login' element={[<LandingNavbar />, <StaffLogin />, <Footer />]} />

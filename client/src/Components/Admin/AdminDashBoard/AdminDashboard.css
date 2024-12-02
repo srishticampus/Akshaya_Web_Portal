@@ -5,6 +5,12 @@
     margin-right: 10px;
     ;
 }
+.vo-dahs-icon{
+    height:80px;
+    width:80px;
+    border-radius: 20%;
+    margin:10px;
+}
 .admin_home{
     display: flex;
     min-height: 90vh;

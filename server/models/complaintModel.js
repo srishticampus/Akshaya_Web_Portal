@@ -4,7 +4,7 @@ const mongoose=require("mongoose")
 const schema=mongoose.Schema({
     email:{
         type:String,
-        unique:true,
+     
         required:true,
     },
     contact:{
@@ -42,5 +42,5 @@ const schema=mongoose.Schema({
         required:true
     }
 
-},{timeStamps:true});
+},{ timestamps: true });
 module.exports=mongoose.model('complaints',schema)

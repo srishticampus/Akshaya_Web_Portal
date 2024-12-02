@@ -7,6 +7,10 @@
     import AdminNavber from "../../Admin/AdminDashBoard/AdminNavber";
 import VOStaffManage from "./VOStaffManage";
 import VOAddStaff from "./VOAddStaff";
+import VOViewApplcns from "./VOViewApplcns";
+import VOAppDetails from "./VOAppDetails";
+import VOViewAppsForCert from "./VOViewAppsForCert";
+import GenerateCertificate from "./GenerateCertificate";
    
 
     
@@ -27,8 +31,16 @@ import VOAddStaff from "./VOAddStaff";
                   <VOResetPwd />
                 ) : data === "vo-staff" ? (
                   <VOStaffManage />
+                ) : data === "vo-view-apps" ? (
+                  <VOViewApplcns />
                 ) : data === "vo-add-staff" ? (
                   <VOAddStaff />
+                ) : data === "vo-view-details" ? (
+                  <VOAppDetails />
+                ) : data === "view-apps-cert" ? (
+                  <VOViewAppsForCert />
+                ) : data === "vo-view-generate" ? (
+                  <GenerateCertificate />
                 ) : data === "logout" }
               </div>
             </div>

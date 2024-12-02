@@ -1,12 +1,12 @@
 
 import React, { useEffect, useState } from 'react'
-import './StaffDashboard.css'
+
 import { useNavigate, useParams } from 'react-router-dom'
-import { approveById, resetPassword, ViewById } from '../../Services/CommonServices';
+import { approveById, register, resetPassword, ViewById } from '../../Services/CommonServices';
 import { toast } from "react-toastify";
 import { IMG_BASE_URL } from '../../Services/BaseURL';
 
-function StaffViewAppDetails() {
+function GenerateCertificate() {
     const navigate=useNavigate()
     const [applications, setApplications] = useState({
         applicationType: '',
@@ -51,16 +51,19 @@ function StaffViewAppDetails() {
         fetchData1(); // Call the async function
     }, [id]);
 
-    const verifyApp=async(id)=>{
+    const generate=async(id)=>{
         try {
             console.log("app no", id);
 
-            const result = await approveById('approveByAppId', id);
+            const result = await register({
+                appId:id
+               
+            },'addCertificate');
 
             if (result.success) {
                 console.log(result);
                toast.success('Application approved successfully');
-navigate('/staff-applications')
+navigate('/view-apps-cert')
 
             } else {
                 console.error('Data error:', result);
@@ -71,26 +74,7 @@ navigate('/staff-applications')
         }
     }
 
-    const rejectApp = async () => {
-        try {
-            if (!rejectionReason.trim()) {
-                toast.error('Please provide a reason for rejection.');
-                return;
-            }
-            const result = await resetPassword({ rejectionReason: rejectionReason },'rejectByAppId', id);
-
-            if (result.success) {
-                toast.success('Application rejected successfully');
-                setShowModal(false); 
-                navigate('/staff-applications');
-            } else {
-                console.error('Data error:', result);
-            }
-        } catch (error) {
-            console.error('Unexpected error:', error);
-            toast.error('An unexpected error occurred during rejection.');
-        }
-    };
+   
 
     return (
         <div>
@@ -255,51 +239,16 @@ navigate('/staff-applications')
             </div>
 <div className='row btn-container'>
     <div className='col'>
-    <button className='btn btn-success green-button' 
-            onClick={() => {verifyApp(applications._id)   }}
+    <button className='btn btn-success green-button-big' 
+            onClick={() => {generate(applications._id)   }}
             >
-                Verify</button>
+                Generate Certificate</button>
     </div>
-    <div className='col'>
-    <button className='btn btn-succes white-green-button' 
-           onClick={() => setShowModal(true) }
-            >
-                Reject</button>
-        </div>
+   
 </div>
-             {/* Modal */}
-             {showModal && (
-                <div className="modal-overlay">
-                    <div className="modal-content">
-                        <h4>Reason for Rejection</h4>
-                        <textarea
-                            value={rejectionReason}
-                            onChange={(e) => setRejectionReason(e.target.value)}
-                            placeholder="Enter reason"
-                            className="form-control"
-                            name='rejectionReason'
-                            
-                        />
-                        <div className="modal-buttons mt-3">
-                            <button
-                                className='btn btn-success green-button  ms-3'
-                                onClick={rejectApp}
-                            >
-                                Confirm
-                            </button>
-                            <button
-                                className='btn btn-succes white-green-button ms-3'
-                                onClick={() => setShowModal(false)}
-                            >
-                                Cancel
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            )}
-               
+          
         </div>
     )
 }
 
-export default StaffViewAppDetails
+export default GenerateCertificate

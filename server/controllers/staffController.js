@@ -94,7 +94,25 @@ const viewStaffById = async (req, res) => {
         });
     }
 };
-
+// View Staff by ID
+const viewStaffByVOId = async (req, res) => {
+    try {
+        const staff = await staffModel.find({voId:req.params.id}).exec();
+     
+            return res.json({
+                status: 200,
+                msg: "Staff data obtained successfully",
+                data: staff
+          
+    })
+    } catch (error) {
+        res.status(500).json({
+            status: 500,
+            msg: "Error retrieving staff data",
+            error: error.message
+        });
+    }
+};
 // Edit Staff by ID
 const editStaffById = async (req, res) => {
     try {
@@ -366,5 +384,6 @@ module.exports = {
     forgotPassword,
     resetPassword,
     login,
-    viewActiveStaffs
+    viewActiveStaffs,
+    viewStaffByVOId
 };

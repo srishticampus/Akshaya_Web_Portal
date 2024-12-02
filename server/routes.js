@@ -8,6 +8,8 @@ const VillageOffice=require('./controllers/voController')
 const Complaint=require('./controllers/complaintController')
 const Applicant=require('./controllers/applicantController')
 const Application=require('./controllers/applicationController')
+const CertificateController = require('./controllers/certificateController');
+
 
 //admin
 router.post('/adminResetPassword',Admin.adminResetPassword);
@@ -64,10 +66,11 @@ router.post('/approveStaffById/:id', Staff.approveStaffById);
 router.post('/editStaffById/:id', Staff.editStaffById);
 router.post('/activateStaffById/:id', Staff.activateStaffById);
 router.post('/viewActiveStaffs', Staff.viewActiveStaffs);
+router.post('/viewStaffByVOId/:id', Staff.viewStaffByVOId);
 
 
 router.post('/registerComplaint', Complaint.registerComplaint);
-router.get('/viewComplaints', Complaint.viewComplaints);
+router.post('/viewComplaints', Complaint.viewComplaints);
 router.get('/viewComplaintById/:id', Complaint.viewComplaintById);
 router.delete('/deleteComplaintById/:id', Complaint.deleteComplaintById);
 
@@ -88,7 +91,15 @@ router.post('/viewApprovedAppByVoId/:vo',Application.viewApprovedAppByVoId);
 router.post('/viewPendingTaxReqByVoId/:vo',Application.viewPendingTaxReqByVoId);
 router.post('/addTaxAmountByAppId/:id',Application.addTaxAmountByAppId);
 router.post('/viewAddedTaxByVoId/:vo',Application.viewAddedTaxByVoId);
+router.post('/rejectByAppId/:id',Application.rejectByAppId);
+router.post('/approveAppByVO/:id',Application.approveAppByVO);
+router.post('/viewPendingAppByVoIdforVO/:vo',Application.viewPendingAppByVoIdforVO);
+router.post('/viewAprvdAppByVoIdforVO/:vo',Application.viewAprvdAppByVoIdforVO);
 
-
+// Certificates
+router.post('/addCertificate', CertificateController.addCertificate);
+router.post('/viewAllCertificates', CertificateController.viewAllCertificates);
+router.post('/viewCertificateById/:id', CertificateController.viewCertificateById);
+router.post('/viewCertificatesByType/:type', CertificateController.viewCertificatesByType);
 module.exports = router;
 

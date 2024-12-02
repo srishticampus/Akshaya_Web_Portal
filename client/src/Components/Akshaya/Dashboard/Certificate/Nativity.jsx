@@ -11,6 +11,7 @@ function Nativity({ aid }) {
       applicationType: 'Nativity Certificate',
       applicantId: aid,
       proofs: [],
+      akshayaId:localStorage.getItem('akshaya')
     });
 
     const [errors, setErrors] = useState({});
