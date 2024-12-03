@@ -6,30 +6,9 @@ import './VODashboard.css'
 
 function VOViewApplcns() {
 const navigate=useNavigate()
-    const addStaff=()=>{
-        navigate('/vo-add-staff')
-    }
+  
     const [staff, setStaff] = useState([])
-    const fetchData = async () => {
-        console.log("void", staff.voId);
-
-        try {
-            const result = await ViewById('viewStaffByVOId', localStorage.getItem('vo'));
-
-            if (result.success) {
-                console.log(result);
-                setStaff(result.user||[]);
-            } else {
-                console.error('Data error:', result);
-                toast.error(result.message);
-            }
-              
-
-        } catch (error) {
-            console.error('Unexpected error:', error);
-            toast.error('An unexpected error occurred during Data View');
-        }
-    };
+    
     useEffect(() => {
       
         const fetchData = async () => {

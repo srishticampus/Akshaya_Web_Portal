@@ -4,21 +4,25 @@
     import '../../Admin/AdminDashBoard/AdminDashboard.css'
     import dash1 from '../../../Assets/dash1.png'
     import dash2 from '../../../Assets/dash2.png'
-    import { FaWpforms } from "react-icons/fa";
-
+    import cert from '../../../Assets/cert.png'
+    import appn from '../../../Assets/aapn.png'
     import dash3 from '../../../Assets/dash3.png'
     import { toast } from "react-toastify";
     import { viewCount } from '../../Services/AdminService'
 import { ViewById } from '../../Services/CommonServices';
+import VOViewApplcns from './VOViewApplcns'
+import { useNavigate } from 'react-router-dom'
 
     function VODashboard() {
               const [village, setVillage] = useState([]);
       const [akshaya, setAkshaya] = useState([]);
       const [staff, setStaff] = useState([]);
+      const [data, setData] = useState([]);
+
       useEffect(() => {
         const fetchData = async () => {
           try {
-            const result = await viewCount('viewActiveAkshayas');
+            const result = await ViewById('viewCertificateByVoId',localStorage.getItem('vo'));
       
             if (result.success) {
               console.log(result);
@@ -51,24 +55,67 @@ import { ViewById } from '../../Services/CommonServices';
       
         fetchData(); // Call the async function
       }, []);
+      const navigate=useNavigate()
+  
+    
+    useEffect(() => {
       
+        const fetchData = async () => {
+            console.log("void", staff.voId);
+    
+            try {
+                const result = await ViewById('viewPendingAppByVoIdforVO', localStorage.getItem('vo'));
+    
+                if (result.success) {
+                    console.log(result);
+                    setData(result.user||[]);
+                } else {
+                    console.error('Data error:', result);
+                    toast.error(result.message);
+                }
+                  
+    
+            } catch (error) {
+                console.error('Unexpected error:', error);
+                toast.error('An unexpected error occurred during Data View');
+            }
+        };
+        fetchData(); // Call the async function
+    }, [staff.voId]);
+    const viewDetails=(id)=>{
+        navigate(`/vo-view-details/${id}`)
+    }
+    
       return (
         <div>
           <div className='container'>
            
             <div className='row pt-4'>
     
-              
+            <div className='col-12 col-sm-4 mb-4'>
+                <div className='row admin-dash-revenue-box pt-3'>
+                  <div className='col-6'>
+                  <img src={appn} />
+
+                  </div>
+                  <div className='col-6'>
+                    <div className='ms-3'>
+                      <span className='admin-dash-span'>{(village.length) > 0 ? village.length : 0}</span>
+                      <p className='admin-dash-span2'>Total no.of Applications</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
     
               <div className='col-12 col-sm-4 mb-4'>
                 <div className=' row admin-dash-revenue-box admin-dash2 pt-3 '>
                   <div className='col-6'>
-                    <img src={dash2} />
+                  <img src={cert} />
                   </div>
                   <div className='col-6'>
                     <div className='ms-3 '>
                       <span className='admin-dash-span '>{(akshaya.length) > 0 ? akshaya.length : 0}</span>
-                      <p className='admin-dash-span2'>Total no.of Akshaya Centres</p>
+                      <p className='admin-dash-span2'>Total no.of Certificates</p>
                     </div>
                   </div>
                 </div>
@@ -87,21 +134,49 @@ import { ViewById } from '../../Services/CommonServices';
                   </div>
                 </div>
               </div>
-              <div className='col-12 col-sm-4 mb-4'>
-                <div className='row admin-dash-revenue-box pt-3'>
-                  <div className='col-6'>
-                  <FaWpforms className='vo-dahs-icon'/>
+              
+    <div>
+    {data.length>0?<>
+    <h2 className='voLogin-mainText '><span className='adminLogin-loginText vo-staff-mainText'>View Applications </span></h2>
+       
 
-                  </div>
-                  <div className='col-6'>
-                    <div className='ms-3'>
-                      <span className='admin-dash-span'>{(village.length) > 0 ? village.length : 0}</span>
-                      <p className='admin-dash-span2'>Total no.of Applications</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
+          <table className="table  table-hover vo-table-border p-5">
+              <thead className='vo-table-border ms-5'>
+                  <tr >
+                      <th className='vo-table-head ps-3'>Sl No</th>
+                      <th className='vo-table-head'>Name</th>
+                      <th className='vo-table-head'>E-Mail</th>
+                      <th className='vo-table-head'>Phone Number</th>
+                      <th className='vo-table-head'>Date</th>
+                      <th className='vo-table-head '>Type</th>
+                      <th className='vo-table-head '>Action</th>
+
+
+                  </tr>
+              </thead>
+              <tbody>
+                      {data.map((application, index) => (
+                              <tr key={index}>
+                                  <td className=''>{index + 1}</td>
+                                  <td className=''>{application.applicantId.name}</td>
+                                  <td className=''>{application.applicantId.email}</td>
+                                  <td className=''>{application.applicantId.contact}</td>
+                                  <td className=''>{application.applicantId.date.slice(0,10)}</td>
+                                  <td className=''>{application.applicationType}</td>
+
+                                  <td>
+                   
+                     <button className='admin-aksh-button'  onClick={()=>{viewDetails(application.appNo)}}>Details</button>
+                    </td>
+
+                              </tr>
+                          ))
+                          }
+                      </tbody>
+          </table>
+          </>:<h3 
+          className='vo-staff-mainText mt-5'>No New Applications Found</h3>}
+    </div>
             </div>
           </div></div>
       )

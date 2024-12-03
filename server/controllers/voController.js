@@ -347,54 +347,32 @@ const changePassword = async (req, res) => {
 
 // rewetr password for VO
 const resetPassword = async (req, res) => {
-    let pwdMatch = false;
+    try {
+        const { id } = req.params;
+        const { oldpassword, password } = req.body;
 
-    await voModel.findById({ _id: req.params.id })
-        .exec()
-        .then(data => {
-            if (data.password === req.body.password)
-                pwdMatch = true;
-        })
-        .catch(err => {
-            return res.status(500).json({
-                status: 500,
-                msg: "Data not updated",
-                Error: err
-            });
-        });
+      
+        const user = await voModel.findById(id);
+        if (!user) {
+            return res.status(404).json({ status: 404, msg: "User Not Found" });
+        }
 
-    if (!pwdMatch) {
-        await voModel.findByIdAndUpdate({ _id: req.params.id }, {
-            password: req.body.password
-        })
-            .exec()
-            .then(data => {
-                if (data != null)
-                    return res.json({
-                        status: 200,
-                        msg: "Password updated successfully"
-                    });
-                else
-                    return res.json({
-                        status: 500,
-                        msg: "User not found"
-                    });
-            })
-            .catch(err => {
-                return res.status(500).json({
-                    status: 500,
-                    msg: "Data not updated",
-                    Error: err
-                });
-            });
+        
+        if (user.password !== oldpassword) {
+            return res.status(405).json({ status: 405, msg: "Your Old Password doesn't match" });
+        }
+
+       
+        user.password = password;
+        await user.save();
+
+        return res.status(200).json({ status: 200, msg: "Password updated successfully" });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ status: 500, msg: "An error occurred", Error: err.message });
     }
-    //  else {
-    //     return res.json({
-    //         status: 405,
-    //         msg: "New Password is same as Old Password !!"
-    //     });
-    // }
 };
+
 // Login for VO
 const login = async (req, res) => {
     let { email, password } = req.body;

@@ -12,6 +12,10 @@ import GetUserData from "./Certificate/GetUserData";
 import ApplyCertificate1 from "./Certificate/ApplyCertificate1";
 import AppConfirm from "./Certificate/AppConfirm";
 import TaxPayment from "./TaxPayment";
+import ViewFeedback from "../../Admin/AdminDashBoard/ViewFeedback";
+import AdminViewAkshayaReqs from "../../Admin/AdminDashBoard/AdminViewAkshayaReqs";
+import AdminViewComplaints from "../../Admin/AdminDashBoard/AdminViewComplaints";
+import AkshayaResetPwd from "./AkshayaResetPwd";
 
 
 
@@ -40,6 +44,12 @@ function AkshayaMain({ data }) {
               <AppConfirm />
             ) : data === "tax-payment" ? (
               <TaxPayment />
+            ) : data === "akshaya-complaints" ? (
+              <AdminViewComplaints />
+            ) : data === "akshaya-feedback" ? (
+              <ViewFeedback />
+            ) : data === "akshaya-resetpwd" ? (
+              <AkshayaResetPwd />
             ) : data === "logout"}
           </div>
         </div>

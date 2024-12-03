@@ -355,7 +355,7 @@ const login = async (req, res) => {
     }
 };
 const viewActiveStaffs = (req, res) => {
-    staffModel.find({ isActive: true })
+    staffModel.find({ isActive: true }).populate('voId')
         .exec()
         .then(data => {
             res.json({

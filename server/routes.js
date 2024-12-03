@@ -9,6 +9,8 @@ const Complaint=require('./controllers/complaintController')
 const Applicant=require('./controllers/applicantController')
 const Application=require('./controllers/applicationController')
 const CertificateController = require('./controllers/certificateController');
+const FAQController = require('./controllers/FAQcontroller');
+const feedbackController = require('./controllers/feedbackController');
 
 
 //admin
@@ -101,5 +103,19 @@ router.post('/addCertificate', CertificateController.addCertificate);
 router.post('/viewAllCertificates', CertificateController.viewAllCertificates);
 router.post('/viewCertificateById/:id', CertificateController.viewCertificateById);
 router.post('/viewCertificatesByType/:type', CertificateController.viewCertificatesByType);
+router.post('/viewCertificateByVoId/:id', CertificateController.viewCertificateByVoId);
+
+// FAQ
+router.post('/addFAQ', FAQController.registerFAQ);
+router.post('/editFAQById', FAQController.editFAQById);
+router.post('/deleteFAQById/:id', FAQController.deleteFAQById);
+router.post('/viewFAQs', FAQController.viewFAQs);
+router.post('/viewFAQById/:id', FAQController.viewFAQById);
+
+
+// Feedback
+router.post('/registerFeedback', feedbackController.registerFeedback);
+router.post('/viewFeedbacks', feedbackController.viewFeedbacks);
+
 module.exports = router;
 

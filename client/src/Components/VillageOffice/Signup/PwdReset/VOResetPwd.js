@@ -12,15 +12,25 @@
     
     function VOResetPwd() {
         const [data, setData] = useState('');
-    
-        const [showPassword, setShowPassword] = useState(false)
-const {id}=useParams()
+
         const [errors, setErrors] = useState({});
         const navigate = useNavigate();
     
-        const togglePasswordVisibility = () => {
-            setShowPassword(!showPassword);
-        };
+        
+  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword2, setShowPassword2] = useState(false)
+
+  const [showPassword3, setShowPassword3] = useState(false)
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+};
+const togglePasswordVisibility2 = () => {
+  setShowPassword2(!showPassword2);
+};
+const togglePasswordVisibility3 = () => {
+  setShowPassword3(!showPassword3);
+};
        
         const handleChange = (e) => {
             const { name, value } = e.target;
@@ -63,7 +73,7 @@ const {id}=useParams()
             }
         
             try {
-              const result = await resetPassword(data,'resetPasswordVO',id);
+              const result = await resetPassword(data,'resetPasswordVO',localStorage.getItem('vo'));
         
               if (result.success) {
                 console.log(result);
@@ -79,34 +89,76 @@ const {id}=useParams()
               toast.error('An unexpected error occurred during login');
             }
           };
-        return (
-            <div className='container'>
-    
-                <h2 className='voLogin-mainText vo-pwd-main'>  Reset <span className='adminLogin-loginText'>Password!</span></h2>
-                <div className='adminLogin-mainDiv'>
-              <p className='vo-pwd-para mt-3'>Your New Password Must Be Different
-              From Previous Password.</p>
-                    <form onSubmit={handleLogin}>
-                    <div style={{ position: 'relative' }}>
-                        <input type={showPassword ? "text" : "password"} placeholder='New Password' className='form-control p-2 mt-5' name='password' onChange={handleChange}></input>
-                        </div>
-                        {errors.password && <div id="nameError" className="invalid-feedback">{errors.password}</div>}
-                        <div style={{ position: 'relative' }}>
-                        <input type={showPassword ? "text" : "password"} placeholder='Confirm Password' className='form-control p-2 mt-3' name='cpassword' onChange={handleChange}></input>
-                        <div className="admin-login-password-toggle-icon" onClick={togglePasswordVisibility}>
-                            {showPassword ? <VscEyeClosed  /> : <VscEye />}
-                        </div></div>
-                        {errors.cpassword && <div id="nameError" className="invalid-feedback">{errors.cpassword}</div>}
-    
-                      <button
-                      type="submit"
-                      className="btn btn-success admin-login-button  mb-5"
-                      >Next</button>
-                    </form>
-                    
+          return (
+            <div>
+                <div className='container admin-reset'>
+        
+        <h2 className='adminReset-mainText '>  Reset <span className='adminLogin-loginText'>Password !</span></h2>
+        <div className='adminReset-mainDiv'>
+        <p className='admin-rest-p mt-2'>
+        Your new password must be different
+        from previous password.
+        </p>
+            <form onSubmit={handleLogin}>
+                 <div style={{ position: 'relative' }}>
+                    <input type={showPassword ? "text" : "password"}
+                        placeholder='Current Password'
+                        name="oldpassword"
+                        onChange={handleChange}
+                        className='form-control p-2 mt-4'
+                        style={{ paddingRight: '40px' }} >
+        
+                    </input>
+                  
+                    <div className="admin-login-password-toggle-icon" onClick={togglePasswordVisibility}>
+                        {showPassword ? <VscEyeClosed  /> : <VscEye />}
+                    </div>
                 </div>
+                {errors.oldpassword && <div id="nameError" className="invalid-feedback">{errors.oldpassword}</div>}
+        
+                <div style={{ position: 'relative' }}>
+                    <input type={showPassword2 ? "text" : "password"}
+                        placeholder='New Password'
+                        name="password"
+                        onChange={handleChange}
+                        className='form-control p-2 mt-4'
+                        style={{ paddingRight: '40px' }} >
+        
+                    </input>
+                    <div className="admin-login-password-toggle-icon" onClick={togglePasswordVisibility2}>
+                        {showPassword2 ? <VscEyeClosed  /> : <VscEye />}
+                    </div>
+                      
+                </div>
+                {errors.password && <div id="nameError" className="invalid-feedback">{errors.password}</div>}
+        
+               
+                <div style={{ position: 'relative' }}>
+                    <input type={showPassword3 ? "text" : "password"}
+                        placeholder='Confirm Password'
+                        name="cpassword"
+                        onChange={handleChange}
+                        className='form-control p-2 mt-4'
+                        style={{ paddingRight: '40px' }} >
+        
+                    </input>
+                    <div className="admin-login-password-toggle-icon" onClick={togglePasswordVisibility3}>
+                        {showPassword3 ? <VscEyeClosed  /> : <VscEye />}
+                    </div>
+                      
+                </div>
+                {errors.cpassword && <div id="nameError" className="invalid-feedback">{errors.cpassword}</div>}
+        
+               
+              <button
+              type="submit"
+              className="btn btn-success admin-login-button mt-3 align-center"
+              >Confirm</button>
+            </form>
+        </div>
+        </div>
             </div>
-        )
+          )
     }
     
     export default VOResetPwd

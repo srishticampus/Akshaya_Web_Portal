@@ -1,0 +1,69 @@
+.faq-buttons {
+    align-items: right;
+    text-align: right;
+    margin-right: 200px;
+}
+
+.faq-slno {
+
+    width: 40px;
+    padding-right: 20px;
+    /* Adds space between the serial number and question */
+    text-align: right;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: #56905C;
+    gap: 30px;
+
+
+}
+
+.faq-question {
+    border-radius: 10px;
+    background: #56905C;
+    width: 800px;
+    padding: 10px 15px;
+    margin-left: 30px;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 40px;
+}
+
+.faq-answer {
+    color: #2A2A2A;
+
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    margin-left: 60px;
+    line-height: 25px;
+    text-transform: capitalize;
+}
+
+.faq-text {
+    background-color: #56905C;
+    color: white;
+    padding: 10px;
+    border: none;
+    /* Optional: Remove borders for cleaner design */
+    border-radius: 5px;
+    /* Optional: Rounded corners */
+    width: 100vh;
+    margin-left: 50px;
+}
+
+.faq-text::placeholder {
+    color: white;
+    opacity: 1;
+    /* Ensures the color is not transparent */
+}
+
+.faq-textarea {
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    background: #F6F6F6;
+    width: 100vh;
+    margin-left: 50px;
+}

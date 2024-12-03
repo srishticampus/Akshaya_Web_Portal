@@ -1,0 +1,41 @@
+.feedbacks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.feedback-container {
+    border: 1px solid #ccc;
+    width: 445px;
+    padding: 8px 15px;
+
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    background: #FFF;
+    background-color: #f9f9f9;
+}
+
+.feedback-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.feedback-rating {
+  
+    display: inline-block;
+}
+
+.feedback-comments {
+    color: #2A2A2A;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.feedback-footer {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #777;
+}
