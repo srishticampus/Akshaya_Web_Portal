@@ -66,14 +66,14 @@ function AkshayaSidebar() {
                     <Link to="/akshaya" className="admin-dash-link">
                         <p className="p-2 fw-light admin-border">Application Status</p>
                     </Link>
-                    <Link to="/" className="admin-dash-link">
+                    <Link to="/akshaya-feedback" className="admin-dash-link">
                         <p className="p-2 fw-light admin-border">Feedback</p>
                     </Link>
                     <Link to="/akshaya-resetpwd" className="admin-dash-link">
-                        <p className="p-2 fw-light admin-border">Enquiries</p>
+                        <p className="p-2 fw-light admin-border">Reset Password</p>
                     </Link>
-                    <Link to="/akshaya-add-complaint" className="admin-dash-link">
-                        <p className="p-2 fw-light admin-border">Add Complaints</p>
+                    <Link to="/akshaya-complaints" className="admin-dash-link">
+                        <p className="p-2 fw-light admin-border">Complaints</p>
                     </Link>
                  
                     <Link to="" className="admin-dash-link" onClick={handleView}>

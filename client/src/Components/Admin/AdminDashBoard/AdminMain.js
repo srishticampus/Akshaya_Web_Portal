@@ -6,6 +6,11 @@ import AdminNavber from "./AdminNavber";
 import AdminViewAkshaya from "./AdminViewAkshaya";
 import AdminViewVO from "./AdminViewVO";
 import AdminViewComplaints from "./AdminViewComplaints";
+import AdminViewFaqs from "./AdminViewFaqs";
+import EditFaqs from "./EditFaqs";
+import AddFaq from "./AddFaq";
+import AdminViewStaff from "./AdminViewStaff";
+import ViewFeedback from "./ViewFeedback";
 
 
 
@@ -31,6 +36,16 @@ function AdminMain({ data }) {
               <AdminViewVO />
             ) : data === "admin-complaints" ? (
               <AdminViewComplaints />
+            ) : data === "admin-faqs" ? (
+              <AdminViewFaqs />
+            ) : data === "admin-edit-faqs" ? (
+              <EditFaqs />
+            ) : data === "admin-add-faqs" ? (
+              <AddFaq />
+            ) : data === "admin-view-staff" ? (
+              <AdminViewStaff />
+            ) : data === "admin-feedback" ? (
+              <ViewFeedback />
             ) : data === "logout" }
           </div>
         </div>

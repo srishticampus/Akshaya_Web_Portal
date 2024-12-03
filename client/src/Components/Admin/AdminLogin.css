@@ -4,11 +4,41 @@ padding-top: 10px;
 
 margin-left: 400px;
 }
+.adminReset-mainDiv{
+  width:350px;
+  padding-top: 10px;
+  
+  margin-left: 200px;
+  }
 .adminLogin-mainText{
     font-size: 40px;
 
 margin-top: 50px;
 margin-left: 420px;
+gap: 0px;
+font-weight: bold;
+letter-spacing: 2px;
+
+}
+.align-center{
+ margin-left: 100px;
+
+}
+.admin-rest-p{
+  color: #142349;
+text-align: center;
+font-family: Montserrat;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+text-transform: capitalize;
+}
+.adminReset-mainText{
+  font-size: 40px;
+
+margin-top: 50px;
+margin-left: 200px;
 gap: 0px;
 font-weight: bold;
 letter-spacing: 2px;
@@ -45,6 +75,16 @@ padding: 5px;
 
 padding-bottom: 10px;
       }
+      .green-button2{
+        background-color:#56905C;
+        border-radius: 5px;
+        border: none;
+        width:140px;
+        padding: 5px;
+        color:white;
+        padding-bottom: 10px;
+        
+              }
       .green-button-big{
         background-color:#56905C;
         border-radius: 5px;

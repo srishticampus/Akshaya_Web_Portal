@@ -69,7 +69,7 @@ function VOSidebar() {
                     <Link to="/view-apps-cert" className="admin-dash-link">
                         <p className="p-2 fw-light admin-border">Generate Certificate</p>
                     </Link>
-                    <Link to="/vo-" className="admin-dash-link">
+                    <Link to="/vo-view-complaints" className="admin-dash-link">
                         <p className="p-2 fw-light admin-border">View Complaints</p>
                     </Link>
                     <Link to="/vo-resetpwd" className="admin-dash-link">

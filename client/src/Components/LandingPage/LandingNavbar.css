@@ -11,3 +11,81 @@
    position: absolute;
    left: -90px;
   }
+  .contact-title{
+    color: #56905C;
+text-align: center;
+font-family: Montserrat;
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+  }
+  .contact-p{
+    width: 920px;
+height: 39px;
+color: #2A2A2A;
+text-align: center;
+font-family: Montserrat;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+margin-left: 250px;
+text-transform: capitalize;
+  }
+  .contact-card-container{
+    margin-left: 250px;
+width: 926px;
+justify-content: center;
+align-items: center;
+align-content: center;
+gap: 30px;
+flex-wrap: wrap;
+  }
+  .contact-card{
+    padding: 20px;
+    border-radius: 20px;
+border: 1px solid rgba(0, 0, 0, 0.20);
+background: #FFF;
+box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+  }
+  .contact-icon{
+
+    width: 80px;
+height: 80px;
+  }
+  .contact-card-t1{
+    color: #2A2A2A;
+font-family: Montserrat;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+text-transform: capitalize;
+  }
+  .contact-card-t2{
+    color: rgba(42, 42, 42, 0.50);
+    font-family: Montserrat;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+  }
+  .contact-card-t3{
+  color: #2A2A2A;
+font-family: Montserrat;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 20px; /* 142.857% */
+text-transform: capitalize;
+  }
+  .add-rating{
+    color: #56905C;
+font-family: Montserrat;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+  }

@@ -9,7 +9,7 @@ import icon6 from './ServiceIcons/6.png'
 
 function Service() {
   return (
-    <>
+    <div id='services'>
       <div className='container'>
         <h1 className='service_heading'>Services</h1>
         <p className='head_para'>Streamlining everything from property management to Aadhaar, PAN, passport services, and more—all in one place!</p>
@@ -99,7 +99,7 @@ function Service() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

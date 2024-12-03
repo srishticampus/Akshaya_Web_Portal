@@ -11,7 +11,7 @@ import VOViewApplcns from "./VOViewApplcns";
 import VOAppDetails from "./VOAppDetails";
 import VOViewAppsForCert from "./VOViewAppsForCert";
 import GenerateCertificate from "./GenerateCertificate";
-   
+   import AdminViewComplaints from '../../Admin/AdminDashBoard/AdminViewComplaints'
 
     
     function VOMain({data}) {
@@ -41,6 +41,10 @@ import GenerateCertificate from "./GenerateCertificate";
                   <VOViewAppsForCert />
                 ) : data === "vo-view-generate" ? (
                   <GenerateCertificate />
+                ) : data === "vo-view-complaints" ? (
+                  <AdminViewComplaints />
+                ) : data === "vo-resetpwd" ? (
+                  <VOResetPwd />
                 ) : data === "logout" }
               </div>
             </div>

@@ -35,9 +35,11 @@ const handleClose = () => {
           <Link to="/admin-home" className="admin-dash-link"><p className="p-2 fw-light admin-border"> Dashboard</p></Link>
           <Link to='/admin-view-akshaya' className="admin-dash-link"><p className="p-2 fw-light admin-border"> Akshaya</p></Link>
           <Link to='/admin-view-vo' className="admin-dash-link"><p className="p-2  fw-light admin-border"> Village Office</p></Link>
-          <Link to='/' className="admin-dash-link"><p className="p-2  fw-light admin-border">Add FAQ's</p></Link>
-          <Link to='/' className="admin-dash-link"><p className="p-2  fw-light admin-border"> View Staff</p></Link>
+          <Link to='/admin-faqs' className="admin-dash-link"><p className="p-2  fw-light admin-border">FAQ's</p></Link>
+          <Link to='/admin-view-staff' className="admin-dash-link"><p className="p-2  fw-light admin-border"> View Staff</p></Link>
           <Link to='/admin-complaints' className="admin-dash-link"><p className="p-2 fw-light admin-border">Complaints</p></Link>
+          <Link to='/admin-feedback' className="admin-dash-link"><p className="p-2 fw-light admin-border">Feedback</p></Link>
+
           <Link to='/admin-resetpwd' className="admin-dash-link"><p className="p-2  fw-light admin-border"> Reset Password</p></Link>
           <Link to='' className="admin-dash-link" onClick={handleView}><p className="p-2  fw-light admin-border">Logout</p></Link>
 

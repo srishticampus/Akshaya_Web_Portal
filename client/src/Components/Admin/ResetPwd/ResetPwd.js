@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import '..//AdminLogin.css'
+import '../AdminLogin.css'
 import { VscEyeClosed } from "react-icons/vsc";
 import { toast } from "react-toastify";
 import '../../LandingPage/LandingNavbar.css'
@@ -91,8 +91,8 @@ const handleLogin = async (e) => {
     <div>
         <div className='container admin-reset'>
 
-<h2 className='adminLogin-mainText '>  Reset <span className='adminLogin-loginText'>Password !</span></h2>
-<div className='adminLogin-mainDiv'>
+<h2 className='adminReset-mainText '>  Reset <span className='adminLogin-loginText'>Password !</span></h2>
+<div className='adminReset-mainDiv'>
 
     <form onSubmit={handleLogin}>
          <div style={{ position: 'relative' }}>
@@ -147,7 +147,7 @@ const handleLogin = async (e) => {
        
       <button
       type="submit"
-      className="btn btn-success admin-login-button"
+      className="btn btn-success admin-login-button mt-3"
       >Confirm</button>
     </form>
 </div>

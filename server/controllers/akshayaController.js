@@ -361,51 +361,29 @@ const forgotPassword = (req, res) => {
 
 // Reset Password for Organizer
 const resetPassword = async (req, res) => {
-    let pwdMatch = false;
+    try {
+        const { id } = req.params;
+        const { oldpassword, password } = req.body;
 
-    await akshaya.findById({ _id: req.params.id })
-        .exec()
-        .then(data => {
-            if (data.password === req.body.oldpassword)
-                pwdMatch = true;
-        })
-        .catch(err => {
-            return res.status(500).json({
-                status: 500,
-                msg: "Data not Updated",
-                Error: err
-            });
-        });
+      
+        const user = await akshaya.findById(id);
+        if (!user) {
+            return res.status(404).json({ status: 404, msg: "User Not Found" });
+        }
 
-    if (pwdMatch) {
-        await akshaya.findByIdAndUpdate({ _id: req.params.id }, {
-            password: req.body.password
-        })
-            .exec()
-            .then(data => {
-                if (data != null)
-                    return res.json({
-                        status: 200,
-                        msg: "Updated successfully"
-                    });
-                else
-                    return res.json({
-                        status: 500,
-                        msg: "User Not Found"
-                    });
-            })
-            .catch(err => {
-                return res.status(500).json({
-                    status: 500,
-                    msg: "Data not Updated",
-                    Error: err
-                });
-            });
-    } else {
-        return res.json({
-            status: 405,
-            msg: "Your Old Password doesn't match"
-        });
+        
+        if (user.password !== oldpassword) {
+            return res.status(405).json({ status: 405, msg: "Your Old Password doesn't match" });
+        }
+
+       
+        user.password = password;
+        await user.save();
+
+        return res.status(200).json({ status: 200, msg: "Password updated successfully" });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ status: 500, msg: "An error occurred", Error: err.message });
     }
 };
 
