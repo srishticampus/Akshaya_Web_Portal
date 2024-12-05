@@ -1,95 +1,222 @@
-.apply-cert-mainDiv{
-    width:750px;
-    padding-top: 20px;
-    
-    margin-left: 100px;
-    }
-    .apply-cert-mainText{
-        color: var(--Base-Green, #56905C);
-        text-align: center;
-        font-family: Montserrat;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
-        margin-top: 20px;
-    
-    }
-    .applicant-mainText{
-      color: var(--Base-Green, #56905C);
-      text-align: center;
-      font-family: Montserrat;
-      font-size: 24px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
-      margin-top: 20px;margin-left: -250px;
-  
-  }
-  .applicant-mainTextProp{
-    color: var(--Base-Green, #56905C);
-    text-align: center;
-    font-family: Montserrat;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    margin-top: 20px;
-    margin-left: -350px;
+.apply-cert-mainDiv {
+  width: 750px;
+  padding-top: 20px;
+
+  margin-left: 100px;
+}
+
+.apply-cert-mainText {
+  color: var(--Base-Green, #56905C);
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-top: 20px;
 
 }
-    .apply-cert-mainText1{
-        color: #2A2A2A;
-        text-align: left;
-        font-family: Montserrat;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        margin-top: 40px;
-    
-    }
-    
-    .select-wrapper {
-        position: relative;
-      }
-      
-      .admin-drop-icon {
-        position: absolute;
-        right: 10px; /* Adjust this to control horizontal position */
-        top: 50%;
-        transform: translateY(-50%);
-        pointer-events: none; /* Allows clicking through the icon */
-        color: gray; /* Icon color */
-        font-size: 1.5em; /* Adjust size as needed */
-      }
 
-      .ticket-booking{
-        background-color:#56905C;
-        border-radius: 5px;
-        border: none;
-        width:300px;
-        padding: 5px;
-        font-weight: bolder;
-        color: white;
-        font-size: large;
-        margin-top: 7%;
-        padding-bottom: 10px;
-              }
-              .app-label{
-                color:#56905C
-              }
-              .app-data-label{
-                color:#101110ec;
-                font-weight: bolder;
-                font-size: 16px;
-              }
-              .confir-pay-button{
-                background-color:#56905C;
-                border-radius: 5px;
-                border: none;
-                width:190px;
-                padding: 5px;
-                margin-left: 40%;
-                margin-top: 7%;
-                padding-bottom: 10px;}
+.applicant-mainText {
+  color: var(--Base-Green, #56905C);
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-top: 20px;
+  margin-left: -250px;
+
+}
+
+.applicant-mainTextProp {
+  color: var(--Base-Green, #56905C);
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-top: 20px;
+  margin-left: -350px;
+
+}
+
+.apply-cert-mainText1 {
+  color: #2A2A2A;
+  text-align: left;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 40px;
+
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.admin-drop-icon {
+  position: absolute;
+  right: 10px;
+  /* Adjust this to control horizontal position */
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  /* Allows clicking through the icon */
+  color: gray;
+  /* Icon color */
+  font-size: 1.5em;
+  /* Adjust size as needed */
+}
+
+.ticket-booking {
+  background-color: #56905C;
+  border-radius: 5px;
+  border: none;
+  width: 300px;
+  padding: 5px;
+  font-weight: bolder;
+  color: white;
+  font-size: large;
+  margin-top: 7%;
+  padding-bottom: 10px;
+}
+
+.app-label {
+  color: #56905C
+}
+
+.app-data-label {
+  color: #101110ec;
+  font-weight: bolder;
+  font-size: 16px;
+}
+
+.confir-pay-button {
+  background-color: #56905C;
+  border-radius: 5px;
+  border: none;
+  width: 190px;
+  padding: 5px;
+  margin-left: 40%;
+  margin-top: 7%;
+  padding-bottom: 10px;
+}
+
+.cert-container {
+  margin: 10px;
+  border: 4px double black;
+  height: auto;
+  
+}
+
+.cert-img {
+  height: 100px;
+  width: 100px;
+  text-align: center;
+}
+.cert-img2 {
+margin-left: 5px  !important;
+  height: 50px;
+  width: 50px;
+  
+}
+.cert-name {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: red;
+  text-decoration: underline;
+}
+
+.cert-village-name {
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.cert-grid {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.cert-no {
+  font-weight: bold;
+  
+}
+.cert-data-p {
+  font-size: 14px;
+  
+}
+.cert-date {
+  font-style: italic;
+  /* You can style it as needed */
+}
+.cert-tab{
+  border:1px solid black;
+ width:90%;
+  padding:5px;
+  margin:20px;
+}
+.cert-tab td{
+  border:1px solid black;
+  padding:5px;
+}
+.cert-tt{
+  justify-content: left !important;
+  text-align: left !important;
+}
+.signature-section {
+  background-image: url('../../../../Assets/tick\ \(1\).png'); 
+  background-repeat: no-repeat;
+  background-size: 80px 60px;
+  background-position: center; 
+  padding-left: 40px; 
+  line-height: 0px;
+  font-size: 14px; 
+
+  color: #101110ec; 
+}
+.cert-panchayath{
+  color: #000;
+font-family: "Times New Roman";
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+margin-bottom: 0px;
+/* 36px */
+}
+.cert-ip{
+  color: #000;
+font-family: "Times New Roman";
+font-size: 25px;
+font-style: normal;
+font-weight: 700;
+line-height: 150%; /* 37.5px */
+}
+.cert-hr{
+  width:100%;
+  border: 2px solid #000;
+}
+.cert-prop-table{
+  text-align: left;
+  padding: 2px;
+}
+.cert-prop-table td{
+  padding: 2px;
+}
+.set-margin-b{
+  margin-top: 300px;
+}
+.foot-section{
+  margin-top: 300px;
+  color: #000;
+font-family: "Times New Roman";
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 30px */
+}

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { approveById, ViewById } from '../../Services/CommonServices';
 import { toast } from "react-toastify";
-import './VODashboard.css'
+import './AkshayaDashboard.css'
 
-function VOViewApplcns() {
+function ViewAppStatus() {
 const navigate=useNavigate()
   
     const [staff, setStaff] = useState([])
@@ -12,10 +12,10 @@ const navigate=useNavigate()
     useEffect(() => {
       
         const fetchData = async () => {
-            console.log("void", staff.voId);
+        
     
             try {
-                const result = await ViewById('viewPendingAppByVoIdforVO', localStorage.getItem('vo'));
+                const result = await ViewById('viewApplicationByAkshayaId', localStorage.getItem('akshaya'));
     
                 if (result.success) {
                     console.log(result);
@@ -34,7 +34,7 @@ const navigate=useNavigate()
         fetchData(); // Call the async function
     }, [staff.voId]);
     const viewDetails=(id)=>{
-        navigate(`/vo-view-details/${id}`)
+        navigate(`/akshaya-view-details/${id}`)
     }
     
    
@@ -53,6 +53,8 @@ const navigate=useNavigate()
                         <th className='vo-table-head'>Phone Number</th>
                         <th className='vo-table-head'>Date</th>
                         <th className='vo-table-head '>Type</th>
+                        <th className='vo-table-head '>Status</th>
+
                         <th className='vo-table-head '>Action</th>
 
 
@@ -67,7 +69,50 @@ const navigate=useNavigate()
                                     <td className=''>{application.applicantId.contact}</td>
                                     <td className=''>{application.applicationDate.slice(0,10)}</td>
                                     <td className=''>{application.applicationType}</td>
-
+                                    <td className=''>
+      <div
+        className='status-container'
+        style={{
+          background:
+            application.status === 'Pending'
+              ? 'rgba(255, 0, 0, 0.1)'
+              : application.status === 'On Process'
+              ? 'rgba(241, 140, 0, 0.1)'
+              : application.status === 'Verified'
+              ? 'rgba(86, 144, 92, 0.5)'
+              : 'transparent', 
+        }}
+      >
+        <span
+          className='status-circle-app'
+          style={{
+            backgroundColor:
+              application.status === 'Pending'
+                ? 'red'
+                : application.status === 'On Process'
+                ? '#F18C00'
+                : application.status === 'Verified'
+                ? '#56905C'
+                : 'transparent', 
+          }}
+        ></span>
+        <span
+          className='status-txt'
+          style={{
+            color:
+              application.status === 'Pending'
+                ? 'red'
+                : application.status === 'On Process'
+                ? '#F18C00'
+                : application.status === 'Verified'
+                ? '#56905C'
+                : 'black', 
+          }}
+        >
+          {application.status}
+        </span>
+      </div>
+    </td>
                                     <td>
                      
                        <button className='admin-aksh-button'  onClick={()=>{viewDetails(application.appNo)}}>Details</button>
@@ -85,4 +130,4 @@ const navigate=useNavigate()
     )
 }
 
-export default VOViewApplcns
+export default ViewAppStatus

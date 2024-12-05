@@ -193,13 +193,14 @@ console.log(result);
               : 
               <div>
                
-                You have already paid your Tax
+               <h3 className='mt-5'>  You have already paid your Tax !! </h3>
                 </div>}
           </div>
         )
 
           :
-          (<h3>Your Tax Request is Send to Village Office</h3>)
+          (<h3 className='mt-5'>Your tax request has been sent to the Village Office.<br/>
+          <span className='mt-5'> Please wait for your tax amount to be confirmed</span></h3>)
         }
       </div>
     </div>

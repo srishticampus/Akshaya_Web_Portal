@@ -15,7 +15,8 @@ function Income({ aid }) {
       applicationType: 'Income Certificate',
       applicantId: aid,
       proofs: [],
-      sourceOfIncome: ''
+      sourceOfIncome: '',
+      akshayaId:localStorage.getItem('akshaya')
     });
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
@@ -84,6 +85,8 @@ function Income({ aid }) {
         return;
       }
       try {
+        console.log("data",data);
+        
         const result = await registerWithFile(data, 'registerApplicationwithFile');
         if (result.success){
 

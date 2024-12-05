@@ -31,6 +31,8 @@ import StaffLogin from './Components/Staff/StaffLogin';
 import StaffMain from './Components/Staff/Dashboard/StaffMain';
 import AddCard from './Components/Akshaya/Signup/AddCard';
 import ContactUs from './Components/LandingPage/ContactUs';
+import UserViewFaqs from './Components/LandingPage/UserViewFaqs';
+import Enquiry from './Components/LandingPage/Enquiry';
 
 function App() {
   return (
@@ -49,6 +51,8 @@ function App() {
           <Route path='/services' element={[<LandingNavbar />,<Service/>,<Footer/>]} />
 
           <Route path='/contact-us' element={[<LandingNavbar />,<ContactUs/>,<Footer/>]} />
+          <Route path='/faqs' element={[<LandingNavbar />,<UserViewFaqs/>,<Footer/>]} />
+          <Route path='/enquiry' element={[<LandingNavbar />,<Enquiry/>,<Footer/>]} />
 
 
           {/* Admin  */}
@@ -64,6 +68,7 @@ function App() {
           <Route path='/admin-add-faqs' element={<AdminMain data="admin-add-faqs"/>}/>
           <Route path='/admin-view-staff' element={<AdminMain data="admin-view-staff"/>}/>
           <Route path='/admin-feedback' element={<AdminMain data="admin-feedback"/>}/>
+          <Route path='/admin-enqs' element={<AdminMain data="admin-enqs"/>}/>
 
 
           {/* Akshaya  */}
@@ -83,7 +88,10 @@ function App() {
          <Route path='/akshaya-complaints' element={<AkshayaMain data="akshaya-complaints"/>}/>
           <Route path='/akshaya-feedback' element={<AkshayaMain data="akshaya-feedback"/>}/>
           <Route path='/akshaya-resetpwd' element={<AkshayaMain data="akshaya-resetpwd"/>}/>
+          <Route path='/app-status' element={<AkshayaMain data="app-status"/>}/>
+          <Route path='/akshaya-view-details/:id' element={<AkshayaMain data="akshaya-view-details"/>}/>
 
+          <Route path='/akshaya-enqs' element={<AkshayaMain data="akshaya-enqs"/>}/>
 
           {/* Village Office  */}
 

@@ -198,22 +198,22 @@ console.log(result);
         </div><div className='col'>
       <label className='app-data-label'> 
           {application.doc1 ? (
-            <a
+          <>  <a
               href={`${IMG_BASE_URL}/${application.doc1.filename}`}
               target="_blank"
               rel="noopener noreferrer"
             >
-              View File
-            </a>
+              View File 
+            </a>&nbsp;&nbsp;&nbsp;</>
           ) : ''}
           {application.doc2 ? (
-            <a
+          <>  <a
               href={`${IMG_BASE_URL}/${application.doc2.filename}`}
               target="_blank"
               rel="noopener noreferrer"
             >
               View File
-            </a>
+            </a>&nbsp;&nbsp;&nbsp;</>
           ) : ''}
           {application.doc3 ? (
             <a

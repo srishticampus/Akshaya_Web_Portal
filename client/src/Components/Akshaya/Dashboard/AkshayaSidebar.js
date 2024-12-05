@@ -63,7 +63,7 @@ function AkshayaSidebar() {
                     <Link to="/akshaya-apply-certificate" className="admin-dash-link">
                         <p className="p-2 fw-light admin-border">Apply Certificate</p>
                     </Link>
-                    <Link to="/akshaya" className="admin-dash-link">
+                    <Link to="/app-status" className="admin-dash-link">
                         <p className="p-2 fw-light admin-border">Application Status</p>
                     </Link>
                     <Link to="/akshaya-feedback" className="admin-dash-link">
@@ -75,7 +75,9 @@ function AkshayaSidebar() {
                     <Link to="/akshaya-complaints" className="admin-dash-link">
                         <p className="p-2 fw-light admin-border">Complaints</p>
                     </Link>
-                 
+                    <Link to="/akshaya-enqs" className="admin-dash-link">
+                        <p className="p-2 fw-light admin-border">Enquiries</p>
+                    </Link>
                     <Link to="" className="admin-dash-link" onClick={handleView}>
                         <p className="p-2 fw-light admin-border">Logout</p>
                     </Link>

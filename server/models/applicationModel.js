@@ -56,6 +56,7 @@ doc3:{type:Object},
         rejectionReason:{ type: String },
         casteCategory:{ type: String },
         subCaste:{ type: String },
+        paymentDate:{type:Date},
     
         paymentStatus: { type: Boolean, default: false },
 amount:{type:Number},

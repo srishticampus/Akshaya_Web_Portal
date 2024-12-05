@@ -11,6 +11,7 @@ import EditFaqs from "./EditFaqs";
 import AddFaq from "./AddFaq";
 import AdminViewStaff from "./AdminViewStaff";
 import ViewFeedback from "./ViewFeedback";
+import AdminViewEnqs from "./AdminViewEnqs";
 
 
 
@@ -46,6 +47,8 @@ function AdminMain({ data }) {
               <AdminViewStaff />
             ) : data === "admin-feedback" ? (
               <ViewFeedback />
+            ) : data === "admin-enqs" ? (
+              <AdminViewEnqs />
             ) : data === "logout" }
           </div>
         </div>

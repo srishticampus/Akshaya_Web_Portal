@@ -89,3 +89,20 @@ font-style: normal;
 font-weight: 600;
 line-height: normal;
   }
+  .enq-text-area{
+    display: flex;
+height: 127px;
+padding: 10px 15px;
+align-items: flex-start;
+gap: 10px;
+width:100px;
+align-self: stretch;
+border-radius: 5px;
+border: 1px solid #999;
+  }
+  .enq-signup-mainDiv{
+    width:750px;
+    padding-top: 20px;
+    
+    margin-left: 200px;
+    }
