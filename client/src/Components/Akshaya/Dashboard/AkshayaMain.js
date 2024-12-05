@@ -16,6 +16,9 @@ import ViewFeedback from "../../Admin/AdminDashBoard/ViewFeedback";
 import AdminViewAkshayaReqs from "../../Admin/AdminDashBoard/AdminViewAkshayaReqs";
 import AdminViewComplaints from "../../Admin/AdminDashBoard/AdminViewComplaints";
 import AkshayaResetPwd from "./AkshayaResetPwd";
+import ViewAppStatus from "./ViewAppStatus";
+import AkshayaViewAppDetail from "./Certificate/AkshayaViewAppDetail";
+import AdminViewEnqs from "../../Admin/AdminDashBoard/AdminViewEnqs";
 
 
 
@@ -50,6 +53,12 @@ function AkshayaMain({ data }) {
               <ViewFeedback />
             ) : data === "akshaya-resetpwd" ? (
               <AkshayaResetPwd />
+            ) : data === "app-status" ? (
+              <ViewAppStatus />
+            ) : data === "akshaya-view-details" ? (
+              <AkshayaViewAppDetail />
+            ) : data === "akshaya-enqs" ? (
+              <AdminViewEnqs />
             ) : data === "logout"}
           </div>
         </div>

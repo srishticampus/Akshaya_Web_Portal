@@ -121,6 +121,26 @@ function LandingNavbar() {
           
             </li>
             <li className="nav-item m-3">
+              <Link
+                to="/faqs"
+                 className="nav-link"
+                aria-current="page"
+              >
+                FAQ's
+              </Link>
+          
+            </li>
+            <li className="nav-item m-3">
+              <Link
+                to="/enquiry"
+                 className="nav-link"
+                aria-current="page"
+              >
+                Enquiries
+              </Link>
+          
+            </li>
+            <li className="nav-item m-3">
             <span className="nav-link" role="button" onClick={handleOpenModal}>
                   Feedback
                 </span>

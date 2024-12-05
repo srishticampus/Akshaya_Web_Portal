@@ -4,52 +4,55 @@ const multer = require("multer");
 
 
 const storage = multer.diskStorage({
-  destination: function (req, res, cb) {
-    cb(null, "./upload");
-  },
-  filename: function (req, file, cb) {
-    const uniquePrefix = 'prefix-'; 
-    const originalname = file.originalname;
-    const extension = originalname.split('.').pop();
-    const filename = uniquePrefix + originalname.substring(0, originalname.lastIndexOf('.')) + '-' + Date.now() + '.' + extension;
-    cb(null, filename);
-  },
+    destination: function (req, res, cb) {
+        cb(null, "./upload");
+    },
+    filename: function (req, file, cb) {
+        const uniquePrefix = 'prefix-';
+        const originalname = file.originalname;
+        const extension = originalname.split('.').pop();
+        const filename = uniquePrefix + originalname.substring(0, originalname.lastIndexOf('.')) + '-' + Date.now() + '.' + extension;
+        cb(null, filename);
+    },
 });
 const upload = multer({ storage: storage }).fields([
     { name: 'doc1', maxCount: 1 },  // For Profile Picture
-    { name: 'doc2', maxCount: 1 }  ,
+    { name: 'doc2', maxCount: 1 },
     { name: 'doc3', maxCount: 1 }      // For ID Proof
-  ]);
+]);
 
 // Register Application
 const registerApplication = async (req, res) => {
     try {
         const data = req.body;
-       
-console.log(data);
 
-// if p-tax
+        console.log(data);
 
-if(req.body.applicationType=="Property Tax"){
-    const pTax = await ApplicationModel.findOne({
-        voId:req.body.voId,
-        applicationType: req.body.applicationType,
-        akshayaId:req.body.akshayaId,
-        ward:req.body.ward,
-        door:req.body.door})
+        // if p-tax
 
-        if(pTax){
-            return res.json({
-                status: 201,
-                msg: "Tax Already Exists",
-                tax:pTax
+        if (req.body.applicationType == "Property Tax") {
+            const pTax = await ApplicationModel.findOne({
+                voId: req.body.voId,
+                applicationType: req.body.applicationType,
+                akshayaId: req.body.akshayaId,
+                ward: req.body.ward,
+                year: req.body.year,
+                door: req.body.door
+            })
+            console.log("pTax", pTax);
+
+            if (pTax) {
+                return res.json({
+                    status: 201,
+                    msg: "Tax Already Exists",
+                    tax: pTax
                 });
+            }
         }
-}
 
 
 
-// p-tax ends
+        // p-tax ends
 
 
 
@@ -59,8 +62,8 @@ if(req.body.applicationType=="Property Tax"){
 
         // Create a new Application document
         const newApplication = new ApplicationModel({
-          ...data,
-          
+            ...data,
+
 
         });
 
@@ -72,7 +75,7 @@ if(req.body.applicationType=="Property Tax"){
         });
     } catch (error) {
         console.log(error);
-        
+
         res.status(500).json({
             status: 500,
             msg: "Error registering Application",
@@ -85,21 +88,21 @@ if(req.body.applicationType=="Property Tax"){
 const registerApplicationwithFile = async (req, res) => {
 
     const doc1 = req.files.doc1[0]
-    const doc2 = req.files.doc2? req.files.doc2[0]:null
-    const doc3 = req.files.doc3?req.files.doc3[0]:null
+    const doc2 = req.files.doc2 ? req.files.doc2[0] : null
+    const doc3 = req.files.doc3 ? req.files.doc3[0] : null
 
     try {
         const data = req.body;
-       
-console.log(data);
+
+        console.log(data);
 
         // Create a new Application document
         const newApplication = new ApplicationModel({
-          ...data,
-          
-doc1,
-doc2,
-doc3
+            ...data,
+
+            doc1,
+            doc2,
+            doc3
         });
 
         await newApplication.save();
@@ -110,7 +113,7 @@ doc3
         });
     } catch (error) {
         console.log(error);
-        
+
         res.status(500).json({
             status: 500,
             msg: "Error registering Application",
@@ -164,11 +167,11 @@ const viewApplicationById = async (req, res) => {
 
 const viewApplicationByAppNo = async (req, res) => {
     try {
-        const appId = await ApplicationModel.findOne({appNo:req.params.appNo},{_id:1}).exec();
+        const appId = await ApplicationModel.findOne({ appNo: req.params.appNo }, { _id: 1 }).exec();
 
         const Application = await ApplicationModel.findById(appId)
-        .populate('applicantId')
-        .populate('vo').exec();
+            .populate('applicantId')
+            .populate('vo').exec();
         if (Application) {
             return res.json({
                 status: 200,
@@ -183,7 +186,7 @@ const viewApplicationByAppNo = async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        
+
         res.status(500).json({
             status: 500,
             msg: "Error retrieving Application",
@@ -191,6 +194,7 @@ const viewApplicationByAppNo = async (req, res) => {
         });
     }
 };
+
 
 // Delete Application by ID
 const deleteApplicationById = async (req, res) => {
@@ -225,7 +229,9 @@ const viewApplicationByAkshayaId = async (req, res) => {
         const activatedApplication = await ApplicationModel.find(
             { akshayaId: req.params.id }
 
-        ).exec();
+        ).populate('applicantId')
+            .populate('vo')
+            .sort({ createdAt: -1 }).exec();
 
         if (activatedApplication) {
             return res.json({
@@ -252,9 +258,10 @@ const viewApplicationByAkshayaId = async (req, res) => {
 const viewPendingAppByVoId = async (req, res) => {
     try {
         const activatedApplication = await ApplicationModel.find(
-            { vo: req.params.vo ,
+            {
+                vo: req.params.vo,
                 applicationType: { $ne: "Property Tax" },
-               status:"Pending"
+                status: "Pending"
             }
 
         ).populate('applicantId').exec();
@@ -274,7 +281,7 @@ const viewPendingAppByVoId = async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        
+
         res.status(500).json({
             status: 500,
             msg: "Error activating Application",
@@ -285,9 +292,10 @@ const viewPendingAppByVoId = async (req, res) => {
 const viewPendingTaxReqByVoId = async (req, res) => {
     try {
         const activatedApplication = await ApplicationModel.find(
-            { vo: req.params.vo ,
+            {
+                vo: req.params.vo,
                 applicationType: "Property Tax",
-                status:"Pending"
+                status: "Pending"
             }
 
         ).populate('applicantId').exec();
@@ -307,7 +315,7 @@ const viewPendingTaxReqByVoId = async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        
+
         res.status(500).json({
             status: 500,
             msg: "Error activating Application",
@@ -318,7 +326,8 @@ const viewPendingTaxReqByVoId = async (req, res) => {
 const viewAddedTaxByVoId = async (req, res) => {
     try {
         const activatedApplication = await ApplicationModel.find(
-            { vo: req.params.vo ,
+            {
+                vo: req.params.vo,
                 applicationType: "Property Tax",
                 status: { $ne: "Pending" }
             }
@@ -340,7 +349,7 @@ const viewAddedTaxByVoId = async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        
+
         res.status(500).json({
             status: 500,
             msg: "Error activating Application",
@@ -349,11 +358,12 @@ const viewAddedTaxByVoId = async (req, res) => {
     }
 };
 const viewApprovedAppByVoId = async (req, res) => {
-    console.log("vo",req.params.vo);
-    
+    console.log("vo", req.params.vo);
+
     try {
         const activatedApplication = await ApplicationModel.find(
-            { vo: req.params.vo ,
+            {
+                vo: req.params.vo,
                 applicationType: { $ne: "Property Tax" },
                 status: { $nin: ["Pending", "Rejected"] }
             }
@@ -367,7 +377,7 @@ const viewApprovedAppByVoId = async (req, res) => {
                 data: activatedApplication
             });
         } else {
-            
+
             return res.json({
                 status: 404,
                 msg: "Application not found",
@@ -376,7 +386,7 @@ const viewApprovedAppByVoId = async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        
+
         res.status(500).json({
             status: 500,
             msg: "Error activating Application",
@@ -386,14 +396,15 @@ const viewApprovedAppByVoId = async (req, res) => {
 };
 
 const viewPendingAppByVoIdforVO = async (req, res) => {
-    console.log("vo",req.params.vo);
-    
+    console.log("vo", req.params.vo);
+
     try {
         const activatedApplication = await ApplicationModel.find(
-            { vo: req.params.vo ,
+            {
+                vo: req.params.vo,
                 applicationType: { $ne: "Property Tax" },
-             
-                status:'On Process'
+
+                status: 'On Process'
             }
 
         ).populate('applicantId').exec();
@@ -405,7 +416,7 @@ const viewPendingAppByVoIdforVO = async (req, res) => {
                 data: activatedApplication
             });
         } else {
-            
+
             return res.json({
                 status: 404,
                 msg: "Application not found",
@@ -414,7 +425,7 @@ const viewPendingAppByVoIdforVO = async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        
+
         res.status(500).json({
             status: 500,
             msg: "Error activating Application",
@@ -424,14 +435,15 @@ const viewPendingAppByVoIdforVO = async (req, res) => {
 };
 
 const viewAprvdAppByVoIdforVO = async (req, res) => {
-    console.log("vo",req.params.vo);
-    
+    console.log("vo", req.params.vo);
+
     try {
         const activatedApplication = await ApplicationModel.find(
-            { vo: req.params.vo ,
+            {
+                vo: req.params.vo,
                 applicationType: { $ne: "Property Tax" },
-             
-                status:'Verified'
+
+                status: 'Verified'
             }
 
         ).populate('applicantId').exec();
@@ -443,7 +455,7 @@ const viewAprvdAppByVoIdforVO = async (req, res) => {
                 data: activatedApplication
             });
         } else {
-            
+
             return res.json({
                 status: 404,
                 msg: "Application not found",
@@ -452,7 +464,7 @@ const viewAprvdAppByVoIdforVO = async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        
+
         res.status(500).json({
             status: 500,
             msg: "Error activating Application",
@@ -460,46 +472,68 @@ const viewAprvdAppByVoIdforVO = async (req, res) => {
         });
     }
 };
-// view Application by Akshaya ID
 const addPaymentByAppId = async (req, res) => {
     try {
-        const activatedApplication = await ApplicationModel.findByIdAndUpdate(
-            { _id: req.params.id },
-            {
-                paymentStatus:true,
-                amount:req.body.amount
-            }
+        const appData = await ApplicationModel.findById(req.params.id);
 
-        ).exec();
-
-        if (activatedApplication) {
-            return res.json({
-                status: 200,
-                msg: "Application activated successfully",
-                data: activatedApplication
-            });
-        } else {
-            return res.json({
+        if (!appData) {
+            return res.status(404).json({
                 status: 404,
                 msg: "Application not found",
-                data: []
+                data: [],
+            });
+        }
+
+        // Common update fields
+        const updateFields = {
+            paymentStatus: true,
+            amount: req.body.amount,
+        };
+
+        // Additional fields for Property Tax
+        if (appData.applicationType === "Property Tax") {
+            Object.assign(updateFields, {
+                status: "Tax Paid",
+                paymentDate: new Date(),
+            });
+        }
+
+        const updatedApplication = await ApplicationModel.findByIdAndUpdate(
+            req.params.id,
+            updateFields,
+            { new: true } // To return the updated document
+        ).exec();
+
+        if (updatedApplication) {
+            return res.json({
+                status: 200,
+                msg: "Application updated successfully",
+                data: updatedApplication,
+            });
+        } else {
+            return res.status(404).json({
+                status: 404,
+                msg: "Application not found",
+                data: [],
             });
         }
     } catch (error) {
-        res.status(500).json({
+        console.error(error);
+        return res.status(500).json({
             status: 500,
-            msg: "Error activating Application",
-            error: error.message
+            msg: "Error updating Application",
+            error: error.message,
         });
     }
 };
+
 const addTaxAmountByAppId = async (req, res) => {
     try {
         const activatedApplication = await ApplicationModel.findByIdAndUpdate(
             { _id: req.params.id },
             {
-                amount:req.body.amount,
-                status:'On Process'
+                amount: req.body.amount,
+                status: 'On Process'
             }
 
         ).exec();
@@ -530,7 +564,7 @@ const approveByAppId = async (req, res) => {
         const activatedApplication = await ApplicationModel.findByIdAndUpdate(
             { _id: req.params.id },
             {
-                status:"On Process"
+                status: "On Process"
             }
 
         ).exec();
@@ -550,7 +584,7 @@ const approveByAppId = async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        
+
         res.status(500).json({
             status: 500,
             msg: "Error activating Application",
@@ -563,7 +597,7 @@ const approveAppByVO = async (req, res) => {
         const activatedApplication = await ApplicationModel.findByIdAndUpdate(
             { _id: req.params.id },
             {
-                status:"Verified"
+                status: "Verified"
             }
 
         ).exec();
@@ -583,7 +617,7 @@ const approveAppByVO = async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        
+
         res.status(500).json({
             status: 500,
             msg: "Error activating Application",
@@ -596,8 +630,8 @@ const rejectByAppId = async (req, res) => {
         const activatedApplication = await ApplicationModel.findOneAndUpdate(
             { appNo: req.params.id },
             {
-                rejectionReason:req.body.rejectionReason,
-                status:"Rejected"
+                rejectionReason: req.body.rejectionReason,
+                status: "Rejected"
             }
 
         ).exec();
@@ -617,7 +651,7 @@ const rejectByAppId = async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        
+
         res.status(500).json({
             status: 500,
             msg: "Error activating Application",
@@ -630,9 +664,9 @@ module.exports = {
     viewApplications,
     viewApplicationById,
     deleteApplicationById,
-registerApplicationwithFile,
-upload,
-addTaxAmountByAppId,
+    registerApplicationwithFile,
+    upload,
+    addTaxAmountByAppId,
     viewApplicationByAkshayaId,
     viewApplicationByAppNo,
     viewPendingAppByVoIdforVO,

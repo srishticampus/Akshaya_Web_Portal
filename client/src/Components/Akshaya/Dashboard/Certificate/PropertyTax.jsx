@@ -15,7 +15,8 @@ console.log(aid);
 
     const [data, setData] = useState({
         applicationType:'Property Tax',
-        applicantId:aid
+        applicantId:aid,
+        akshayaId:localStorage.getItem('akshaya')
     });
 console.log(data);
 
@@ -272,16 +273,7 @@ console.log(data);
 
         // }
     };
-    const handleImageChange = (e) => {
-        console.log("in file", e.target.files[0]);
-
-        const file = e.target.files[0];
-        setData({
-            ...data,
-            certificate: file,
-        });
-    };
-
+ 
     const validate = () => {
         const newErrors = {};
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -320,9 +312,7 @@ console.log(data);
 
     const handleLogin = async (e) => {
         e.preventDefault()
-        console.log(errors);
-// data.applicantId=aid
-        console.log("api called", validate());
+     
 
         if (!validate()) {
             toast.error('Please fix the errors in the form.');
@@ -336,9 +326,9 @@ console.log(data);
 
             if (result.success) {
                 console.log(result);
-              if(result.gotTax){
-                navigate(`/tax-payment/${result.tax.appNo}`)
-              }
+                let no = result?.tax?.appNo || result?.user?.appNo;             
+                navigate(`/tax-payment/${no}`)
+             
                 toast.success('Application Send successful!');
                
 

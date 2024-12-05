@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const cSchema = new mongoose.Schema({
 
     appId: {
-        type: String,
-        required: true,
+        type:mongoose.Types.ObjectId,
+            ref:'Application',
     },
     issueDate: { type: Date, default: Date.now },
     status: { type: String, default: "Pending" },

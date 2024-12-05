@@ -12,6 +12,7 @@ const CertificateController = require('./controllers/certificateController');
 const FAQController = require('./controllers/FAQcontroller');
 const feedbackController = require('./controllers/feedbackController');
 
+const enquiry = require('./controllers/enqController');
 
 //admin
 router.post('/adminResetPassword',Admin.adminResetPassword);
@@ -97,6 +98,7 @@ router.post('/rejectByAppId/:id',Application.rejectByAppId);
 router.post('/approveAppByVO/:id',Application.approveAppByVO);
 router.post('/viewPendingAppByVoIdforVO/:vo',Application.viewPendingAppByVoIdforVO);
 router.post('/viewAprvdAppByVoIdforVO/:vo',Application.viewAprvdAppByVoIdforVO);
+router.post('/viewApplicationByAkshayaId/:id',Application.viewApplicationByAkshayaId);
 
 // Certificates
 router.post('/addCertificate', CertificateController.addCertificate);
@@ -104,6 +106,7 @@ router.post('/viewAllCertificates', CertificateController.viewAllCertificates);
 router.post('/viewCertificateById/:id', CertificateController.viewCertificateById);
 router.post('/viewCertificatesByType/:type', CertificateController.viewCertificatesByType);
 router.post('/viewCertificateByVoId/:id', CertificateController.viewCertificateByVoId);
+router.post('/viewCertificateByappNo/:id', CertificateController.viewCertificateByappNo);
 
 // FAQ
 router.post('/addFAQ', FAQController.registerFAQ);
@@ -116,6 +119,11 @@ router.post('/viewFAQById/:id', FAQController.viewFAQById);
 // Feedback
 router.post('/registerFeedback', feedbackController.registerFeedback);
 router.post('/viewFeedbacks', feedbackController.viewFeedbacks);
+
+
+// Enquiry
+router.post('/addEnquiry', enquiry.addEnquiry);
+router.post('/viewEnquiries', enquiry.viewEnquiries);
 
 module.exports = router;
 

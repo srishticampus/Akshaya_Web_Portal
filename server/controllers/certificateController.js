@@ -93,6 +93,36 @@ const viewCertificateById = async (req, res) => {
         });
     }
 };
+const viewCertificateByappNo = async (req, res) => {
+    try {
+        const { id } = req.params;
+        console.log(id);
+        
+        const certificate = await Certificate.findOne({appNo:id})
+            .populate('applicantId')
+            .populate('vo')
+            .populate('akshayaId')
+            .populate('appId');
+        if (!certificate) {
+            return res.status(404).json({
+                status: 404,
+                msg: "Certificate not found",
+            });
+        }
+
+        res.status(200).json({
+            status: 200,
+            msg: "Certificate data retrieved successfully",
+            data: certificate,
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: 500,
+            msg: "Failed to retrieve certificate data",
+            error: error.message,
+        });
+    }
+};
 const viewCertificateByVoId = async (req, res) => {
     try {
         const { id } = req.params;
@@ -183,5 +213,6 @@ module.exports = {
     viewCertificateById,
     viewCertificatesByType,
     updateCertificateStatus,
-    viewCertificateByVoId
+    viewCertificateByVoId,
+    viewCertificateByappNo
 };

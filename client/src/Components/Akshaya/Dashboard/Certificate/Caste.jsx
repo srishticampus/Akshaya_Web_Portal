@@ -11,7 +11,7 @@ function Caste({ aid }) {
   const [data, setData] = useState({
     applicationType: 'Caste Certificate',
     applicantId: aid,
-    
+    akshayaId:localStorage.getItem('akshaya'),
     proofs: [],
     casteCategory: '',
     subCaste: ''
