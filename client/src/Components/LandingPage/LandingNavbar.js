@@ -60,7 +60,7 @@ function LandingNavbar() {
     <nav className="navbar navbar-expand-lg navbar_bg">
       {/* <div className='container'></div> */}
       <div className="container-fluid">
-        <Link to='/admin_home' className="text-decoration-none">
+        <Link to='/' className="text-decoration-none">
           <div className="navbar_logo">
             <img src={logo} className="img-fluid" alt="logo" />
            
@@ -96,7 +96,7 @@ function LandingNavbar() {
                 aria-current="page"
             
               >
-                About
+                About Us
               </Link>
             </li>
             <li className="nav-item m-3">
@@ -106,7 +106,7 @@ function LandingNavbar() {
                 aria-current="page"
                
               >
-                Contact
+                Contact Us
               </Link>
             </li>
           

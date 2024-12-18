@@ -266,7 +266,7 @@ const deActivateVOById = (req, res) => {
 
 // Forgot password for VO
 const forgotPassword = (req, res) => {
-  common.forgotPWDsentMail(req.body.email,voModel).then(result=>{
+  common.forgotPWDsentMail(req.body.email,voModel,"vo").then(result=>{
     console.log(result);
    
   
@@ -348,8 +348,11 @@ const changePassword = async (req, res) => {
 // rewetr password for VO
 const resetPassword = async (req, res) => {
     try {
+        console.log("oooo");
+        
         const { id } = req.params;
         const { oldpassword, password } = req.body;
+        console.log("ok",oldpassword, password);
 
       
         const user = await voModel.findById(id);

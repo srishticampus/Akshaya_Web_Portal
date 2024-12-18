@@ -10,6 +10,8 @@ function Signup() {
     const [data, setData] = useState('');
 
     const [showPassword, setShowPassword] = useState(false)
+    const [showPassword2, setShowPassword2] = useState(false)
+
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
@@ -291,6 +293,9 @@ function Signup() {
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
+    const togglePasswordVisibility2 = () => {
+        setShowPassword2(!showPassword2);
+    };
     const handleChange = (e) => {
         const { name, value,file } = e.target;
       
@@ -522,7 +527,7 @@ function Signup() {
                         <div className='col-md-5 p-2 '>
                             <p> &nbsp;</p>
                             <div style={{ position: 'relative' }}>
-                                <input type={showPassword ? "text" : "password"}
+                                <input type={showPassword2 ? "text" : "password"}
                                     placeholder='Confirm Password'
                                     name="cpassword"
                                     onChange={handleChange}
@@ -530,8 +535,8 @@ function Signup() {
                                     style={{ paddingRight: '40px' }} >
 
                                 </input>
-                                <div className="vo-signup-password-toggle-icon" onClick={togglePasswordVisibility}>
-                                    {showPassword ? <VscEyeClosed /> : <VscEye />}
+                                <div className="vo-signup-password-toggle-icon" onClick={togglePasswordVisibility2}>
+                                    {showPassword2 ? <VscEyeClosed /> : <VscEye />}
                                 </div>
 
                             </div>

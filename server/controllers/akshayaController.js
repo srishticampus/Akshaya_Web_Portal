@@ -1,4 +1,5 @@
 const akshaya = require('../models/akshayaModel');
+const common=require('../controllers/commonQueries')
 
 const multer = require("multer");
 const staffModel = require('../models/staffModel');
@@ -334,29 +335,28 @@ const rejectAkshayaById = (req, res) => {
 // Forgot Password for Organizer
 const forgotPassword = (req, res) => {
    
-    akshaya.findOneAndUpdate({ email: req.body.email }, {
-        password: req.body.password
-    })
-        .exec()
-        .then(data => {
-            if (data != null)
-                res.json({
-                    status: 200,
-                    msg: "Updated successfully"
-                });
-            else
-                res.json({
+      common.forgotPWDsentMail(req.body.email,akshaya,"akshaya").then(result=>{
+        console.log(result);
+       
+      
+                if (result != null)
+                    res.json({
+                        status: 200,
+                        msg: "Mail send successfully"
+                    });
+                else
+                    res.json({
+                        status: 500,
+                        msg: "User not found"
+                    });
+            })
+            .catch(err => {
+                res.status(500).json({
                     status: 500,
-                    msg: "User Not Found"
+                    msg: "Data not updated",
+                    Error: err
                 });
-        })
-        .catch(err => {
-            res.status(500).json({
-                status: 500,
-                msg: "Data not Updated",
-                Error: err
             });
-        });
 };
 
 // Reset Password for Organizer
@@ -365,6 +365,7 @@ const resetPassword = async (req, res) => {
         const { id } = req.params;
         const { oldpassword, password } = req.body;
 
+      console.log("ok",oldpassword, password);
       
         const user = await akshaya.findById(id);
         if (!user) {
