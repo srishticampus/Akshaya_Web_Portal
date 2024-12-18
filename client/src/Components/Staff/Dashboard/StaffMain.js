@@ -10,6 +10,7 @@ import StaffViewAppDetails from "./StaffViewAppDetails";
 import StaffViewAprvdAppDetails from "./StaffViewAprvdAppDetails";
 import StaffViewTaxReqs from "./StaffViewTaxReqs";
 import StaffViewTaxReqDetail from "./StaffViewTaxReqDetail";
+import AdminViewComplaints from "../../Admin/AdminDashBoard/AdminViewComplaints";
    
 
     
@@ -39,6 +40,8 @@ import StaffViewTaxReqDetail from "./StaffViewTaxReqDetail";
                   <StaffViewTaxReqs />
                 ) : data === "staff-view-tax-details" ? (
                   <StaffViewTaxReqDetail />
+                ) : data === "staff-complaints" ? (
+                  <AdminViewComplaints />
                 ) : data === "logout" }
               </div>
             </div>

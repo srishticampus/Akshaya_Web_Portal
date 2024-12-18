@@ -1,16 +1,15 @@
 
     import React, { useState } from 'react'
-    import '../../../Admin/AdminLogin.css'
+    import '../../Admin/AdminLogin.css'
     import { VscEyeClosed } from "react-icons/vsc";
     import { toast } from "react-toastify";
-    import '../../../LandingPage/LandingNavbar.css'
+    import '../../LandingPage/LandingNavbar.css'
     import { VscEye } from "react-icons/vsc";import { FiEye } from "react-icons/fi";
     import { Link, useNavigate, useParams } from 'react-router-dom';
-    import { forgotPassword, login, resetPassword } from '../../../Services/CommonServices';
-    import '../VOLogin.css'
-    import './VoPwd.css'
-    
-    function VOResetPwd() {
+    import { forgotPassword, login, resetPassword } from '../../Services/CommonServices';
+    import '../../VillageOffice/Signup/VOLogin.css'
+    import '../../VillageOffice/Signup/PwdReset/VoPwd.css'
+    function AkshayaResetPwd() {
         const [data, setData] = useState('');
 const {id}=useParams()
         const [errors, setErrors] = useState({});
@@ -73,8 +72,7 @@ const togglePasswordVisibility3 = () => {
             }
         
             try {
-              const result = await resetPassword(data,'resetPasswordVO',id);
-        console.log("da",result,);
+              const result = await resetPassword(data,'resetPasswordAkshaya',id);
         
               if (result.success) {
                 console.log(result);
@@ -162,4 +160,4 @@ const togglePasswordVisibility3 = () => {
           )
     }
     
-    export default VOResetPwd
+    export default AkshayaResetPwd
