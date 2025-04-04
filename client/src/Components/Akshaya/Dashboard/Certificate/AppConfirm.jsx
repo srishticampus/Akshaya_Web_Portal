@@ -6,9 +6,11 @@ import './Certificate.css';
 import {  resetPassword, ViewById } from '../../../Services/CommonServices';
 import { Link, useParams } from 'react-router-dom';
 import { IMG_BASE_URL } from '../../../Services/BaseURL';
+import { useNavigate } from 'react-router-dom';
 
 import PropertyTaxConfirm from './PropertyTaxConfirm';
 function AppConfirm() {
+  const navigate = useNavigate();
   const { appNo } = useParams()
   const [data, setData] = useState({
     applicationType: 'Nativity Certificate',
@@ -32,7 +34,6 @@ function AppConfirm() {
     }
   });
   let amount = 0;
-
   const fetchAkshayadata = async () => {
     try {
       const result = await ViewById('viewAkshayaById', localStorage.getItem('akshaya'));
@@ -114,7 +115,10 @@ console.log(result);
     }
     try {
       const result = await resetPassword(data, 'addPaymentByAppId',application._id);
-      if (result.success) toast.success('Application Sent successfully!');
+      if (result.success){ 
+        toast.success('Application Sent successfully!');
+        navigate('/akshaya-home');
+      }
       else toast.error(result.message);
     } catch (error) {
       toast.error('An unexpected error occurred during Registration');
