@@ -51,9 +51,8 @@ function AkshayaMain({ data }) {
               <AdminViewComplaints />
             ) : data === "akshaya-feedback" ? (
               <ViewFeedback />
-            ) : data === "akshaya-resetpwd" ? (
-              <AkshayaResetPwd />
-            ) : data === "app-status" ? (
+            )
+            : data === "app-status" ? (
               <ViewAppStatus />
             ) : data === "akshaya-view-details" ? (
               <AkshayaViewAppDetail />
@@ -66,7 +65,9 @@ function AkshayaMain({ data }) {
     </div>
   );
 }
-
+// :data === "akshaya-resetpwd" ? (
+//   <AkshayaResetPwd />
+// ) 
 
 
 export default AkshayaMain
